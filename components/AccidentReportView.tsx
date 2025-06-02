@@ -1,8 +1,15 @@
 
 
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
 import { ThemeContext } from '../App';
+=======
+
+import React, { useState } from 'react';
+import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
+import { ThemeContext } from '../contexts/ThemeContext'; // Corrected import path
+>>>>>>> bee2d85 (updated)
 
 const AccidentReportView: React.FC = () => {
   const { t, language } = useLanguageContext();

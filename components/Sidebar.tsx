@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ViewName, Language } from '../types'; 
@@ -155,8 +156,169 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavigate, currentView, isOpen, togg
           );
         })}
       </nav>
+=======
+
+import React from 'react';
+import { useLanguageContext } from '../hooks/useLanguage';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { ViewName, TranslationSet } from '../types';
+import {
+  HomeIcon, CalendarDaysIcon, ClipboardDocumentListIcon, Cog6ToothIcon, UserCircleIcon,
+  TruckIcon, FaceSmileIcon, ChatBubbleLeftEllipsisIcon, ViewColumnsIcon, WrenchScrewdriverIcon,
+  ExclamationTriangleIcon, UserIcon as PersonalHubIcon, LightBulbIcon, SparklesIcon,
+  AdjustmentsHorizontalIcon, CpuChipIcon, QueueListIcon, CalculatorIcon, AcademicCapIcon,
+  ArchiveBoxIcon, ClipboardDocumentCheckIcon, MegaphoneIcon, ArrowsRightLeftIcon, VariableIcon,
+  PhoneArrowUpRightIcon, NewspaperIcon, PresentationChartBarIcon, BeakerIcon, BookOpenIcon, ShieldCheckIcon
+} from '@heroicons/react/24/outline';
+
+interface SidebarProps {
+  isOpen: boolean;
+  onNavigate: (view: ViewName) => void;
+  currentView: ViewName;
+}
+
+interface NavItem {
+  view: ViewName;
+  labelKey: keyof TranslationSet;
+  icon: React.ElementType;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onNavigate, currentView }) => {
+  const { t, language } = useLanguageContext();
+  const { theme } = React.useContext(ThemeContext);
+
+  const mainNavItems: NavItem[] = [
+    { view: 'dashboard', labelKey: 'viewName_dashboard', icon: HomeIcon },
+    { view: 'shifts', labelKey: 'viewName_shifts', icon: CalendarDaysIcon },
+    { view: 'tasks', labelKey: 'viewName_tasks', icon: ClipboardDocumentListIcon },
+    { view: 'personalHub', labelKey: 'viewName_personalHub', icon: PersonalHubIcon},
+  ];
+  
+  const operationalNavItems: NavItem[] = [
+    { view: 'ships', labelKey: 'viewName_ships', icon: TruckIcon },
+    { view: 'kanban', labelKey: 'viewName_kanban', icon: ViewColumnsIcon },
+    { view: 'preventiveMaintenance', labelKey: 'viewName_preventiveMaintenance', icon: WrenchScrewdriverIcon },
+    { view: 'accidentReport', labelKey: 'viewName_accidentReport', icon: ExclamationTriangleIcon },
+    { view: 'equipmentLogbook', labelKey: 'viewName_equipmentLogbook', icon: ArchiveBoxIcon },
+    { view: 'permitToWork', labelKey: 'viewName_permitToWork', icon: ClipboardDocumentCheckIcon },
+    { view: 'shiftHandoverNotes', labelKey: 'viewName_shiftHandoverNotes', icon: ArrowsRightLeftIcon },
+  ];
+
+  const safetyQualityNavItems: NavItem[] = [
+    { view: 'safetyObservation', labelKey: 'viewName_safetyObservation', icon: MegaphoneIcon },
+    { view: 'toolboxTalks', labelKey: 'viewName_toolboxTalks', icon: PresentationChartBarIcon },
+    { view: 'chemicalReference', labelKey: 'viewName_chemicalReference', icon: BeakerIcon },
+    { view: 'emergencyContactsProcedures', labelKey: 'viewName_emergencyContactsProcedures', icon: PhoneArrowUpRightIcon },
+  ];
+  
+  const knowledgeToolsNavItems: NavItem[] = [
+     { view: 'knowledgeBase', labelKey: 'viewName_knowledgeBase', icon: AcademicCapIcon }, 
+     { view: 'unitConverter', labelKey: 'viewName_unitConverter', icon: VariableIcon },
+     { view: 'internalAnnouncements', labelKey: 'viewName_internalAnnouncements', icon: NewspaperIcon },
+     { view: 'petroGenius', labelKey: 'viewName_petroGenius', icon: SparklesIcon }, 
+     { view: 'petroWiki', labelKey: 'viewName_petroWiki', icon: BookOpenIcon },    
+  ];
+
+  const aiToolsNavItems: NavItem[] = [
+    { view: 'aiShiftScheduler', labelKey: 'viewName_aiShiftScheduler', icon: SparklesIcon },
+    { view: 'aiMaintenanceGuide', labelKey: 'viewName_aiMaintenanceGuide', icon: LightBulbIcon },
+    { view: 'smartShiftEnhancer', labelKey: 'viewName_smartShiftEnhancer', icon: AdjustmentsHorizontalIcon },
+    { view: 'smartMaintenanceEnhancer', labelKey: 'viewName_smartMaintenanceEnhancer', icon: CpuChipIcon },
+    { view: 'advancedCalculator', labelKey: 'viewName_advancedCalculator', icon: CalculatorIcon },
+  ];
+
+  const utilityNavItems: NavItem[] = [
+    { view: 'chat', labelKey: 'viewName_chat', icon: ChatBubbleLeftEllipsisIcon },
+    { view: 'activityLog', labelKey: 'viewName_activityLog', icon: QueueListIcon },
+    { view: 'fun', labelKey: 'viewName_fun', icon: FaceSmileIcon },
+    { view: 'trainingCourses', labelKey: 'viewName_trainingCourses', icon: BookOpenIcon }, // Re-check if this is still 'BookOpenIcon' or if 'AcademicCapIcon' is preferred
+    { view: 'profile', labelKey: 'viewName_profile', icon: UserCircleIcon },
+    { view: 'settings', labelKey: 'viewName_settings', icon: Cog6ToothIcon },
+    { view: 'adminDashboard', labelKey: 'viewName_adminDashboard', icon: ShieldCheckIcon }, // Added Admin Dashboard
+  ];
+
+
+  const sidebarBg = theme === 'dark' ? 'bg-gray-800' : 'bg-white';
+  const textColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-800';
+  const hoverBg = theme === 'dark' ? 'hover:bg-gray-700 hover:text-bright-yellow' : 'hover:bg-gray-100 hover:text-marine-blue';
+  const activeBg = theme === 'dark' ? 'bg-marine-blue text-bright-yellow' : 'bg-marine-blue text-white';
+  const activeBorderDirection = language === 'ar' ? 'border-l-4' : 'border-r-4';
+  const activeBorderColor = theme === 'dark' ? 'border-bright-yellow' : 'border-bright-yellow';
+  const iconColor = theme === 'dark' ? 'text-gray-400 group-hover:text-bright-yellow' : 'text-gray-500 group-hover:text-marine-blue';
+  const activeIconColor = theme === 'dark' ? 'text-bright-yellow' : 'text-white';
+  const borderColor = theme === 'dark' ? 'border-gray-700' : 'border-gray-200';
+  const sectionTitleColor = theme === 'dark' ? 'text-gray-500' : 'text-gray-400';
+
+  const transformClass = language === 'ar' 
+    ? (isOpen ? 'translate-x-0' : 'translate-x-full') 
+    : (isOpen ? 'translate-x-0' : '-translate-x-full');
+  
+  const positionClass = language === 'ar' ? 'right-0' : 'left-0';
+
+
+  const NavList: React.FC<{ items: NavItem[]; sectionTitleKey?: keyof TranslationSet | string }> = ({ items, sectionTitleKey }) => (
+    <>
+      {sectionTitleKey && (
+        <h3 className={`px-4 pt-4 pb-2 text-xs font-semibold uppercase ${sectionTitleColor} tracking-wider`}>
+          {typeof sectionTitleKey === 'string' ? sectionTitleKey : t(sectionTitleKey)}
+        </h3>
+      )}
+      {items.map((item) => (
+        <button
+          key={item.view}
+          onClick={() => onNavigate(item.view)}
+          className={`w-full flex items-center space-x-3 rtl:space-x-reverse px-4 py-3 text-sm group transition-all duration-200 ease-in-out relative
+            ${currentView === item.view ? `${activeBg} ${activeBorderDirection} ${activeBorderColor}` : `${textColor} ${hoverBg}`}
+            ${language === 'ar' ? 'text-right' : 'text-left'}`}
+          aria-current={currentView === item.view ? 'page' : undefined}
+        >
+          <item.icon className={`h-5 w-5 flex-shrink-0 ${currentView === item.view ? activeIconColor : iconColor} transition-colors duration-200`} />
+          <span className={`${currentView === item.view ? (theme === 'dark' ? 'text-bright-yellow' : 'text-white') : ''} transition-colors duration-200`}>{t(item.labelKey)}</span>
+        </button>
+      ))}
+    </>
+  );
+
+  return (
+    <aside className={`fixed top-0 ${positionClass} h-full w-64 sm:w-72 ${sidebarBg} shadow-xl z-30 transform transition-transform duration-300 ease-in-out ${transformClass} flex flex-col border-${language === 'ar' ? 'l' : 'r'} ${borderColor} overflow-y-auto sidebar-transition pt-16`}> 
+      <div className={`p-4 border-b ${borderColor} flex items-center space-x-3 rtl:space-x-reverse`}>
+        <AcademicCapIcon className={`h-10 w-10 text-fahlawy-logo-primary`} />
+        <div>
+          <h2 className={`text-xl font-bold text-fahlawy-logo-primary`}>
+            {t('appName')}
+          </h2>
+          <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+            {t('companyShortName')}
+          </p>
+        </div>
+      </div>
+      
+      <nav className="flex-grow py-2">
+        <NavList items={mainNavItems} sectionTitleKey={language === 'ar' ? "الرئيسية" : "Main"}/>
+        <hr className={`my-2 ${borderColor}`} />
+        <NavList items={operationalNavItems} sectionTitleKey={language === 'ar' ? "عمليات وتشغيل" : "Operations"}/>
+        <hr className={`my-2 ${borderColor}`} />
+        <NavList items={safetyQualityNavItems} sectionTitleKey={language === 'ar' ? "سلامة وجودة" : "Safety & Quality"}/>
+        <hr className={`my-2 ${borderColor}`} />
+        <NavList items={knowledgeToolsNavItems} sectionTitleKey={language === 'ar' ? "معرفة وأدوات" : "Knowledge & Tools"}/>
+        <hr className={`my-2 ${borderColor}`} />
+        <NavList items={aiToolsNavItems} sectionTitleKey={t('AIFeatures')}/>
+        <hr className={`my-2 ${borderColor}`} />
+        <NavList items={utilityNavItems} sectionTitleKey={language === 'ar' ? "خدمات مساعدة" : "Utilities"}/>
+      </nav>
+
+      <div className={`p-4 mt-auto border-t ${borderColor}`}>
+        <p className={`text-xs text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
+          {t('sidebarFooter')}
+        </p>
+      </div>
+>>>>>>> bee2d85 (updated)
     </aside>
   );
 };
 
+<<<<<<< HEAD
 export default Sidebar;
+=======
+export { Sidebar as default };
+>>>>>>> bee2d85 (updated)

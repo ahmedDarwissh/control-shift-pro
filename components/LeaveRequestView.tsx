@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import React, { useContext, useState } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ThemeContext, ToastContext, LoggedInUser } from '../App';
@@ -16,6 +17,21 @@ interface LeaveRequestViewProps {
 }
 
 const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ db, loggedInUser }) => {
+=======
+import React, { useContext, useState }from 'react';
+import { useLanguageContext } from '../hooks/useLanguage';
+import { ThemeContext } from '../contexts/ThemeContext'; 
+import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
+import { LoggedInUser, LeaveRequestStatus, TranslationSet } from '../types'; 
+import { PaperAirplaneIcon, CalendarDaysIcon } from '@heroicons/react/24/outline';
+
+
+interface LeaveRequestViewProps {
+  loggedInUser: LoggedInUser | null;
+}
+
+const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => {
+>>>>>>> bee2d85 (updated)
   const { t, language } = useLanguageContext();
   const { theme } = React.useContext(ThemeContext);
   const { addToast } = useContext(ToastContext);
@@ -26,6 +42,12 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ db, loggedInUser })
   const [reason, setReason] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+<<<<<<< HEAD
+=======
+  // Mock remaining leave days
+  const mockRemainingLeaveDays = 12; 
+
+>>>>>>> bee2d85 (updated)
   const handleSubmitRequest = async () => {
     if (!loggedInUser) {
       addToast(language === 'ar' ? 'يجب تسجيل الدخول أولاً لتقديم طلب إجازة.' : 'You must be logged in to submit a leave request.', 'alert');
@@ -37,6 +59,7 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ db, loggedInUser })
     }
     
     setIsSubmitting(true);
+<<<<<<< HEAD
     try {
       const newLeaveRequest = {
         userId: loggedInUser.firebaseUid,
@@ -60,6 +83,22 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ db, loggedInUser })
     } finally {
       setIsSubmitting(false);
     }
+=======
+    setTimeout(() => {
+        console.log("Mock Leave Request Submitted:", {
+            userId: loggedInUser.firebaseUid || loggedInUser.id,
+            leaveType,
+            startDate,
+            endDate,
+            reason,
+            status: LeaveRequestStatus.Pending,
+            createdAt: new Date(), 
+          });
+      addToast(t('leaveRequestSubmitSuccess'), 'success');
+      setLeaveType(''); setStartDate(''); setEndDate(''); setReason('');
+      setIsSubmitting(false);
+    }, 1000);
+>>>>>>> bee2d85 (updated)
   };
 
   const inputBaseClasses = "w-full p-3 border rounded-lg shadow-sm focus:ring-2 text-sm";
@@ -87,6 +126,14 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ db, loggedInUser })
         <div className="flex justify-center mb-6">
             <PaperAirplaneIcon className={`h-16 w-16 ${theme === 'dark' ? 'text-blue-500' : 'text-blue-600'}`} />
         </div>
+<<<<<<< HEAD
+=======
+
+        <div className={`mb-6 p-3 rounded-md text-sm text-center ${theme === 'dark' ? 'bg-gray-700 text-gray-200' : 'bg-blue-50 text-blue-700'}`}>
+            <CalendarDaysIcon className="h-5 w-5 inline-block mr-1.5 rtl:ml-1.5"/>
+            {language === 'ar' ? `رصيد الإجازات المتبقي (تجريبي): ${mockRemainingLeaveDays} أيام` : `Remaining Leave Days (Demo): ${mockRemainingLeaveDays} days`}
+        </div>
+>>>>>>> bee2d85 (updated)
         
         <form onSubmit={(e) => { e.preventDefault(); handleSubmitRequest(); }} className="space-y-5 text-left">
           <div>
@@ -97,6 +144,11 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ db, loggedInUser })
               <option value="annual">{language === 'ar' ? 'سنوية' : 'Annual'}</option>
               <option value="sick">{language === 'ar' ? 'مرضية' : 'Sick'}</option>
               <option value="emergency">{language === 'ar' ? 'عارضة' : 'Emergency'}</option>
+<<<<<<< HEAD
+=======
+              <option value="unpaid">{language === 'ar' ? 'بدون مرتب' : 'Unpaid'}</option>
+              <option value="other">{language === 'ar' ? 'أخرى (وضح في السبب)' : 'Other (Specify in reason)'}</option>
+>>>>>>> bee2d85 (updated)
             </select>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

@@ -2,7 +2,13 @@
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Ship, ShipStatus, ShipCargoType, Pump, Language } from '../types';
+<<<<<<< HEAD
 import { ThemeContext } from '../App'; 
+=======
+import { ThemeContext } from '../contexts/ThemeContext'; 
+import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
+import { PlusCircleIcon } from '@heroicons/react/24/outline';
+>>>>>>> bee2d85 (updated)
 
 // Heroicon for Ship (using TruckIcon as a placeholder, ideally a better ship icon)
 const ShipIconHero: React.FC<{ className?: string }> = ({ className }) => (
@@ -121,11 +127,35 @@ interface ShipManagementViewProps {
 const ShipManagementView: React.FC<ShipManagementViewProps> = ({ ships }) => {
   const { t, language } = useLanguageContext();
   const { theme } = React.useContext(ThemeContext);
+<<<<<<< HEAD
   const pageTitleColor = theme === 'dark' ? 'text-orange-400' : 'text-orange-500';
 
   return (
     <div className={`p-2 ${language === 'ar' ? 'font-cairo text-right' : 'font-poppins text-left'}`}>
       <h1 className={`text-2xl md:text-3xl font-bold mb-6 md:mb-8 ${pageTitleColor}`}>{t('ships')}</h1>
+=======
+  const { addToast } = React.useContext(ToastContext);
+  const pageTitleColor = theme === 'dark' ? 'text-orange-400' : 'text-orange-500';
+
+  const handleLogNewCargo = () => {
+    addToast(t('shipLogNewCargoToast'), 'info');
+  };
+
+  return (
+    <div className={`p-2 ${language === 'ar' ? 'font-cairo text-right' : 'font-poppins text-left'}`}>
+      <div className="flex justify-between items-center mb-6 md:mb-8">
+        <h1 className={`text-2xl md:text-3xl font-bold ${pageTitleColor}`}>{t('ships')}</h1>
+        <button 
+            onClick={handleLogNewCargo}
+            className={`py-2 px-4 rounded-lg text-sm font-medium transition-colors shadow-md flex items-center gap-2
+                ${theme === 'dark' ? 'bg-green-600 text-white hover:bg-green-700' : 'bg-green-500 text-white hover:bg-green-600'}`}
+            aria-label={t('shipLogNewCargoButton')}
+        >
+            <PlusCircleIcon className="h-5 w-5"/>
+            {t('shipLogNewCargoButton')}
+        </button>
+      </div>
+>>>>>>> bee2d85 (updated)
       {ships.length === 0 ? (
         <div className={`text-center py-12 px-4 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
           <WaveIcon className={`h-16 w-16 mx-auto mb-4 ${theme === 'dark' ? 'text-blue-500' : 'text-blue-600'}`} />
@@ -148,4 +178,8 @@ const ShipManagementView: React.FC<ShipManagementViewProps> = ({ ships }) => {
   );
 };
 
+<<<<<<< HEAD
 export default ShipManagementView;
+=======
+export default ShipManagementView;
+>>>>>>> bee2d85 (updated)

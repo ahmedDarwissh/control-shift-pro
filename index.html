@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="importmap">
 {
   "imports": {
@@ -15,12 +16,16 @@
   }
 }
 </script>
+=======
+
+>>>>>>> bee2d85 (updated)
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
   <title>Control Shift Pro</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,10 +35,121 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       overflow-x: hidden; /* Prevent horizontal scroll */
       font-weight: 400; /* Default font weight */
+=======
+  <title>كنترول شيفت برو</title>
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@19.1.0",
+      "react-dom/": "https://esm.sh/react-dom@19.1.0/",
+      "react/": "https://esm.sh/react@19.1.0/",
+      "@google/genai": "https://esm.sh/@google/genai@1.1.0",
+      "@heroicons/react/": "https://esm.sh/@heroicons/react@2.2.0/",
+      "firebase/": "https://esm.sh/firebase@11.8.1/",
+      "@/constants": "./constants.ts",
+      "@/components/Sidebar": "./components/Sidebar.tsx",
+      "@/components/Dashboard": "./components/Dashboard.tsx",
+      "@/components/EquipmentLogbookView": "./components/EquipmentLogbookView.tsx",
+      "@/components/PermitToWorkView": "./components/PermitToWorkView.tsx",
+      "@/components/SafetyObservationView": "./components/SafetyObservationView.tsx",
+      "@/components/ShiftHandoverNotesView": "./components/ShiftHandoverNotesView.tsx",
+      "@/components/FahlawyKnowledgeBaseView": "./components/FahlawyKnowledgeBaseView.tsx",
+      "@/components/UnitConverterView": "./components/UnitConverterView.tsx",
+      "@/components/EmergencyContactsProceduresView": "./components/EmergencyContactsProceduresView.tsx",
+      "@/components/InternalAnnouncementsView": "./components/InternalAnnouncementsView.tsx",
+      "@/components/ToolboxTalksView": "./components/ToolboxTalksView.tsx",
+      "@/components/ChemicalReferenceView": "./components/ChemicalReferenceView.tsx",
+      "@/components/PetroGeniusView": "./components/PetroGeniusView.tsx",
+      "@/components/PetroWikiView": "./components/PetroWikiView.tsx",
+      "@/components/PrayerTimesWidget": "./components/PrayerTimesWidget.tsx",
+      "@/components/ShiftHandoverCountdownCard": "./components/ShiftHandoverCountdownCard.tsx",
+      "@/components/TrainingCoursesView": "./components/TrainingCoursesView.tsx",
+      "@/components/personal_hub/common/HubComponents": "./components/personal_hub/common/HubComponents.tsx",
+      "@/components/AdminDashboardView": "./components/AdminDashboardView.tsx"
+    }
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marine-blue: #0A3D62; 
+      --bright-yellow: #FDB813;
+      --accent-orange: #FF8C00; /* New Accent */
+      --light-gray: #F8F9FA; /* Slightly warmer */
+      --medium-gray: #E9ECEF;
+      --dark-gray: #343A40;
+      
+      --dark-card-bg: #1A202C; 
+      --dark-bg: #121212;
+      
+      --fahlawy-logo-primary: var(--marine-blue);
+      --fahlawy-logo-secondary: var(--bright-yellow);
+      
+      --text-light-primary: #212529; /* Darker for better readability */
+      --text-light-secondary: #6C757D; /* Bootstrap's gray-600 */
+      --text-dark-primary: #E9ECEF; /* Bootstrap's gray-200 */
+      --text-dark-secondary: #ADB5BD; /* Bootstrap's gray-500 */
+
+      --success-bg: #198754; /* Bootstrap green */
+      --info-bg: #0D6EFD;    /* Bootstrap blue */
+      --alert-bg: #DC3545;  /* Bootstrap red */
+      --success-text: #FFFFFF;
+      --info-text: #FFFFFF;
+      --alert-text: #FFFFFF;
+
+      --dark-success-bg: #146c43; 
+      --dark-info-bg: #0a58ca;    
+      --dark-alert-bg: #b02a37;  
+      --dark-success-text: #C6F6D5; 
+      --dark-info-text: #BEE3F8;    
+      --dark-alert-text: #FED7D7;  
+
+      --countdown-digit-bg: var(--marine-blue);
+      --countdown-digit-text: var(--bright-yellow);
+      --countdown-separator-text: var(--bright-yellow);
+      --countdown-label-text: #A0AEC0; 
+
+      --line-color-light: #dee2e6; /* Bootstrap's gray-300 */
+      --line-color-dark: #495057; /* Bootstrap's gray-700 */
+      
+      --subtle-glow-light: rgba(0, 123, 255, 0.1);
+      --subtle-glow-dark: rgba(253, 184, 19, 0.15);
+
+      --card-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --card-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
+      --card-hover-light: 0 12px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      --card-hover-dark: 0 12px 25px -5px rgba(var(--bright-yellow-rgb, 253), var(--bright-yellow-rgb, 184), var(--bright-yellow-rgb, 19), 0.2), 0 8px 10px -6px rgba(var(--bright-yellow-rgb, 253), var(--bright-yellow-rgb, 184), var(--bright-yellow-rgb, 19), 0.15);
+    }
+    .dark {
+      --fahlawy-logo-primary: var(--bright-yellow);
+      --fahlawy-logo-secondary: var(--marine-blue);
+      --countdown-digit-bg: var(--dark-card-bg); 
+      --countdown-digit-text: var(--bright-yellow);
+      --countdown-label-text: var(--text-dark-secondary);
+      --line-color-light: var(--line-color-dark); /* Use dark line color in dark mode for lined paper */
+    }
+    body {
+      font-family: 'Cairo', 'Poppins', sans-serif; 
+      transition: background-color 0.35s ease, color 0.35s ease;
+      overflow-x: hidden; 
+      font-weight: 400; 
+      /* background-color is set by React/JS */
+      /* color is set by React/JS */
+    }
+    body.dark {
+      background-color: var(--dark-bg); 
+      color: var(--text-dark-primary);
+    }
+     body.light { /* Added for explicit light mode setting */
+      background-color: var(--light-gray);
+      color: var(--text-light-primary);
+>>>>>>> bee2d85 (updated)
     }
     body.lang-en {
       font-family: 'Poppins', 'Cairo', sans-serif; 
     }
+<<<<<<< HEAD
     /* Custom scrollbar for better aesthetics */
     ::-webkit-scrollbar {
       width: 8px;
@@ -137,3 +253,259 @@
 </body>
 </html><link rel="stylesheet" href="index.css">
 <script src="index.tsx" type="module"></script>
+=======
+    ::-webkit-scrollbar { width: 10px; height: 10px; } 
+    ::-webkit-scrollbar-track { background: var(--medium-gray); border-radius: 10px; }
+    .dark ::-webkit-scrollbar-track { background: var(--dark-gray); }
+    ::-webkit-scrollbar-thumb { background: var(--text-light-secondary); border-radius: 10px; border: 2px solid var(--medium-gray); }
+    .dark ::-webkit-scrollbar-thumb { background: var(--text-dark-secondary); border-color: var(--dark-gray);}
+    ::-webkit-scrollbar-thumb:hover { background: var(--marine-blue); }
+    .dark ::-webkit-scrollbar-thumb:hover { background: var(--bright-yellow); }
+
+    .toast-notification {
+      padding: 16px 24px; 
+      border-radius: 0.75rem; 
+      color: white;
+      font-size: 1rem; 
+      box-shadow: 0 15px 30px -8px rgba(0,0,0,0.25), 0 6px 12px -5px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1), transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .toast-notification.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .sidebar-transition {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .animate-fadeInUp { animation: fadeInUp 0.7s ease-out forwards; }
+
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.03); }
+    }
+    .animate-pulse-subtle { animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    
+    .petroleum-flame { width: 70px; height: 100px; position: relative; margin: auto; }
+    .petroleum-flame div { position: absolute; bottom: 0; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; animation: flame-dance 2.5s infinite ease-in-out; }
+    .flame-main { width: 50px; height: 70px; left: 10px; background: linear-gradient(to top, var(--bright-yellow), #FFA500); opacity: 0.85; }
+    .flame-blue { width: 35px; height: 45px; left: 17.5px; background: linear-gradient(to top, var(--marine-blue), #87CEEB); animation-delay: 0.5s; opacity: 0.65; }
+    .flame-red { width: 45px; height: 60px; left: 12.5px; background: linear-gradient(to top, #FF4500, #FF8C00); animation-delay: 0.25s; opacity: 0.75; }
+    @keyframes flame-dance {
+      0%, 100% { transform: scaleY(1) scaleX(1) translateY(0) skewX(0); }
+      25% { transform: scaleY(1.15) scaleX(0.85) translateY(-7px) skewX(7deg); }
+      50% { transform: scaleY(0.85) scaleX(1.15) translateY(0) skewX(-7deg); }
+      75% { transform: scaleY(1.1) scaleX(0.9) translateY(-4px) skewX(4deg); }
+    }
+
+    .lined-paper-content {
+        background-image:
+            repeating-linear-gradient(to bottom, 
+                transparent, 
+                transparent 29px, 
+                var(--line-color-light), 
+                var(--line-color-light) 30px); 
+        background-size: 100% 30px; 
+        padding-top: 15px; 
+        padding-bottom: 15px;
+        line-height: 30px; 
+    }
+    /* Ensure .dark .lined-paper-content uses the correct dark line color */
+    .dark .lined-paper-content {
+        /* --line-color-light will be overridden by .dark's CSS variable definition for --line-color-light */
+    }
+
+
+    .active-shift-indicator {
+        position: relative;
+        padding-left: 1.75rem; 
+    }
+    .active-shift-indicator::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0.85rem; 
+        height: 0.85rem; 
+        border-radius: 50%;
+        background-color: currentColor; 
+        animation: pulse-subtle 1.8s infinite;
+    }
+    html[dir="rtl"] .active-shift-indicator {
+        padding-left: 0;
+        padding-right: 1.75rem;
+    }
+    html[dir="rtl"] .active-shift-indicator::before {
+        left: auto;
+        right: 0;
+    }
+
+    .countdown-timer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px; 
+        text-align: center;
+    }
+    .countdown-segment {
+        padding: 12px 8px;
+        border-radius: 0.85rem; 
+        background-color: var(--countdown-digit-bg);
+        box-shadow: 0 3px 7px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    .dark .countdown-segment {
+         border: 1px solid rgba(var(--bright-yellow-rgb, 253), var(--bright-yellow-rgb, 184), var(--bright-yellow-rgb, 19), 0.2);
+    }
+    .countdown-segment:hover {
+        transform: translateY(-2.5px) scale(1.03);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15), 0 3px 7px rgba(0,0,0,0.1);
+    }
+    .countdown-digit {
+        font-size: 2.5rem; /* Increased size */
+        font-weight: 700; /* font-bold */
+        line-height: 1.1;
+        color: var(--countdown-digit-text);
+        display: block;
+        margin-bottom: 5px;
+        min-height: 2.75rem; 
+        animation: digit-pop 0.6s ease-out; 
+    }
+    .countdown-label {
+        font-size: 0.75rem; 
+        text-transform: uppercase;
+        color: var(--countdown-label-text);
+        letter-spacing: 0.07em;
+    }
+     @keyframes digit-pop { /* Simpler pop than full flip for wider appeal */
+        0% { transform: scale(0.8); opacity: 0; }
+        70% { transform: scale(1.05); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes timer-pulse { 
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--bright-yellow-rgb, 253), var(--bright-yellow-rgb, 184), var(--bright-yellow-rgb, 19), 0.3); }
+      50% { transform: scale(1.005); box-shadow: 0 0 15px 8px rgba(var(--bright-yellow-rgb, 253), var(--bright-yellow-rgb, 184), var(--bright-yellow-rgb, 19), 0.4); }
+    }
+    .animate-timer-pulse { 
+        --bright-yellow-rgb: 253, 184, 19; 
+        animation: timer-pulse 2.2s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+     .dark .animate-timer-pulse {
+        --bright-yellow-rgb: 253, 184, 19; 
+    }
+
+    .card-interactive {
+        transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+        box-shadow: var(--card-shadow-light);
+    }
+    .dark .card-interactive {
+        box-shadow: var(--card-shadow-dark);
+    }
+    .card-interactive:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: var(--card-hover-light);
+    }
+    .dark .card-interactive:hover {
+        box-shadow: var(--card-hover-dark);
+    }
+    .button-interactive {
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease, filter 0.2s ease;
+    }
+    .button-interactive:hover {
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        filter: brightness(1.05);
+    }
+    .button-interactive:active {
+        transform: translateY(0px) scale(0.99);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        filter: brightness(0.95);
+    }
+    
+    /* Focus states for accessibility and visual feedback */
+    input:focus, select:focus, textarea:focus, button:focus-visible {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 3px var(--subtle-glow-light);
+    }
+    .dark input:focus, .dark select:focus, .dark textarea:focus, .dark button:focus-visible {
+        box-shadow: 0 0 0 3px var(--subtle-glow-dark);
+    }
+    
+  </style>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'marine-blue': 'var(--marine-blue)',
+            'bright-yellow': 'var(--bright-yellow)',
+            'accent-orange': 'var(--accent-orange)',
+            'light-gray': 'var(--light-gray)',
+            'medium-gray': 'var(--medium-gray)',
+            'dark-gray': 'var(--dark-gray)',
+            'dark-card': 'var(--dark-card-bg)',
+            'dark-bg': 'var(--dark-bg)',
+            'fahlawy-logo-primary': 'var(--fahlawy-logo-primary)',
+            'fahlawy-logo-secondary': 'var(--fahlawy-logo-secondary)',
+            'text-light-primary': 'var(--text-light-primary)',
+            'text-light-secondary': 'var(--text-light-secondary)',
+            'text-dark-primary': 'var(--text-dark-primary)',
+            'text-dark-secondary': 'var(--text-dark-secondary)',
+            'success-bg': 'var(--success-bg)',
+            'info-bg': 'var(--info-bg)',
+            'alert-bg': 'var(--alert-bg)',
+            'dark-success-bg': 'var(--dark-success-bg)',
+            'dark-info-bg': 'var(--dark-info-bg)',
+            'dark-alert-bg': 'var(--dark-alert-bg)',
+            'countdown-digit-bg': 'var(--countdown-digit-bg)',
+            'countdown-digit-text': 'var(--countdown-digit-text)',
+            'countdown-separator-text': 'var(--countdown-separator-text)',
+            'countdown-label-text': 'var(--countdown-label-text)'
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+          },
+          animation: {
+             'pulse-slow': 'pulse 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+             'pulse-subtle': 'pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+             'fadeInUp': 'fadeInUp 0.7s ease-out forwards',
+             'digit-pop': 'digit-pop 0.6s ease-out',
+             'timer-pulse': 'timer-pulse 2.2s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+          },
+          boxShadow: {
+            'subtle-neumorphic-light': '4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff',
+            'subtle-neumorphic-dark': '4px 4px 8px #0e121a, -4px -4px 8px #262e3c',
+            'card-shadow-light': 'var(--card-shadow-light)',
+            'card-shadow-dark': 'var(--card-shadow-dark)',
+            'card-hover-light': 'var(--card-hover-light)',
+            'card-hover-dark': 'var(--card-hover-dark)',
+            'focus-glow-light': '0 0 0 3px var(--subtle-glow-light)',
+            'focus-glow-dark': '0 0 0 3px var(--subtle-glow-dark)',
+          }
+        }
+      }
+    }
+  </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script> 
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
+>>>>>>> bee2d85 (updated)

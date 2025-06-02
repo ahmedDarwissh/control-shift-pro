@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Language, ViewName } from '../types'; 
 import { ThemeContext, ToastContext } from '../App'; 
 import { Auth, signOut } from "firebase/auth"; // Changed from compat to modular
+=======
+
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useLanguageContext } from '../hooks/useLanguage';
+import { Language, ViewName, TranslationSet, LoggedInUser } from '../types';
+import { Theme, ThemeContext } from '../contexts/ThemeContext';
+>>>>>>> bee2d85 (updated)
 
 // Heroicons
 const Bars3Icon: React.FC<{ className?: string }> = ({ className }) => (
@@ -11,10 +19,26 @@ const Bars3Icon: React.FC<{ className?: string }> = ({ className }) => (
 const XMarkIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 );
+<<<<<<< HEAD
+=======
+const UserCircleIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+);
+const ArrowRightOnRectangleIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+);
+const SunIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
+);
+const MoonIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
+);
+>>>>>>> bee2d85 (updated)
 const BellIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>
 );
 const GlobeAltIcon: React.FC<{ className?: string }> = ({ className }) => (
+<<<<<<< HEAD
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.978 11.978 0 0112 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686-3.536A8.959 8.959 0 0021 12c0 .778-.099 1.533-.284 2.253m0 0A11.978 11.978 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918" /></svg>
 );
 const UserCircleIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -25,11 +49,30 @@ const Cog6ToothIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 const ArrowRightOnRectangleIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+=======
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0v0" /></svg>
+);
+const SpeakerWaveIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" /></svg>
+);
+const SpeakerXMarkIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" /></svg>
+);
+const ArrowPathIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+);
+const EyeSlashIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" /></svg>
+);
+const EyeIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+>>>>>>> bee2d85 (updated)
 );
 
 
 interface HeaderProps {
   onNavigate: (view: ViewName) => void;
+<<<<<<< HEAD
   toggleSidebar: () => void;
   isSidebarOpen: boolean;
   isLoggedIn: boolean;
@@ -53,21 +96,61 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleSidebar, isSidebarOpe
   useEffect(() => {
     const timerId = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timerId);
+=======
+  isLoggedIn: boolean;
+  onLogout: () => void;
+  setCurrentView: React.Dispatch<React.SetStateAction<ViewName>>;
+  toggleSidebar: () => void;
+  isSidebarOpen: boolean;
+  isRadioPlaying: boolean;
+  isRadioLoading: boolean;
+  toggleRadio: () => void;
+  isFocusMode: boolean;
+  toggleFocusMode: () => void;
+  loggedInUser: LoggedInUser | null; // Added
+}
+
+export const Header: React.FC<HeaderProps> = ({
+    onNavigate, isLoggedIn, onLogout, setCurrentView, toggleSidebar, isSidebarOpen,
+    isRadioPlaying, isRadioLoading, toggleRadio, isFocusMode, toggleFocusMode, loggedInUser
+}) => {
+  const { language, setLanguage, t } = useLanguageContext();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  const userMenuRef = useRef<HTMLDivElement>(null);
+  const notificationsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 60000);
+    return () => clearInterval(timer);
+>>>>>>> bee2d85 (updated)
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+<<<<<<< HEAD
       if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target as Node)) {
         setProfileDropdownOpen(false);
       }
       if (notificationDropdownRef.current && !notificationDropdownRef.current.contains(event.target as Node)) {
         setIsNotificationPanelOpen(false);
+=======
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setShowUserMenu(false);
+      }
+      if (notificationsRef.current && !notificationsRef.current.contains(event.target as Node)) {
+        setShowNotifications(false);
+>>>>>>> bee2d85 (updated)
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+<<<<<<< HEAD
   const handleLogout = async () => {
     try {
       await signOut(auth); // Use modular signOut
@@ -200,11 +283,111 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleSidebar, isSidebarOpe
                       </a>
                   </div>
               )}
+=======
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang);
+  };
+
+  const handleLogoutClick = () => {
+    setShowUserMenu(false);
+    onLogout();
+  };
+
+  const headerBg = theme === 'dark' ? 'bg-dark-card' : 'bg-white';
+  const textColor = theme === 'dark' ? 'text-gray-200' : 'text-gray-700';
+  const iconButtonClass = `p-2 rounded-full transition-colors ${theme === 'dark' ? 'hover:bg-gray-700 text-gray-300 hover:text-bright-yellow' : 'hover:bg-gray-100 text-gray-500 hover:text-marine-blue'}`;
+  const dropdownBg = theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200';
+  const dropdownItemClass = `block w-full px-4 py-2 text-sm text-left transition-colors ${theme === 'dark' ? 'text-gray-300 hover:bg-gray-700 hover:text-bright-yellow' : 'text-gray-700 hover:bg-gray-100'}`;
+
+  const dateOptions: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const timeOptions: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+  const sidebarToggleLabel = isSidebarOpen ? (language === 'ar' ? "إغلاق القائمة الجانبية" : "Close Sidebar") : (language === 'ar' ? "فتح القائمة الجانبية" : "Open Sidebar");
+
+  return (
+    <header className={`sticky top-0 z-40 flex items-center justify-between px-4 py-3 shadow-md ${headerBg} ${language === 'ar' ? 'font-cairo' : 'font-poppins'} border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+      <div className="flex items-center">
+        {isLoggedIn && (
+          <button onClick={toggleSidebar} className={`${iconButtonClass} md:hidden ${language === 'ar' ? 'ml-2' : 'mr-2'}`} aria-label={sidebarToggleLabel}>
+            {isSidebarOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+          </button>
+        )}
+        <div className="flex items-center cursor-pointer" onClick={() => onNavigate('dashboard')}>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDh3L5h4yfA7ew020tL9Vz3Rk5ZzBqYqZ3JQ&s" alt={t('appName') + " Logo"} className="h-8 w-auto mr-2 rtl:ml-2"/>
+            <span className={`text-lg font-semibold ${theme === 'dark' ? 'text-bright-yellow' : 'text-marine-blue'}`}>{t('appName')}</span>
+        </div>
+      </div>
+
+      <div className={`hidden md:flex flex-col items-center text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+        <span>{currentTime.toLocaleDateString(language === Language.AR ? 'ar-EG-u-nu-latn' : 'en-GB', dateOptions)}</span>
+        <span>{currentTime.toLocaleTimeString(language === Language.AR ? 'ar-EG-u-nu-latn' : 'en-US', timeOptions)}</span>
+      </div>
+
+      <div className="flex items-center space-x-1 sm:space-x-2 rtl:space-x-reverse">
+        <button onClick={toggleFocusMode} className={iconButtonClass} title={isFocusMode ? (language === 'ar' ? 'إلغاء وضع التركيز' : 'Deactivate Focus Mode') : (language === 'ar' ? 'تفعيل وضع التركيز' : 'Activate Focus Mode')}>
+          {isFocusMode ? <EyeIcon className="h-5 w-5 text-green-500" /> : <EyeSlashIcon className="h-5 w-5" />}
+        </button>
+        <button onClick={toggleRadio} className={iconButtonClass} title={t('quranRadio')}>
+          {isRadioLoading ? <ArrowPathIcon className="h-5 w-5 animate-spin" /> : (isRadioPlaying ? <SpeakerWaveIcon className="h-5 w-5 text-green-500" /> : <SpeakerXMarkIcon className="h-5 w-5" />)}
+        </button>
+        
+        <button onClick={toggleTheme} className={iconButtonClass} title={theme === 'dark' ? t('lightMode') : t('darkMode')}>
+          {theme === 'dark' ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
+        </button>
+
+        <div className="relative" ref={notificationsRef}>
+          <button onClick={() => setShowNotifications(!showNotifications)} className={iconButtonClass} title={t('notifications')}>
+            <BellIcon className="h-5 w-5" />
+            <span className="absolute top-1.5 right-1.5 block h-2 w-2 rounded-full ring-2 ring-white dark:ring-dark-card bg-red-500 animate-pulse-subtle"></span>
+          </button>
+          {showNotifications && (
+            <div className={`absolute ${language === 'ar' ? 'left-0' : 'right-0'} mt-2 w-64 sm:w-80 rounded-md shadow-xl ${dropdownBg} border py-1 z-50`}>
+              <div className={`px-4 py-2 text-sm font-medium ${textColor}`}>{t('notifications')}</div>
+              <a href="#" className={`block px-4 py-2 text-xs ${dropdownItemClass}`}>
+                <p className="font-medium">{language === 'ar' ? 'تنبيه وردية!' : 'Shift Alert!'}</p>
+                <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{language === 'ar' ? 'وردية المسا قربت تبدأ يا فهلوي، استعد!' : 'Evening shift starting soon, Fahlawy, get ready!'}</p>
+              </a>
+              <hr className={theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} />
+              <div className="py-2 px-4 text-center text-xs text-gray-500 dark:text-gray-400">{t('noNotifications')}</div>
+            </div>
+          )}
+        </div>
+        
+        <div className="relative">
+            <button onClick={() => handleLanguageChange(language === Language.EN ? Language.AR : Language.EN)} className={iconButtonClass} title={t('language')}>
+                <GlobeAltIcon className="h-5 w-5" />
+            </button>
+        </div>
+
+        {isLoggedIn && loggedInUser && ( // Check for loggedInUser here
+          <div className="relative" ref={userMenuRef}>
+            <button onClick={() => setShowUserMenu(!showUserMenu)} className={iconButtonClass}>
+              {loggedInUser.avatarUrl ? (
+                <img src={loggedInUser.avatarUrl} alt="User Avatar" className="h-6 w-6 rounded-full object-cover" />
+              ) : (
+                <UserCircleIcon className="h-6 w-6" />
+              )}
+            </button>
+            {showUserMenu && (
+              <div className={`absolute ${language === 'ar' ? 'left-0' : 'right-0'} mt-2 w-48 rounded-md shadow-xl ${dropdownBg} border py-1 z-50`}>
+                <button onClick={() => { onNavigate('profile'); setShowUserMenu(false); }} className={dropdownItemClass}>{t('myProfile')}</button>
+                <button onClick={() => { onNavigate('settings'); setShowUserMenu(false); }} className={dropdownItemClass}>{t('settings')}</button>
+                <hr className={theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} />
+                <button onClick={handleLogoutClick} className={`${dropdownItemClass} flex items-center w-full`}>
+                  <ArrowRightOnRectangleIcon className={`h-4 w-4 ${language === 'ar' ? 'ml-2' : 'mr-2'}`} />
+                  {t('logout')}
+                </button>
+              </div>
+            )}
+>>>>>>> bee2d85 (updated)
           </div>
         )}
       </div>
     </header>
   );
+<<<<<<< HEAD
 };
 
 export default Header;
+=======
+};
+>>>>>>> bee2d85 (updated)

@@ -1,8 +1,15 @@
 
 import React, { useContext, useState, useEffect } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
+<<<<<<< HEAD
 import { UserRole, Engineer, Supervisor, Team, Language } from '../types';
 import { ThemeContext, ToastContext } from '../App'; 
+=======
+import { UserRole, Engineer, Supervisor, Team, Language, ActivityLogType, TranslationSet, LoggedInUser } from '../types';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
+import { useActivityLog } from '../hooks/useActivityLog';
+>>>>>>> bee2d85 (updated)
 
 // Heroicons
 const MoonIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -14,17 +21,35 @@ const SunIcon: React.FC<{ className?: string }> = ({ className }) => (
 const BellAlertIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M12 15.75a.75.75 0 01.75.75v.008a.75.75 0 01-1.5 0v-.008a.75.75 0 01.75-.75z" /></svg>
 );
+<<<<<<< HEAD
 // Simplified icons for WhatsApp/Telegram - ideally use official brand SVGs if available and allowed.
 const ChatBubbleOvalLeftEllipsisIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193l-3.72.372a11.957 11.957 0 01-3.72.372h-.456a11.957 11.957 0 01-3.72-.372l-3.72-.372A2.25 2.25 0 012.25 15.082V8.511c0-.884.616-1.646 1.448-1.948l.902-.301c.435-.145.92-.302 1.417-.471L8.25 5.69m5.25 0l.752.25M13.5 5.69l-.752.25m-.752-.25h.002M18 18.75V9.75M6 18.75V9.75" /></svg>
   );
 
 interface SettingsViewProps {
+=======
+const ChatBubbleOvalLeftEllipsisIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193l-3.72.372a11.957 11.957 0 01-3.72.372h-.456a11.957 11.957 0 01-3.72-.372l-3.72-.372A2.25 2.25 0 012.25 15.082V8.511c0-.884.616-1.646 1.448-1.948l.902-.301c.435-.145.92-.302 1.417-.471L8.25 5.69m5.25 0l.752.25M13.5 5.69l-.752.25m-.752-.25h.002M18 18.75V9.75M6 18.75V9.75" /></svg>
+  );
+const FingerPrintIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.601 4.768" />
+    </svg>
+);
+
+
+export interface SettingsViewProps {
+>>>>>>> bee2d85 (updated)
   engineers: Engineer[];
   supervisors: Supervisor[];
   teams: Team[];
   currentUserRole: UserRole;
   setCurrentUserRole: (role: UserRole) => void;
+<<<<<<< HEAD
+=======
+  loggedInUser: LoggedInUser | null;
+>>>>>>> bee2d85 (updated)
 }
 
 const SettingsCard: React.FC<{ titleKey: keyof ReturnType<typeof useLanguageContext>['translations'], children: React.ReactNode, descriptionKey?: keyof ReturnType<typeof useLanguageContext>['translations'], icon?: React.ReactNode }> = ({ titleKey, children, descriptionKey, icon }) => {
@@ -53,33 +78,108 @@ interface LinkingModalState {
   serviceName: 'WhatsApp' | 'Telegram' | null;
 }
 
+<<<<<<< HEAD
 const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, teams, currentUserRole, setCurrentUserRole }) => {
   const { t, language } = useLanguageContext();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { addToast } = useContext(ToastContext);
   
+=======
+const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, teams, currentUserRole, setCurrentUserRole, loggedInUser }) => {
+  const { t, language } = useLanguageContext();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { addToast } = useContext(ToastContext);
+  const { addActivityLogEntry } = useActivityLog();
+
+>>>>>>> bee2d85 (updated)
   const [salaryToggleChecked, setSalaryToggleChecked] = useState(false);
   const [currentComedyLevel, setCurrentComedyLevel] = useState<'normal' | 'hilarious'>('hilarious');
   const [linkingModalState, setLinkingModalState] = useState<LinkingModalState>({ isOpen: false, serviceName: null });
 
+<<<<<<< HEAD
   const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentUserRole(event.target.value as UserRole);
+=======
+  const [isBiometricSupported, setIsBiometricSupported] = useState(false);
+  const [biometricEnabled, setBiometricEnabled] = useState(false);
+
+  useEffect(() => {
+    if (navigator.credentials && typeof navigator.credentials.get === 'function') {
+        setIsBiometricSupported(true);
+    }
+    const storedBiometricPref = localStorage.getItem('biometricLoginEnabled');
+    setBiometricEnabled(storedBiometricPref === 'true');
+  }, []);
+
+
+  const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newRole = event.target.value as UserRole;
+    setCurrentUserRole(newRole);
+    if (loggedInUser) {
+        addActivityLogEntry(ActivityLogType.SettingsChanged, 'activityLogEntrySettingsChanged', {
+            userName: loggedInUser.name,
+            settingName: t('settingName_userRole'),
+            newValue: t(`userRole_${newRole}` as keyof TranslationSet, newRole)
+        });
+    }
+    addToast(t('settingsChangeSuccess'), 'success');
+  };
+
+  const handleThemeToggle = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    toggleTheme();
+    if (loggedInUser) {
+      addActivityLogEntry(ActivityLogType.SettingsChanged, 'activityLogEntrySettingsChanged', {
+        userName: loggedInUser.name,
+        settingName: t('settingName_appTheme'),
+        newValue: t(newTheme === 'dark' ? 'appTheme_dark' : 'appTheme_light')
+      });
+    }
+>>>>>>> bee2d85 (updated)
     addToast(t('settingsChangeSuccess'), 'success');
   };
 
   const handlePrayerReminderClick = () => {
     addToast(t('settingsPrayerReminderSet'), 'success');
   };
+<<<<<<< HEAD
   
   const handleSalaryToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSalaryToggleChecked(event.target.checked);
     if (event.target.checked) {
       addToast(t('salaryNotificationEnabledMessage'), 'success');
+=======
+
+  const handleSalaryToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isEnabled = event.target.checked;
+    setSalaryToggleChecked(isEnabled);
+    if (loggedInUser) {
+        addActivityLogEntry(ActivityLogType.SettingsChanged, 'activityLogEntrySettingsChanged', {
+            userName: loggedInUser.name,
+            settingName: t('settingName_salaryNotification'),
+            newValue: t(isEnabled ? 'salaryNotification_enabled' : 'salaryNotification_disabled')
+        });
+    }
+    if (isEnabled) {
+      addToast(t('salaryNotificationEnabledMessage'), 'success');
+    } else {
+      addToast(t('settingsChangeSuccess'), 'info');
+>>>>>>> bee2d85 (updated)
     }
   };
 
   const handleComedyLevelChange = (level: 'normal' | 'hilarious') => {
     setCurrentComedyLevel(level);
+<<<<<<< HEAD
+=======
+    if (loggedInUser) {
+        addActivityLogEntry(ActivityLogType.SettingsChanged, 'activityLogEntrySettingsChanged', {
+            userName: loggedInUser.name,
+            settingName: t('settingName_comedyLevel'),
+            newValue: t(level === 'normal' ? 'comedyLevel_normal' : 'comedyLevel_hilarious')
+        });
+    }
+>>>>>>> bee2d85 (updated)
     addToast(t('settingsChangeSuccess'), 'success');
   };
 
@@ -96,16 +196,37 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
     setLinkingModalState({ isOpen: false, serviceName: null });
   };
 
+<<<<<<< HEAD
+=======
+  const handleBiometricToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isEnabled = event.target.checked;
+    setBiometricEnabled(isEnabled);
+    localStorage.setItem('biometricLoginEnabled', String(isEnabled));
+    if (loggedInUser) {
+        addActivityLogEntry(ActivityLogType.SettingsChanged, 'activityLogEntrySettingsChanged', {
+            userName: loggedInUser.name,
+            settingName: t('settingName_biometricLogin'),
+            newValue: isEnabled ? t('salaryNotification_enabled') : t('salaryNotification_disabled') // Re-use enabled/disabled translations
+        });
+    }
+    addToast(isEnabled ? t('biometricLoginEnabledToast') : t('biometricLoginDisabledToast'), 'success');
+  };
+
+>>>>>>> bee2d85 (updated)
   const mockPrayerTimes = {
     [Language.AR]: { fajr: "٠٤:١٥ ص", dhuhr: "١٢:٠٥ م", asr: "٠٣:٤٠ م", maghrib: "٠٦:٥٥ م", isha: "٠٨:٢٥ م" },
     [Language.EN]: { fajr: "04:15 AM", dhuhr: "12:05 PM", asr: "03:40 PM", maghrib: "06:55 PM", isha: "08:25 PM" },
   };
 
   const inputBaseClasses = "w-full p-3 border rounded-lg shadow-sm focus:ring-2 text-sm";
+<<<<<<< HEAD
   const lightInputClasses = "bg-white border-gray-300 text-gray-800 focus:ring-blue-600 focus:border-blue-600 placeholder-gray-500";
   const darkInputClasses = "bg-gray-700 border-gray-600 text-gray-100 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400";
   const themedInputClasses = theme === 'dark' ? darkInputClasses : lightInputClasses;
 
+=======
+  const themedInputClasses = theme === 'dark' ? 'bg-gray-700 border-gray-600 text-gray-100 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400' : 'bg-white border-gray-300 text-gray-800 focus:ring-blue-600 focus:border-blue-600 placeholder-gray-400';
+>>>>>>> bee2d85 (updated)
   const primaryButtonClasses = `font-medium py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm hover:shadow-md transform hover:scale-[1.02] ${theme === 'dark' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-blue-600 text-white hover:bg-blue-700'}`;
   const secondaryButtonClasses = `font-medium py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm hover:shadow-md transform hover:scale-[1.02] ${theme === 'dark' ? 'bg-gray-600 text-gray-200 hover:bg-gray-500' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`;
   const activeSecondaryButtonClasses = theme === 'dark' ? 'bg-blue-500 text-white' : 'bg-blue-600 text-white';
@@ -133,13 +254,19 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
 
         <SettingsCard titleKey="appTheme" descriptionKey="settingsThemePrompt">
           <div className="flex items-center">
+<<<<<<< HEAD
             <button 
               onClick={() => { toggleTheme(); addToast(t('settingsChangeSuccess'), 'success'); }}
+=======
+            <button
+              onClick={handleThemeToggle}
+>>>>>>> bee2d85 (updated)
               className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-colors w-full text-center text-sm
                 ${theme === 'light' ? secondaryButtonClasses : primaryButtonClasses}`}
               aria-pressed={theme === 'dark'}
             >
               {theme === 'light' ? <MoonIcon className="h-5 w-5"/> : <SunIcon className="h-5 w-5"/>}
+<<<<<<< HEAD
               {theme === 'light' ? t('darkMode') : t('lightMode')} 
             </button>
           </div>
@@ -156,6 +283,41 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             <button 
               onClick={() => handleComedyLevelChange('hilarious')}
               className={`flex-1 px-3 py-2.5 rounded-lg transition-colors text-sm 
+=======
+              {theme === 'light' ? t('darkMode') : t('lightMode')}
+            </button>
+          </div>
+        </SettingsCard>
+
+        <SettingsCard titleKey="settingName_biometricLogin" icon={<FingerPrintIcon />}>
+            {isBiometricSupported ? (
+                 <label htmlFor="biometricToggle" className="flex items-center cursor-pointer">
+                    <div className="relative">
+                        <input type="checkbox" id="biometricToggle" className="sr-only peer" checked={biometricEnabled} onChange={handleBiometricToggleChange} />
+                        <div className={`block w-11 h-6 rounded-full transition-colors ${theme === 'dark' ? 'bg-gray-600 peer-checked:bg-green-500' : 'bg-gray-300 peer-checked:bg-green-600'}`}></div>
+                        <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5 ${theme === 'dark' ? 'peer-checked:bg-gray-800' : ''}`}></div>
+                    </div>
+                    <div className={`text-sm ${language === 'ar' ? 'mr-3' : 'ml-3'} ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        {t('biometricLoginEnableLabel')}
+                    </div>
+                </label>
+            ) : (
+                <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{t('biometricLoginNotSupported')}</p>
+            )}
+        </SettingsCard>
+
+        <SettingsCard titleKey="comedyLevel" descriptionKey="settingsComedyPrompt">
+           <div className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
+            <button
+              onClick={() => handleComedyLevelChange('normal')}
+              className={`flex-1 px-3 py-2.5 rounded-lg transition-colors text-sm
+                ${currentComedyLevel === 'normal' ? activeSecondaryButtonClasses : secondaryButtonClasses}`}>
+              {t('normal')} (😑)
+            </button>
+            <button
+              onClick={() => handleComedyLevelChange('hilarious')}
+              className={`flex-1 px-3 py-2.5 rounded-lg transition-colors text-sm
+>>>>>>> bee2d85 (updated)
                 ${currentComedyLevel === 'hilarious' ? activeSecondaryButtonClasses : secondaryButtonClasses}`}>
               {t('hilarious')} (😂)
             </button>
@@ -170,7 +332,11 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
                         <div key={prayerKey} className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-600 text-gray-200' : 'bg-white text-gray-700 shadow-sm'} flex flex-col items-center text-center`}>
                             <span className="block font-medium text-sm">{t(prayerKey)}</span>
                             <span className="my-1 text-sm font-semibold text-blue-500">{mockPrayerTimes[language][prayerKey]}</span>
+<<<<<<< HEAD
                             <button 
+=======
+                            <button
+>>>>>>> bee2d85 (updated)
                                 onClick={handlePrayerReminderClick}
                                 className={`mt-1 px-3 py-1 text-xs rounded-md font-medium ${theme === 'dark' ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`}
                             >
@@ -181,7 +347,11 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
                 </div>
             </div>
         </SettingsCard>
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> bee2d85 (updated)
         <SettingsCard titleKey="salaryNotification">
             <label htmlFor="salaryToggle" className="flex items-center cursor-pointer">
                 <div className="relative">
@@ -197,6 +367,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
 
         <SettingsCard titleKey="settingsWhatsAppTelegram" descriptionKey="settingsLinkSoon">
           <div className="space-y-3">
+<<<<<<< HEAD
             <button 
               onClick={() => handleLinkService('WhatsApp')}
               className={`w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2
@@ -209,6 +380,20 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
               className={`w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2
                 ${theme === 'dark' ? 'bg-sky-600 text-white hover:bg-sky-500' : 'bg-sky-500 text-white hover:bg-sky-600'}`}> {/* Using sky for Telegram */}
                 <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5" /> {/* Generic chat icon for Telegram */}
+=======
+            <button
+              onClick={() => handleLinkService('WhatsApp')}
+              className={`w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2
+                ${theme === 'dark' ? 'bg-green-700 text-white hover:bg-green-600' : 'bg-green-500 text-white hover:bg-green-600'}`}>
+              <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5" />
+              {t('settingsLinkWhatsApp')}
+            </button>
+            <button
+              onClick={() => handleLinkService('Telegram')}
+              className={`w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2
+                ${theme === 'dark' ? 'bg-sky-600 text-white hover:bg-sky-500' : 'bg-sky-500 text-white hover:bg-sky-600'}`}>
+                <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5" />
+>>>>>>> bee2d85 (updated)
               {t('settingsLinkTelegram')}
             </button>
           </div>
@@ -237,23 +422,39 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             </SettingsCard>
         )}
       </div>
+<<<<<<< HEAD
        <p className={`mt-8 md:mt-10 text-xs md:text-sm text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
+=======
+       <p className={`mt-8 md:mt-10 text-xs md:text-sm text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
+>>>>>>> bee2d85 (updated)
         {t('settingsFooter')}
       </p>
 
       {linkingModalState.isOpen && linkingModalState.serviceName && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 backdrop-blur-sm"  onClick={() => setLinkingModalState({ isOpen: false, serviceName: null })}>
+<<<<<<< HEAD
           <div 
             className={`p-6 rounded-xl shadow-xl w-full max-w-md ${theme === 'dark' ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}
             onClick={(e) => e.stopPropagation()} 
+=======
+          <div
+            className={`p-6 rounded-xl shadow-xl w-full max-w-md ${theme === 'dark' ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}
+            onClick={(e) => e.stopPropagation()}
+>>>>>>> bee2d85 (updated)
           >
             <h3 className={`text-xl font-semibold mb-5 ${language === 'ar' ? 'font-cairo' : 'font-poppins'} ${theme === 'dark' ? 'text-orange-400' : 'text-orange-600'}`}>
               {linkingModalState.serviceName === 'WhatsApp' ? t('linkWithWhatsAppTitle') : t('linkWithTelegramTitle')}
             </h3>
             <div className={`flex justify-center mb-5 p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
+<<<<<<< HEAD
               <img 
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MockLinkTo${linkingModalState.serviceName}-${Date.now()}&bgcolor=${theme === 'dark' ? '374151' : 'f3f4f6'}&color=${theme === 'dark' ? 'e5e7eb' : '1f2937'}`} 
                 alt={t('linkQrCodeAlt')} 
+=======
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MockLinkTo${linkingModalState.serviceName}-${Date.now()}&bgcolor=${theme === 'dark' ? '374151' : 'f3f4f6'}&color=${theme === 'dark' ? 'e5e7eb' : '1f2937'}`}
+                alt={t('linkQrCodeAlt')}
+>>>>>>> bee2d85 (updated)
                 className={`rounded-md border ${theme === 'dark' ? 'border-gray-600' : 'border-gray-300'}`}
               />
             </div>
@@ -277,9 +478,16 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
           </div>
         </div>
       )}
+<<<<<<< HEAD
 
+=======
+>>>>>>> bee2d85 (updated)
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default SettingsView;
+=======
+export default SettingsView;
+>>>>>>> bee2d85 (updated)

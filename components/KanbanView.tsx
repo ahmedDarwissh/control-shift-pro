@@ -1,8 +1,15 @@
 
 
+<<<<<<< HEAD
 import React, { useState, useContext } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
 import { ThemeContext } from '../App';
+=======
+
+import React, { useState, useContext } from 'react';
+import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
+import { ThemeContext } from '../contexts/ThemeContext'; // Corrected import path
+>>>>>>> bee2d85 (updated)
 
 interface TaskCard {
   id: string;
@@ -38,7 +45,11 @@ const KanbanView: React.FC = () => {
         return task;
       })
     );
+<<<<<<< HEAD
     alert(`${t('kanbanMoveTask')} (للТаسكاية: ${taskId}) -  ${language === 'ar' ? 'لسه بنظبط السحب والإفلات الحقيقي!' : 'Actual drag & drop coming soon!'}`);
+=======
+    alert(`${t('kanbanMoveTask')} (للمهمة: ${taskId}) -  ${language === 'ar' ? 'لسه بنظبط السحب والإفلات الحقيقي!' : 'Actual drag & drop coming soon!'}`);
+>>>>>>> bee2d85 (updated)
   };
 
   const columns: { id: TaskCard['column']; titleKey: keyof ReturnType<typeof useLanguageContext>['translations'] }[] = [
@@ -49,20 +60,32 @@ const KanbanView: React.FC = () => {
 
   return (
     <div className={`p-1 ${language === 'ar' ? 'font-cairo text-right' : 'font-poppins text-left'}`}>
+<<<<<<< HEAD
       <h1 className={`text-2xl md:text-3xl font-bold mb-6 md:mb-8 ${theme === 'dark' ? 'text-bright-yellow' : 'text-marine-blue'}`}>
+=======
+      <h1 className={`text-2xl md:text-3xl font-bold mb-6 md:mb-8 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-500'}`}>
+>>>>>>> bee2d85 (updated)
         {t('kanbanBoardTitle')}
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {columns.map(column => (
+<<<<<<< HEAD
           <div key={column.id} className={`p-3 rounded-lg shadow-md min-h-[300px] ${theme === 'dark' ? 'bg-dark-card border border-gray-700' : 'bg-gray-50 border border-gray-200'}`}>
+=======
+          <div key={column.id} className={`p-3 rounded-lg shadow-md min-h-[300px] ${theme === 'dark' ? 'bg-gray-800 border border-gray-700' : 'bg-gray-50 border border-gray-200'}`}>
+>>>>>>> bee2d85 (updated)
             <h2 className={`text-lg font-semibold mb-4 pb-2 border-b ${theme === 'dark' ? 'text-gray-200 border-gray-600' : 'text-gray-700 border-gray-300'} ${language === 'ar' ? 'font-cairo' : 'font-poppins'}`}>
               {t(column.titleKey)}
             </h2>
             <div className="space-y-3">
               {tasks.filter(task => task.column === column.id).map(task => (
                 <div key={task.id} className={`p-3 rounded-md shadow-sm hover:shadow-lg transition-shadow ${theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-gray-800'}`}>
+<<<<<<< HEAD
                   <h3 className={`text-sm font-medium mb-1 ${theme === 'dark' ? 'text-bright-yellow' : 'text-marine-blue'}`}>{t(task.titleKey)}</h3>
+=======
+                  <h3 className={`text-sm font-medium mb-1 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-600'}`}>{t(task.titleKey)}</h3>
+>>>>>>> bee2d85 (updated)
                   <p className="text-xs mb-2">{t(task.descriptionKey)}</p>
                   {column.id !== 'done' && (
                     <button 

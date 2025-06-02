@@ -11,6 +11,7 @@
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
+<<<<<<< HEAD
     "firebase/app": "11.8.1",
     "firebase/analytics": "11.8.1",
     "firebase/auth": "11.8.1",
@@ -19,6 +20,31 @@
     "@google/genai": "1.1.0",
     "@heroicons/react": "2.2.0",
     "firebase": "^11.8.1"
+=======
+    "@google/genai": "1.1.0",
+    "@heroicons/react": "2.2.0",
+    "firebase": "11.8.1",
+    "@/constants": "latest",
+    "@/components/Sidebar": "latest",
+    "@/components/Dashboard": "latest",
+    "@/components/EquipmentLogbookView": "latest",
+    "@/components/PermitToWorkView": "latest",
+    "@/components/SafetyObservationView": "latest",
+    "@/components/ShiftHandoverNotesView": "latest",
+    "@/components/FahlawyKnowledgeBaseView": "latest",
+    "@/components/UnitConverterView": "latest",
+    "@/components/EmergencyContactsProceduresView": "latest",
+    "@/components/InternalAnnouncementsView": "latest",
+    "@/components/ToolboxTalksView": "latest",
+    "@/components/ChemicalReferenceView": "latest",
+    "@/components/PetroGeniusView": "latest",
+    "@/components/PetroWikiView": "latest",
+    "@/components/PrayerTimesWidget": "latest",
+    "@/components/ShiftHandoverCountdownCard": "latest",
+    "@/components/TrainingCoursesView": "latest",
+    "@/components/personal_hub/common/HubComponents": "latest",
+    "@/components/AdminDashboardView": "latest"
+>>>>>>> bee2d85 (updated)
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

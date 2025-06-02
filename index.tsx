@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -80,6 +81,17 @@ const rootElement = document.getElementById('root');
 if (!rootElement) {
   // This check is a bit redundant if Firebase fails above and replaces innerHTML,
   // but good for general sanity.
+=======
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App'; // Correct relative path import
+import { ActivityLogProvider } from './contexts/ActivityLogContext'; // Correct relative path
+import { LanguageProvider } from './contexts/LanguageContext'; // Added import
+import { Language } from './types'; // Added import for Language enum
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+>>>>>>> bee2d85 (updated)
   console.error("CRITICAL: Could not find root element to mount React app.");
   const body = document.body;
   if(body) {
@@ -98,6 +110,7 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
+<<<<<<< HEAD
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
@@ -108,3 +121,32 @@ root.render(
 // Export db, auth, rtdb, and analytics instances for use in other parts of the application
 // Note: analytics is initialized asynchronously and might be null initially.
 export { db, auth, rtdb, analytics };
+=======
+// Determine initial language here
+const getInitialLanguage = (): Language => {
+  try {
+    const storedLang = localStorage.getItem('appLanguage') as Language | null;
+    if (storedLang && (storedLang === Language.EN || storedLang === Language.AR)) {
+      return storedLang;
+    }
+  } catch (e) {
+    console.warn("Could not read language from localStorage", e);
+  }
+  return Language.AR; // Default language
+};
+
+const initialAppLanguage = getInitialLanguage();
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(
+  <React.StrictMode>
+    <LanguageProvider defaultLanguage={initialAppLanguage}>
+      <ActivityLogProvider>
+        <App />
+      </ActivityLogProvider>
+    </LanguageProvider>
+  </React.StrictMode>
+);
+
+export {}; // Keep it as a module
+>>>>>>> bee2d85 (updated)

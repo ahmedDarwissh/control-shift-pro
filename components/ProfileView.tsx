@@ -1,15 +1,29 @@
 
+<<<<<<< HEAD
 
 import React, { useContext, useState, useEffect } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
 import { ThemeContext, ToastContext, LoggedInUser } from '../App';
 import { UserRole, Team } from '../types'; 
+=======
+import React, { useContext, useState, useEffect, ChangeEvent } from 'react';
+import { useLanguageContext } from '../hooks/useLanguage'; 
+import { ThemeContext } from '../contexts/ThemeContext'; 
+import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
+import { UserRole, Team, LoggedInUser, TranslationSet } from '../types'; 
+import { TrophyIcon, ShieldCheckIcon, StarIcon, SparklesIcon, HeartIcon, AcademicCapIcon, PencilIcon, CameraIcon, UserCircleIcon as UserPlaceholderIcon } from '@heroicons/react/24/outline';
+
+>>>>>>> bee2d85 (updated)
 
 type ProfileSection = 'view' | 'editInfo' | 'changePassword' | 'notificationSettings';
 
 interface ProfileViewProps {
   loggedInUser: LoggedInUser;
+<<<<<<< HEAD
   updateLoggedInUser: (updatedFields: Partial<Pick<LoggedInUser, 'name' | 'email' | 'phone'>>) => void;
+=======
+  updateLoggedInUser: (updatedFields: Partial<Pick<LoggedInUser, 'name' | 'email' | 'phone' | 'avatarUrl'>>) => void;
+>>>>>>> bee2d85 (updated)
   teams: Team[]; 
 }
 
@@ -29,6 +43,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
   const [editName, setEditName] = useState(loggedInUser.name);
   const [editEmail, setEditEmail] = useState(loggedInUser.email || '');
   const [editPhone, setEditPhone] = useState(loggedInUser.phone || '');
+<<<<<<< HEAD
 
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -39,12 +54,30 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
     pushTasks: false,
     smsAlerts: true,
   });
+=======
+  const [previewAvatar, setPreviewAvatar] = useState<string | null>(loggedInUser.avatarUrl || null);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+
+  const mockBadges = [
+    { id: 'b1', nameKey: 'occasionNewYear' as keyof TranslationSet, name: language === 'ar' ? 'نجم الفهلوة' : 'Fahlawa Star', icon: StarIcon, color: 'text-yellow-400' },
+    { id: 'b2', nameKey: 'occasionEidAlAdha' as keyof TranslationSet, name: language === 'ar' ? 'أسطى الأمان' : 'Safety Master', icon: ShieldCheckIcon, color: 'text-green-400' },
+    { id: 'b3', nameKey: 'occasionRamadan' as keyof TranslationSet, name: language === 'ar' ? 'بطل الإنجاز' : 'Achievement Hero', icon: TrophyIcon, color: 'text-blue-400' },
+    { id: 'b4', nameKey: 'occasionLaborDay' as keyof TranslationSet, name: language === 'ar' ? 'مبدع الأسبوع' : 'Innovator of the Week', icon: SparklesIcon, color: 'text-purple-400' },
+    { id: 'b5', nameKey: 'occasionOctoberVictory' as keyof TranslationSet, name: language === 'ar' ? 'قلب الفريق' : 'Team Heart', icon: HeartIcon, color: 'text-red-400' },
+    { id: 'b6', nameKey: 'occasionProphetBirthday' as keyof TranslationSet,name: language === 'ar' ? 'خبير المعرفة' : 'Knowledge Expert', icon: AcademicCapIcon, color: 'text-indigo-400' },
+  ];
+>>>>>>> bee2d85 (updated)
   
   useEffect(() => {
     if (loggedInUser) {
       setEditName(loggedInUser.name);
       setEditEmail(loggedInUser.email || '');
       setEditPhone(loggedInUser.phone || '');
+<<<<<<< HEAD
+=======
+      setPreviewAvatar(loggedInUser.avatarUrl || null);
+>>>>>>> bee2d85 (updated)
     }
   }, [loggedInUser]);
 
@@ -55,10 +88,41 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
       name: editName,
       email: editEmail,
       phone: editPhone,
+<<<<<<< HEAD
+=======
+      avatarUrl: previewAvatar // Also save avatar if it was changed in this flow
+>>>>>>> bee2d85 (updated)
     });
     addToast(t('profileUpdateSuccess'), 'success');
     setActiveSection('view');
   };
+<<<<<<< HEAD
+=======
+  
+  const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setPreviewAvatar(base64String); // Show preview
+        // No immediate save, will be saved with other info or if a dedicated "save avatar" button exists
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
+  const [notificationPrefs, setNotificationPrefs] = useState<NotificationPreferences>({
+    emailShifts: true,
+    pushTasks: false,
+    smsAlerts: true,
+  });
+>>>>>>> bee2d85 (updated)
 
   const handleSavePassword = (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,8 +130,12 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
       addToast(language === 'ar' ? 'كلمة المرور الجديدة وتأكيدها مش زي بعض يا ريس!' : 'New password and confirmation do not match, boss!', 'alert');
       return;
     }
+<<<<<<< HEAD
     // In a real app, you would call an API to change the password here.
     // For this mock, we'll just show success.
+=======
+    // Mock password change
+>>>>>>> bee2d85 (updated)
     addToast(t('profilePasswordChangeSuccess'), 'success');
     setCurrentPassword('');
     setNewPassword('');
@@ -77,7 +145,11 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
 
   const handleSaveNotifications = (e: React.FormEvent) => {
     e.preventDefault();
+<<<<<<< HEAD
     // In a real app, save notificationPrefs to Firestore or backend.
+=======
+    // Mock save notification preferences
+>>>>>>> bee2d85 (updated)
     addToast(t('profileNotificationSettingsSuccess'), 'success');
     setActiveSection('view');
   };
@@ -87,6 +159,10 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
       setEditName(loggedInUser.name);
       setEditEmail(loggedInUser.email || '');
       setEditPhone(loggedInUser.phone || '');
+<<<<<<< HEAD
+=======
+      setPreviewAvatar(loggedInUser.avatarUrl || null); // Reset preview
+>>>>>>> bee2d85 (updated)
     }
   };
 
@@ -144,7 +220,11 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
     </label>
   );
 
+<<<<<<< HEAD
   const primaryButtonClasses = `w-full mt-4 py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${theme === 'dark' ? 'bg-bright-yellow text-marine-blue hover:bg-yellow-300' : 'bg-bright-yellow text-marine-blue hover:bg-yellow-400'}`;
+=======
+  const primaryButtonClasses = `w-full mt-4 py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${theme === 'dark' ? 'bg-bright-yellow text-marine-blue hover:bg-yellow-300' : 'bg-marine-blue text-white hover:bg-blue-700'}`;
+>>>>>>> bee2d85 (updated)
   const secondaryButtonClasses = `py-2 px-4 rounded-lg text-xs font-medium transition-colors ${theme === 'dark' ? 'bg-blue-700 hover:bg-blue-600 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`;
   const cancelButtonClasses = `py-2 px-4 rounded-lg text-xs font-medium transition-colors ${theme === 'dark' ? 'bg-gray-600 hover:bg-gray-500 text-gray-200' : 'bg-gray-200 hover:bg-gray-300 text-gray-700'}`;
 
@@ -184,11 +264,35 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
       <div className={`p-6 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-dark-card border border-gray-700' : 'bg-white border border-gray-200'}`}>
         {activeSection === 'view' && (
           <>
+<<<<<<< HEAD
             <div className="flex flex-col items-center mb-6">
               <div className={`w-24 h-24 rounded-full flex items-center justify-center text-5xl mb-3 
                 ${theme === 'dark' ? 'bg-gray-700 text-bright-yellow' : 'bg-slate-200 text-marine-blue'}`}>
                 {loggedInUser.name.length > 0 ? (language === 'ar' ? loggedInUser.name[0] : loggedInUser.name[0].toUpperCase()) : (language === 'ar' ? '؟' : '?')}
               </div>
+=======
+            <div className="flex flex-col items-center mb-6 relative">
+              {previewAvatar ? (
+                <img src={previewAvatar} alt="User Avatar" className="w-24 h-24 rounded-full object-cover mb-3 shadow-md" />
+              ) : (
+                <UserPlaceholderIcon className={`w-24 h-24 rounded-full mb-3 text-gray-400 dark:text-gray-500 ${theme === 'dark' ? 'bg-gray-700' : 'bg-slate-200'} p-2`} />
+              )}
+               <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`absolute bottom-3 ${language === 'ar' ? 'left-1/2 transform -translate-x-1/2 translate-y-1/4' : 'right-1/2 transform translate-x-1/2 translate-y-1/4'} p-1.5 bg-gray-500/70 hover:bg-gray-600/80 text-white rounded-full shadow-md transition-colors`}
+                  title={t('profileEditButton')}
+                  aria-label={t('profileEditButton')}
+                >
+                  <PencilIcon className="h-3 w-3" />
+                </button>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleAvatarChange}
+                  accept="image/*"
+                  className="hidden"
+                />
+>>>>>>> bee2d85 (updated)
               <h2 className={`text-xl font-semibold ${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>{loggedInUser.name}</h2>
               <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>{getRoleDisplayName(loggedInUser.role)}</p>
             </div>
@@ -197,8 +301,30 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
               <InfoRow labelKey="profileTeamLabel" value={getTeamName(loggedInUser.teamId)} />
               <InfoRow labelKey="profileEmailLabel" value={loggedInUser.email || (language === 'ar' ? 'لا يوجد' : 'N/A')} />
               <InfoRow labelKey="profilePhoneLabel" value={loggedInUser.phone || (language === 'ar' ? 'لا يوجد' : 'N/A')} />
+<<<<<<< HEAD
               <InfoRow labelKey="profileLastLoginLabel" value={language === 'ar' ? 'منذ لحظات قليلة' : 'A few moments ago'} />
             </dl>
+=======
+              <InfoRow labelKey="profileExpertiseScoreLabel" value={`${loggedInUser.expertisePoints} ${t('expertisePoints')}`} />
+              <InfoRow labelKey="profileLastLoginLabel" value={language === 'ar' ? 'منذ لحظات قليلة' : 'A few moments ago'} />
+            </dl>
+            
+            <div className={`mt-6 pt-4 border-t ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
+              <h3 className={`text-md font-semibold mb-2 ${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>{language === 'ar' ? 'شاراتي ومكافآتي' : 'My Badges & Rewards'}</h3>
+              {mockBadges.length > 0 ? (
+                <div className="flex flex-wrap gap-3">
+                  {mockBadges.map(badge => (
+                    <div key={badge.id} title={t(badge.nameKey, badge.name)} className={`p-2.5 rounded-lg flex flex-col items-center space-y-1 w-24 h-24 justify-center transition-all hover:shadow-lg card-interactive ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
+                      <badge.icon className={`h-8 w-8 ${badge.color}`} />
+                      <span className={`text-[10px] text-center ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{t(badge.nameKey, badge.name)}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                 <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{language === 'ar' ? 'لسه مفيش شارات، شد حيلك يا بطل!' : 'No badges yet, keep up the great work!'}</p>
+              )}
+            </div>
+>>>>>>> bee2d85 (updated)
 
             <div className={`mt-6 pt-4 border-t grid grid-cols-1 sm:grid-cols-3 gap-3 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
               <button 
@@ -225,6 +351,31 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
 
         {activeSection === 'editInfo' && (
           <form onSubmit={handleSaveUserInfo} className="space-y-4 text-left">
+<<<<<<< HEAD
+=======
+            <div className="flex flex-col items-center mb-4 relative">
+                {previewAvatar ? (
+                  <img src={previewAvatar} alt="Avatar Preview" className="w-20 h-20 rounded-full object-cover mb-2 shadow-sm" />
+                ) : (
+                  <UserPlaceholderIcon className={`w-20 h-20 rounded-full mb-2 text-gray-400 dark:text-gray-500 ${theme === 'dark' ? 'bg-gray-700' : 'bg-slate-200'} p-2`} />
+                )}
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`py-1.5 px-3 text-xs rounded-md flex items-center gap-1 ${secondaryButtonClasses} ${theme === 'dark' ? '!bg-gray-600 hover:!bg-gray-500' : '!bg-gray-100 hover:!bg-gray-200'}`}
+                >
+                  <CameraIcon className="h-4 w-4"/>
+                  {language === 'ar' ? 'تغيير الصورة' : 'Change Photo'}
+                </button>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleAvatarChange}
+                  accept="image/*"
+                  className="hidden"
+                />
+            </div>
+>>>>>>> bee2d85 (updated)
             <FormInput id="editName" labelKey="profileNameLabel" value={editName} onChange={e => setEditName(e.target.value)} />
             <FormInput id="editEmail" labelKey="profileEmailLabel" type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} />
             <FormInput id="editPhone" labelKey="profilePhoneLabel" type="tel" value={editPhone} onChange={e => setEditPhone(e.target.value)} />

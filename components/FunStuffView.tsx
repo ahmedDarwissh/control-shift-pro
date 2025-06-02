@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ThemeContext, ToastContext } from '../App';
@@ -11,10 +12,26 @@ const MusicalNoteIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 const PuzzlePieceIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M14.25 6.087c0-.597.484-1.087 1.088-1.087h.003c.603 0 1.087.49 1.087 1.087V6.75M14.25 6.087A2.25 2.25 0 0012 8.25v1.088c0 .597.484 1.087 1.088 1.087h.003c.603 0 1.087-.49 1.087-1.087V9.338c0-.597-.484-1.087-1.088-1.087h-.003A2.25 2.25 0 0112 6v-.088c0-.597.484-1.087 1.088-1.087h.003c.603 0 1.087.49 1.087 1.087V6.75m-2.165 3.203a2.25 2.25 0 00-2.25 2.25V15m0 0A2.25 2.25 0 0012 17.25h1.088c.603 0 1.087-.49 1.087-1.087V15m0 0c0-.597-.484-1.087-1.088-1.087H12.003A2.25 2.25 0 019.75 12v-1.088c0-.597.484-1.087 1.088-1.087H10.5m2.25 4.5H9.75M15 12A2.25 2.25 0 0012.75 9.75V9.338c0-.597.484-1.087 1.088-1.087H13.5m2.25 4.5H15M9 15.087c0 .597-.484 1.087-1.088 1.087h-.003c-.603 0-1.087-.49-1.087-1.087V14.25M9 15.087A2.25 2.25 0 0111.25 12.84v-1.088c0-.597-.484-1.087-1.088-1.087h-.003A2.25 2.25 0 007.912 12v.088c0 .597.484 1.087 1.088 1.087h.003c.603 0 1.087.49 1.087 1.087V14.25m2.165-3.203A2.25 2.25 0 0113.5 12.84v1.088c0 .597-.484-1.087-1.088-1.087h-.003a2.25 2.25 0 00-2.25 2.25V15m0 0A2.25 2.25 0 019.75 17.25h-1.088c-.603 0-1.087-.49-1.087-1.087V15m0 0c0 .597.484 1.087 1.088 1.087H7.997A2.25 2.25 0 015.75 12v-1.088c0-.597.484-1.087 1.088-1.087H7.5M9.75 9H12m0 0A2.25 2.25 0 009.75 6.75V6.662c0-.597.484-1.087 1.088-1.087H10.5m3.75 0A2.25 2.25 0 0012 9.338V9.75M12 6.75H9.75" /></svg>
+=======
+import React, { useState } from 'react';
+import { useLanguageContext } from '../hooks/useLanguage';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { Language, TranslationSet } from '../types';
+
+// Placeholder icons if needed by FunStuffView, adjust as necessary
+const SparklesIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.567L16.5 21.75l-.398-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.398a2.25 2.25 0 001.423-1.423L16.5 15.75l.398 1.183a2.25 2.25 0 001.423 1.423l1.183.398-1.183.398a2.25 2.25 0 00-1.423 1.423L16.5 21.75z" />
+  </svg>
+);
+const PuzzlePieceIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M14.25 6.087c0-.597.484-1.087 1.088-1.087h.003c.603 0 1.087.49 1.087 1.087V6.75M14.25 6.087A2.25 2.25 0 0012 8.25v1.088c0 .597.484 1.087 1.088-1.087h.003c.603 0 1.087-.49 1.087-1.087V9.338c0-.597-.484-1.087-1.088-1.087h-.003A2.25 2.25 0 0112 6v-.088c0-.597.484-1.087 1.088-1.087h.003c.603 0 1.087.49 1.087 1.087V6.75m-2.165 3.203a2.25 2.25 0 00-2.25 2.25V15m0 0A2.25 2.25 0 0012 17.25h1.088c.603 0 1.087-.49 1.087-1.087V15m0 0c0-.597-.484-1.087-1.088-1.087H12.003A2.25 2.25 0 019.75 12v-1.088c0-.597.484-1.087 1.088-1.087H10.5m2.25 4.5H9.75M15 12A2.25 2.25 0 0012.75 9.75V9.338c0-.597.484-1.087 1.088-1.087H13.5m2.25 4.5H15M9 15.087c0 .597-.484-1.087-1.088 1.087h-.003c-.603 0-1.087-.49-1.087-1.087V14.25M9 15.087A2.25 2.25 0 0111.25 12.84v-1.088c0-.597-.484-1.087-1.088-1.087h-.003A2.25 2.25 0 007.912 12v.088c0 .597.484 1.087 1.088 1.087h.003c.603 0 1.087.49 1.087 1.087V14.25m2.165-3.203A2.25 2.25 0 0113.5 12.84v1.088c0 .597-.484-1.087-1.088-1.087h-.003a2.25 2.25 0 00-2.25 2.25V15m0 0A2.25 2.25 0 019.75 17.25h-1.088c-.603 0-1.087-.49-1.087-1.087V15m-1.051-4.246A2.25 2.25 0 016.75 8.25H6m5.25 9.75A2.25 2.25 0 019.75 15.75H9" /></svg>
+>>>>>>> bee2d85 (updated)
 );
 const ChatBubbleLeftRightIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193l-3.72.372a11.957 11.957 0 01-3.72.372h-.456a11.957 11.957 0 01-3.72-.372l-3.72-.372A2.25 2.25 0 012.25 15.082V8.511c0-.884.616-1.646 1.448-1.948l.902-.301c.435-.145.92-.302 1.417-.471L8.25 5.69m5.25 0l.752.25M13.5 5.69l-.752.25m-.752-.25h.002M18 18.75V9.75M6 18.75V9.75" /></svg>
 );
+<<<<<<< HEAD
 const FaceSmileIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9 9.75h.008v.008H9V9.75zm.75 3a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm2.25-.75h.008v.008H12v-.008zM15 9.75h.008v.008H15V9.75z" /></svg>
 );
@@ -497,9 +514,95 @@ Return only the joke text itself, without any preambles or comments.`;
       </div>
        <p className={`mt-8 md:mt-10 text-xs md:text-sm text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
         {language === 'ar' ? 'الشغل مهم بس برضه لازم نرفه عن نفسنا شوية عشان نعرف نكمل بنفس الكفاءة! فكها الضحكة بتطول العمر.' : 'Work is important, but entertainment keeps the engine running smoothly! Relax and enjoy.'}
+=======
+const MusicalNoteIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" /></svg>
+  );
+  
+
+export const FunStuffView: React.FC = () => {
+  const { t: translate, language } = useLanguageContext(); // Renamed t to translate
+  const { theme } = React.useContext(ThemeContext);
+  const [joke, setJoke] = useState('');
+  const [puzzle, setPuzzle] = useState({ question: '', options: [] as string[], answer: '' });
+
+  const fetchJoke = () => {
+    setJoke(language === Language.AR ? 'ليه الكمبيوتر دخل السجن؟ عشان عمل ويندو على بيت الجيران! 😂' : 'Why did the computer go to jail? Because it had too many windows on its neighbor\'s house! 😂');
+  };
+
+  const fetchPuzzle = () => {
+    setPuzzle({
+      question: language === Language.AR ? 'ما هو الشيء الذي كلما أخذت منه كبر؟' : 'What is it that the more you take, the larger it grows?',
+      options: language === Language.AR ? ['الحفرة', 'العمر', 'الراتب'] : ['A hole', 'Age', 'Salary'],
+      answer: language === Language.AR ? 'الحفرة' : 'A hole'
+    });
+  };
+
+  React.useEffect(() => {
+    fetchJoke();
+    fetchPuzzle();
+  }, [language]);
+
+  const pageTitleColor = theme === 'dark' ? 'text-orange-400' : 'text-orange-500';
+  const cardBg = theme === 'dark' ? 'bg-gray-800' : 'bg-white';
+  const textColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-700';
+  const buttonClass = `px-4 py-2 rounded-lg font-medium transition-colors ${theme === 'dark' ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`;
+
+  return (
+    <div className={`p-4 ${language === 'ar' ? 'font-cairo' : 'font-poppins'}`}>
+      <div className="flex items-center mb-6">
+        <SparklesIcon className={`h-8 w-8 ${pageTitleColor} ${language === 'ar' ? 'ml-3' : 'mr-3'}`} />
+        <h1 className={`text-2xl md:text-3xl font-bold ${pageTitleColor}`}>
+          {translate('funStuffTitle')}
+        </h1>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Jokes Section */}
+        <div className={`p-6 rounded-lg shadow-lg ${cardBg}`}>
+          <h2 className={`text-xl font-semibold mb-3 flex items-center ${textColor}`}>
+            <ChatBubbleLeftRightIcon className="h-6 w-6 mr-2 rtl:ml-2" /> {translate('jokesToday')}
+          </h2>
+          <p className={`mb-4 ${textColor}`}>{joke || translate('jokeFetchingError')}</p>
+          <button onClick={fetchJoke} className={buttonClass}>
+            {language === Language.AR ? 'نكتة تانية بسرعة!' : 'Another Joke!'}
+          </button>
+        </div>
+
+        {/* Puzzle Section */}
+        <div className={`p-6 rounded-lg shadow-lg ${cardBg}`}>
+          <h2 className={`text-xl font-semibold mb-3 flex items-center ${textColor}`}>
+            <PuzzlePieceIcon className="h-6 w-6 mr-2 rtl:ml-2" /> {translate('puzzleGameTitle')}
+          </h2>
+          <p className={`mb-3 ${textColor}`}>{puzzle.question || translate('puzzleFetchingError')}</p>
+          {/* Puzzle options and submission would go here */}
+          {/* If the error was indeed on a title attribute, it would look like this:
+           <button onClick={fetchPuzzle} className={buttonClass} title={translate('puzzleGamePlay')}>
+          */}
+          <button onClick={fetchPuzzle} className={buttonClass}>
+            {translate('puzzleGamePlay')}
+          </button>
+        </div>
+
+        {/* Quran Radio Placeholder - Actual player is in Header */}
+        <div className={`p-6 rounded-lg shadow-lg ${cardBg} md:col-span-2`}>
+          <h2 className={`text-xl font-semibold mb-3 flex items-center ${textColor}`}>
+            <MusicalNoteIcon className="h-6 w-6 mr-2 rtl:ml-2" /> {translate('quranRadio')}
+          </h2>
+          <p className={`${textColor}`}>
+            {language === Language.AR ? 'يمكنك التحكم في إذاعة القرآن الكريم من الشريط العلوي للتطبيق.' : 'You can control the Quran Radio from the top header of the application.'}
+          </p>
+        </div>
+      </div>
+       <p className={`mt-8 text-xs text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
+        {language === 'ar' ? 'استمتع بوقتك يا فهلوي، بس متنساش الشغل!' : 'Enjoy your time, Fahlawy, but don\'t forget the work!'}
+>>>>>>> bee2d85 (updated)
       </p>
     </div>
   );
 };
+<<<<<<< HEAD
 
 export default FunStuffView;
+=======
+>>>>>>> bee2d85 (updated)

@@ -1,8 +1,15 @@
 
 
+<<<<<<< HEAD
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
 import { ThemeContext } from '../App';
+=======
+
+import React from 'react';
+import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
+import { ThemeContext } from '../contexts/ThemeContext'; // Corrected import path
+>>>>>>> bee2d85 (updated)
 
 const PreventiveMaintenanceView: React.FC = () => {
   const { t, language } = useLanguageContext();

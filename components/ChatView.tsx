@@ -1,8 +1,15 @@
 
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
+<<<<<<< HEAD
 import { ThemeContext, ToastContext, LoggedInUser } from '../App'; // Assuming LoggedInUser might be needed later
 import firebase from 'firebase/compat/app'; // If using Firebase for chat
+=======
+import { ThemeContext } from '../contexts/ThemeContext'; 
+import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
+import { LoggedInUser } from '../types'; 
+import firebase from 'firebase/compat/app'; 
+>>>>>>> bee2d85 (updated)
 
 // Heroicons
 const UserCircleIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -14,6 +21,17 @@ const PaperAirplaneIcon: React.FC<{ className?: string }> = ({ className }) => (
 const UserGroupIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-3.741-1.5a3 3 0 00-3.741 1.5M15 11.25a3 3 0 11-6 0 3 3 0 016 0zm-3 0c0 .662-.108 1.298-.304 1.898l-.062.28A8.967 8.967 0 017.5 12c0-.962.168-1.88.474-2.722L8.196 8.72A3 3 0 019 11.25zM6.083 15.872a11.955 11.955 0 01-1.65-.011A1.875 1.875 0 013 14.111V9.89a1.875 1.875 0 011.875-1.875h1.408a8.967 8.967 0 001.034-.386 3 3 0 013.958 0 8.967 8.967 0 001.033.386h1.409a1.875 1.875 0 011.875 1.875v4.221a1.875 1.875 0 01-1.433 1.747 11.956 11.956 0 01-1.65.011M18.25 11.25a3.375 3.375 0 00-3.375-3.375h-1.5a3.375 3.375 0 00-3.375 3.375V15a3.375 3.375 0 003.375 3.375h1.5a3.375 3.375 0 003.375-3.375V11.25z" /></svg>
 );
+<<<<<<< HEAD
+=======
+const FaceSmileIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-7.22-7.5-10.5-7.5-10.5S4.5 4.78 4.5 12s7.5 10.5 7.5 10.5S19.5 19.22 19.5 12z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 14.25a3.75 3.75 0 01-7.5 0" />
+    </svg>
+);
+
+>>>>>>> bee2d85 (updated)
 
 
 interface Message {
@@ -55,7 +73,26 @@ const ChatView: React.FC = () => {
     setMessages([...messages, msg]);
     setNewMessage('');
     addToast(t('chatMessageSent'), 'success');
+<<<<<<< HEAD
     // Here you would typically send the message to a backend (e.g., Firebase Firestore)
+=======
+  };
+
+  const handleSendMeme = () => {
+    addToast(t('chatSendMemeToast'), 'info');
+    // Mock sending a text-based "meme"
+    const memeText = language === 'ar' 
+      ? "الفهلوي بيقولك: لما المشرف يسألك خلصت الشغل؟ وأنت لسه بتشرب شاي ( ͡° ͜ʖ ͡°)" 
+      : "Fahlawy says: When the supervisor asks if you finished work? And you're still sipping tea ( ͡° ͜ʖ ͡°)";
+    const memeMsg: Message = {
+      id: Date.now().toString(),
+      text: memeText,
+      sender: 'user',
+      userName: 'You (Fahlawy Bot)',
+      timestamp: new Date(),
+    };
+    setMessages([...messages, memeMsg]);
+>>>>>>> bee2d85 (updated)
   };
   
   const pageTitleColor = theme === 'dark' ? 'text-orange-400' : 'text-orange-500';
@@ -105,7 +142,11 @@ const ChatView: React.FC = () => {
                         {msg.userName}
                     </span>
                 </div>
+<<<<<<< HEAD
                 <p className="text-sm">{msg.text}</p>
+=======
+                <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
+>>>>>>> bee2d85 (updated)
                 <p className={`text-xs mt-1.5 ${msg.sender === 'user' ? (theme === 'dark' ? 'text-gray-400 text-opacity-70' : 'text-gray-200 text-opacity-70') : (theme === 'dark' ? 'text-gray-500' : 'text-gray-500')} ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
                   {msg.timestamp.toLocaleTimeString(language, { hour: '2-digit', minute: '2-digit' })}
                 </p>
@@ -115,7 +156,11 @@ const ChatView: React.FC = () => {
           <div ref={messagesEndRef} />
         </div>
         <div className={`p-4 border-t ${chatInputBorder} ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'}`}>
+<<<<<<< HEAD
           <div className="flex items-center gap-3">
+=======
+          <div className="flex items-center gap-2 sm:gap-3">
+>>>>>>> bee2d85 (updated)
             <input
               type="text"
               value={newMessage}
@@ -123,7 +168,20 @@ const ChatView: React.FC = () => {
               onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
               placeholder={language === 'ar' ? 'اكتب رسالتك هنا يا ريس...' : 'Type your message here, boss...'}
               className={`flex-1 p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 ${chatInputBg} ${chatInputBorder} ${chatInputText} ${chatPlaceholder}`}
+<<<<<<< HEAD
             />
+=======
+              aria-label={language === 'ar' ? 'صندوق إدخال الرسالة' : 'Message input box'}
+            />
+             <button
+              onClick={handleSendMeme}
+              className={`p-3 rounded-lg text-white transition-colors shadow-md ${theme === 'dark' ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-yellow-400 hover:bg-yellow-500'}`}
+              aria-label={t('chatSendMemeButton')}
+              title={t('chatSendMemeButton')}
+            >
+              <FaceSmileIcon className="h-5 w-5" />
+            </button>
+>>>>>>> bee2d85 (updated)
             <button
               onClick={handleSendMessage}
               className={`p-3 rounded-lg text-white transition-colors shadow-md ${sendButtonBg}`}
@@ -138,4 +196,8 @@ const ChatView: React.FC = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ChatView;
+=======
+export default ChatView;
+>>>>>>> bee2d85 (updated)
