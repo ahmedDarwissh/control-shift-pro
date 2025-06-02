@@ -1,6 +1,7 @@
 
 import React, { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Language, Translations, TranslationSet } from '../types';
 import { initialTranslations } from '../constants';
 
@@ -10,6 +11,8 @@ export interface LanguageContextType { // Exported for use in the hook
   translations: TranslationSet;
   t: (key: keyof TranslationSet, fallback?: string) => string;
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import { Language, TranslationSet } from '../types'; 
 import { initialTranslations } from '@/constants'; // Changed import path
 
@@ -18,7 +21,10 @@ export interface LanguageContextType {
   setLanguage: (language: Language) => void;
   translations: TranslationSet;
   t: (key: keyof TranslationSet, detailsOrFallback?: string | Record<string, any>) => string;
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 }
 
 export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -29,6 +35,7 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage = Language.AR }) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
   const [language, setLanguageState] = useState<Language>(() => {
     const storedLang = localStorage.getItem('appLanguage') as Language;
@@ -47,11 +54,16 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
   useEffect(() => {
     document.body.className = ''; // Clear previous language classes
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   const [language, setLanguageState] = useState<Language>(defaultLanguage);
 
   useEffect(() => {
     document.body.className = ''; 
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     document.body.classList.add(language === Language.AR ? 'lang-ar' : 'lang-en');
     document.documentElement.lang = language;
     document.documentElement.dir = language === Language.AR ? 'rtl' : 'ltr';
@@ -63,6 +75,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const t = useCallback((key: keyof TranslationSet, fallback?: string): string => {
     const translation = initialTranslations[language][key] || fallback || initialTranslations[Language.EN][key] || String(key);
     // Replace {year}, {appName}, {companyShortName} placeholders
@@ -71,6 +84,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
         .replace('{appName}', initialTranslations[language].appName || initialTranslations[Language.EN].appName)
         .replace('{companyShortName}', initialTranslations[language].footerCompanyName || initialTranslations[Language.EN].footerCompanyName);
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   const t = useCallback((key: keyof TranslationSet, detailsOrFallback?: string | Record<string, any>): string => {
     const currentTranslations = initialTranslations[language];
     const englishTranslations = initialTranslations[Language.EN]; // Fallback to English
@@ -116,7 +131,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
         .replace(/{companyShortName}/g, companyShortName);
 
     return populatedTranslation;
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   }, [language]);
   
 
@@ -127,7 +145,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
   );
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 // useLanguageContext is now in hooks/useLanguage.ts
 =======
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)

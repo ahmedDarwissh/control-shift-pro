@@ -2,6 +2,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { UserRole, Engineer, Supervisor, Team, Language } from '../types';
 import { ThemeContext, ToastContext } from '../App'; 
 =======
@@ -10,6 +11,12 @@ import { ThemeContext } from '../contexts/ThemeContext';
 import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
 import { useActivityLog } from '../hooks/useActivityLog';
 >>>>>>> bee2d85 (updated)
+=======
+import { UserRole, Engineer, Supervisor, Team, Language, ActivityLogType, TranslationSet, LoggedInUser } from '../types';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { ToastContext } from '../contexts/ToastContext'; 
+import { useActivityLog } from '../hooks/useActivityLog';
+>>>>>>> 96a8f29 (First commit)
 
 // Heroicons
 const MoonIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -22,6 +29,7 @@ const BellAlertIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M12 15.75a.75.75 0 01.75.75v.008a.75.75 0 01-1.5 0v-.008a.75.75 0 01.75-.75z" /></svg>
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Simplified icons for WhatsApp/Telegram - ideally use official brand SVGs if available and allowed.
 const ChatBubbleOvalLeftEllipsisIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193l-3.72.372a11.957 11.957 0 01-3.72.372h-.456a11.957 11.957 0 01-3.72-.372l-3.72-.372A2.25 2.25 0 012.25 15.082V8.511c0-.884.616-1.646 1.448-1.948l.902-.301c.435-.145.92-.302 1.417-.471L8.25 5.69m5.25 0l.752.25M13.5 5.69l-.752.25m-.752-.25h.002M18 18.75V9.75M6 18.75V9.75" /></svg>
@@ -29,6 +37,8 @@ const ChatBubbleOvalLeftEllipsisIcon: React.FC<{ className?: string }> = ({ clas
 
 interface SettingsViewProps {
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const ChatBubbleOvalLeftEllipsisIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193l-3.72.372a11.957 11.957 0 01-3.72.372h-.456a11.957 11.957 0 01-3.72-.372l-3.72-.372A2.25 2.25 0 012.25 15.082V8.511c0-.884.616-1.646 1.448-1.948l.902-.301c.435-.145.92-.302 1.417-.471L8.25 5.69m5.25 0l.752.25M13.5 5.69l-.752.25m-.752-.25h.002M18 18.75V9.75M6 18.75V9.75" /></svg>
   );
@@ -40,6 +50,7 @@ const FingerPrintIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 
 export interface SettingsViewProps {
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
   engineers: Engineer[];
   supervisors: Supervisor[];
@@ -50,6 +61,14 @@ export interface SettingsViewProps {
 =======
   loggedInUser: LoggedInUser | null;
 >>>>>>> bee2d85 (updated)
+=======
+  engineers: Engineer[];
+  supervisors: Supervisor[];
+  teams: Team[];
+  currentUserRole: UserRole.Employee | UserRole.Supervisor | UserRole.Engineer; // More specific
+  setCurrentUserRole: (role: UserRole.Employee | UserRole.Supervisor | UserRole.Engineer) => void; // More specific
+  loggedInUser: LoggedInUser | null;
+>>>>>>> 96a8f29 (First commit)
 }
 
 const SettingsCard: React.FC<{ titleKey: keyof ReturnType<typeof useLanguageContext>['translations'], children: React.ReactNode, descriptionKey?: keyof ReturnType<typeof useLanguageContext>['translations'], icon?: React.ReactNode }> = ({ titleKey, children, descriptionKey, icon }) => {
@@ -79,23 +98,30 @@ interface LinkingModalState {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, teams, currentUserRole, setCurrentUserRole }) => {
   const { t, language } = useLanguageContext();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { addToast } = useContext(ToastContext);
   
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, teams, currentUserRole, setCurrentUserRole, loggedInUser }) => {
   const { t, language } = useLanguageContext();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { addToast } = useContext(ToastContext);
   const { addActivityLogEntry } = useActivityLog();
 
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   const [salaryToggleChecked, setSalaryToggleChecked] = useState(false);
   const [currentComedyLevel, setCurrentComedyLevel] = useState<'normal' | 'hilarious'>('hilarious');
   const [linkingModalState, setLinkingModalState] = useState<LinkingModalState>({ isOpen: false, serviceName: null });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentUserRole(event.target.value as UserRole);
@@ -103,6 +129,15 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
   const [isBiometricSupported, setIsBiometricSupported] = useState(false);
   const [biometricEnabled, setBiometricEnabled] = useState(false);
 
+=======
+  const [isBiometricSupported, setIsBiometricSupported] = useState(false);
+  const [biometricEnabled, setBiometricEnabled] = useState(false);
+
+  // Define allowed roles for selection
+  const selectableUserRoles = [UserRole.Employee, UserRole.Supervisor, UserRole.Engineer];
+
+
+>>>>>>> 96a8f29 (First commit)
   useEffect(() => {
     if (navigator.credentials && typeof navigator.credentials.get === 'function') {
         setIsBiometricSupported(true);
@@ -113,7 +148,11 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
 
 
   const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+<<<<<<< HEAD
     const newRole = event.target.value as UserRole;
+=======
+    const newRole = event.target.value as UserRole.Employee | UserRole.Supervisor | UserRole.Engineer;
+>>>>>>> 96a8f29 (First commit)
     setCurrentUserRole(newRole);
     if (loggedInUser) {
         addActivityLogEntry(ActivityLogType.SettingsChanged, 'activityLogEntrySettingsChanged', {
@@ -135,7 +174,10 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
         newValue: t(newTheme === 'dark' ? 'appTheme_dark' : 'appTheme_light')
       });
     }
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     addToast(t('settingsChangeSuccess'), 'success');
   };
 
@@ -143,12 +185,15 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
     addToast(t('settingsPrayerReminderSet'), 'success');
   };
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   const handleSalaryToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSalaryToggleChecked(event.target.checked);
     if (event.target.checked) {
       addToast(t('salaryNotificationEnabledMessage'), 'success');
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 
   const handleSalaryToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isEnabled = event.target.checked;
@@ -164,14 +209,20 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
       addToast(t('salaryNotificationEnabledMessage'), 'success');
     } else {
       addToast(t('settingsChangeSuccess'), 'info');
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     }
   };
 
   const handleComedyLevelChange = (level: 'normal' | 'hilarious') => {
     setCurrentComedyLevel(level);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
     if (loggedInUser) {
         addActivityLogEntry(ActivityLogType.SettingsChanged, 'activityLogEntrySettingsChanged', {
             userName: loggedInUser.name,
@@ -179,7 +230,10 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             newValue: t(level === 'normal' ? 'comedyLevel_normal' : 'comedyLevel_hilarious')
         });
     }
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     addToast(t('settingsChangeSuccess'), 'success');
   };
 
@@ -197,7 +251,10 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   const handleBiometricToggleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const isEnabled = event.target.checked;
     setBiometricEnabled(isEnabled);
@@ -212,13 +269,17 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
     addToast(isEnabled ? t('biometricLoginEnabledToast') : t('biometricLoginDisabledToast'), 'success');
   };
 
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   const mockPrayerTimes = {
     [Language.AR]: { fajr: "٠٤:١٥ ص", dhuhr: "١٢:٠٥ م", asr: "٠٣:٤٠ م", maghrib: "٠٦:٥٥ م", isha: "٠٨:٢٥ م" },
     [Language.EN]: { fajr: "04:15 AM", dhuhr: "12:05 PM", asr: "03:40 PM", maghrib: "06:55 PM", isha: "08:25 PM" },
   };
 
   const inputBaseClasses = "w-full p-3 border rounded-lg shadow-sm focus:ring-2 text-sm";
+<<<<<<< HEAD
 <<<<<<< HEAD
   const lightInputClasses = "bg-white border-gray-300 text-gray-800 focus:ring-blue-600 focus:border-blue-600 placeholder-gray-500";
   const darkInputClasses = "bg-gray-700 border-gray-600 text-gray-100 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400";
@@ -227,6 +288,9 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
 =======
   const themedInputClasses = theme === 'dark' ? 'bg-gray-700 border-gray-600 text-gray-100 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400' : 'bg-white border-gray-300 text-gray-800 focus:ring-blue-600 focus:border-blue-600 placeholder-gray-400';
 >>>>>>> bee2d85 (updated)
+=======
+  const themedInputClasses = theme === 'dark' ? 'bg-gray-700 border-gray-600 text-gray-100 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400' : 'bg-white border-gray-300 text-gray-800 focus:ring-blue-600 focus:border-blue-600 placeholder-gray-400';
+>>>>>>> 96a8f29 (First commit)
   const primaryButtonClasses = `font-medium py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm hover:shadow-md transform hover:scale-[1.02] ${theme === 'dark' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-blue-600 text-white hover:bg-blue-700'}`;
   const secondaryButtonClasses = `font-medium py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm hover:shadow-md transform hover:scale-[1.02] ${theme === 'dark' ? 'bg-gray-600 text-gray-200 hover:bg-gray-500' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`;
   const activeSecondaryButtonClasses = theme === 'dark' ? 'bg-blue-500 text-white' : 'bg-blue-600 text-white';
@@ -246,14 +310,23 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             className={`${inputBaseClasses} ${themedInputClasses}`}
             aria-label={t('selectRole')}
           >
+<<<<<<< HEAD
             <option value={UserRole.Employee}>{t('employee')}</option>
             <option value={UserRole.Supervisor}>{t('supervisorRole')}</option>
             <option value={UserRole.Engineer}>{t('engineer')}</option>
+=======
+            {selectableUserRoles.map(roleValue => (
+              <option key={roleValue} value={roleValue}>
+                {t(`userRole_${roleValue}` as keyof TranslationSet, roleValue)}
+              </option>
+            ))}
+>>>>>>> 96a8f29 (First commit)
           </select>
         </SettingsCard>
 
         <SettingsCard titleKey="appTheme" descriptionKey="settingsThemePrompt">
           <div className="flex items-center">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <button 
               onClick={() => { toggleTheme(); addToast(t('settingsChangeSuccess'), 'success'); }}
@@ -261,11 +334,16 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             <button
               onClick={handleThemeToggle}
 >>>>>>> bee2d85 (updated)
+=======
+            <button
+              onClick={handleThemeToggle}
+>>>>>>> 96a8f29 (First commit)
               className={`flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-colors w-full text-center text-sm
                 ${theme === 'light' ? secondaryButtonClasses : primaryButtonClasses}`}
               aria-pressed={theme === 'dark'}
             >
               {theme === 'light' ? <MoonIcon className="h-5 w-5"/> : <SunIcon className="h-5 w-5"/>}
+<<<<<<< HEAD
 <<<<<<< HEAD
               {theme === 'light' ? t('darkMode') : t('lightMode')} 
             </button>
@@ -284,6 +362,8 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
               onClick={() => handleComedyLevelChange('hilarious')}
               className={`flex-1 px-3 py-2.5 rounded-lg transition-colors text-sm 
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
               {theme === 'light' ? t('darkMode') : t('lightMode')}
             </button>
           </div>
@@ -317,7 +397,10 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             <button
               onClick={() => handleComedyLevelChange('hilarious')}
               className={`flex-1 px-3 py-2.5 rounded-lg transition-colors text-sm
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
                 ${currentComedyLevel === 'hilarious' ? activeSecondaryButtonClasses : secondaryButtonClasses}`}>
               {t('hilarious')} (😂)
             </button>
@@ -333,10 +416,14 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
                             <span className="block font-medium text-sm">{t(prayerKey)}</span>
                             <span className="my-1 text-sm font-semibold text-blue-500">{mockPrayerTimes[language][prayerKey]}</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <button 
 =======
                             <button
 >>>>>>> bee2d85 (updated)
+=======
+                            <button
+>>>>>>> 96a8f29 (First commit)
                                 onClick={handlePrayerReminderClick}
                                 className={`mt-1 px-3 py-1 text-xs rounded-md font-medium ${theme === 'dark' ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`}
                             >
@@ -348,10 +435,14 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             </div>
         </SettingsCard>
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 =======
 
 >>>>>>> bee2d85 (updated)
+=======
+
+>>>>>>> 96a8f29 (First commit)
         <SettingsCard titleKey="salaryNotification">
             <label htmlFor="salaryToggle" className="flex items-center cursor-pointer">
                 <div className="relative">
@@ -368,6 +459,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
         <SettingsCard titleKey="settingsWhatsAppTelegram" descriptionKey="settingsLinkSoon">
           <div className="space-y-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <button 
               onClick={() => handleLinkService('WhatsApp')}
               className={`w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2
@@ -381,6 +473,8 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
                 ${theme === 'dark' ? 'bg-sky-600 text-white hover:bg-sky-500' : 'bg-sky-500 text-white hover:bg-sky-600'}`}> {/* Using sky for Telegram */}
                 <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5" /> {/* Generic chat icon for Telegram */}
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
             <button
               onClick={() => handleLinkService('WhatsApp')}
               className={`w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2
@@ -393,7 +487,10 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
               className={`w-full py-2.5 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2
                 ${theme === 'dark' ? 'bg-sky-600 text-white hover:bg-sky-500' : 'bg-sky-500 text-white hover:bg-sky-600'}`}>
                 <ChatBubbleOvalLeftEllipsisIcon className="w-5 h-5" />
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
               {t('settingsLinkTelegram')}
             </button>
           </div>
@@ -423,15 +520,20 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
         )}
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
        <p className={`mt-8 md:mt-10 text-xs md:text-sm text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
 =======
        <p className={`mt-8 md:mt-10 text-xs md:text-sm text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
 >>>>>>> bee2d85 (updated)
+=======
+       <p className={`mt-8 md:mt-10 text-xs md:text-sm text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'}`}>
+>>>>>>> 96a8f29 (First commit)
         {t('settingsFooter')}
       </p>
 
       {linkingModalState.isOpen && linkingModalState.serviceName && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 backdrop-blur-sm"  onClick={() => setLinkingModalState({ isOpen: false, serviceName: null })}>
+<<<<<<< HEAD
 <<<<<<< HEAD
           <div 
             className={`p-6 rounded-xl shadow-xl w-full max-w-md ${theme === 'dark' ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}
@@ -441,11 +543,17 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
             className={`p-6 rounded-xl shadow-xl w-full max-w-md ${theme === 'dark' ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}
             onClick={(e) => e.stopPropagation()}
 >>>>>>> bee2d85 (updated)
+=======
+          <div
+            className={`p-6 rounded-xl shadow-xl w-full max-w-md ${theme === 'dark' ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-900'}`}
+            onClick={(e) => e.stopPropagation()}
+>>>>>>> 96a8f29 (First commit)
           >
             <h3 className={`text-xl font-semibold mb-5 ${language === 'ar' ? 'font-cairo' : 'font-poppins'} ${theme === 'dark' ? 'text-orange-400' : 'text-orange-600'}`}>
               {linkingModalState.serviceName === 'WhatsApp' ? t('linkWithWhatsAppTitle') : t('linkWithTelegramTitle')}
             </h3>
             <div className={`flex justify-center mb-5 p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'}`}>
+<<<<<<< HEAD
 <<<<<<< HEAD
               <img 
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MockLinkTo${linkingModalState.serviceName}-${Date.now()}&bgcolor=${theme === 'dark' ? '374151' : 'f3f4f6'}&color=${theme === 'dark' ? 'e5e7eb' : '1f2937'}`} 
@@ -455,6 +563,11 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MockLinkTo${linkingModalState.serviceName}-${Date.now()}&bgcolor=${theme === 'dark' ? '374151' : 'f3f4f6'}&color=${theme === 'dark' ? 'e5e7eb' : '1f2937'}`}
                 alt={t('linkQrCodeAlt')}
 >>>>>>> bee2d85 (updated)
+=======
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=MockLinkTo${linkingModalState.serviceName}-${Date.now()}&bgcolor=${theme === 'dark' ? '374151' : 'f3f4f6'}&color=${theme === 'dark' ? 'e5e7eb' : '1f2937'}`}
+                alt={t('linkQrCodeAlt')}
+>>>>>>> 96a8f29 (First commit)
                 className={`rounded-md border ${theme === 'dark' ? 'border-gray-600' : 'border-gray-300'}`}
               />
             </div>
@@ -479,15 +592,22 @@ const SettingsView: React.FC<SettingsViewProps> = ({ engineers, supervisors, tea
         </div>
       )}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     </div>
   );
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default SettingsView;
 =======
 export default SettingsView;
 >>>>>>> bee2d85 (updated)
+=======
+export default SettingsView;
+>>>>>>> 96a8f29 (First commit)

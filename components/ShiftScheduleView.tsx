@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Team, Supervisor, ShiftType, Language } from '../types';
@@ -26,6 +27,8 @@ const ShiftScheduleView: React.FC<ShiftScheduleViewProps> = ({ teams, supervisor
     return allEmployees.filter(emp => emp.teamId === teamId);
   };
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Team, Supervisor, ShiftType, Language, Occasion, TranslationSet, DailyShiftAssignment } from '../types'; 
@@ -358,12 +361,16 @@ const ShiftScheduleView: React.FC<ShiftScheduleViewProps> = ({ teams: propTeams,
       };
     });
   }, [yearlySchedule, currentMonthDate.getFullYear(), language, t, anchorDateForT1T2Start]);
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
   const toggleTeamDetails = (teamId: string) => {
     setExpandedTeamId(expandedTeamId === teamId ? null : teamId);
   };
   
+<<<<<<< HEAD
 <<<<<<< HEAD
   const getShiftDisplayName = (shiftType: ShiftType) => {
     switch(shiftType) {
@@ -475,6 +482,8 @@ const ShiftScheduleView: React.FC<ShiftScheduleViewProps> = ({ teams: propTeams,
       <p className={`mt-8 text-xs md:text-sm text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
         {language === 'ar' ? 'جدول الورديات ده معمول عشان راحتك، متنساش تشيك عليه كل يوم الصبح وبالليل قبل ما تنام عشان متلبسش في الحيط.' : 'This schedule is for your convenience. Check it daily so you don\'t get surprised!'} 😉
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   const changeMonth = (direction: 'prev' | 'next') => {
     setCurrentMonthDate(prev => {
         const newDate = new Date(prev);
@@ -570,14 +579,21 @@ const ShiftScheduleView: React.FC<ShiftScheduleViewProps> = ({ teams: propTeams,
       </div>
       <p className={`mt-8 text-xs text-center ${secondaryTextColor}`}>
         {language === 'ar' ? 'جداول الورديات دي كنز يا فهلوي، استخدمها بحكمة!' : 'These shift schedules are a treasure, Fahlawy, use them wisely!'}
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
       </p>
     </div>
   );
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default ShiftScheduleView;
 =======
 export default ShiftScheduleView;
 >>>>>>> bee2d85 (updated)
+=======
+export default ShiftScheduleView;
+>>>>>>> 96a8f29 (First commit)

@@ -1,16 +1,22 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Language, ViewName } from '../types'; 
 import { ThemeContext, ToastContext } from '../App'; 
 import { Auth, signOut } from "firebase/auth"; // Changed from compat to modular
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Language, ViewName, TranslationSet, LoggedInUser } from '../types';
 import { Theme, ThemeContext } from '../contexts/ThemeContext';
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
 // Heroicons
 const Bars3Icon: React.FC<{ className?: string }> = ({ className }) => (
@@ -20,7 +26,10 @@ const XMarkIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
 );
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const UserCircleIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
 );
@@ -33,11 +42,15 @@ const SunIcon: React.FC<{ className?: string }> = ({ className }) => (
 const MoonIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
 );
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 const BellIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>
 );
 const GlobeAltIcon: React.FC<{ className?: string }> = ({ className }) => (
+<<<<<<< HEAD
 <<<<<<< HEAD
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.978 11.978 0 0112 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686-3.536A8.959 8.959 0 0021 12c0 .778-.099 1.533-.284 2.253m0 0A11.978 11.978 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918" /></svg>
 );
@@ -50,6 +63,8 @@ const Cog6ToothIcon: React.FC<{ className?: string }> = ({ className }) => (
 const ArrowRightOnRectangleIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0v0" /></svg>
 );
 const SpeakerWaveIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -66,12 +81,16 @@ const EyeSlashIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 const EyeIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 );
 
 
 interface HeaderProps {
   onNavigate: (view: ViewName) => void;
+<<<<<<< HEAD
 <<<<<<< HEAD
   toggleSidebar: () => void;
   isSidebarOpen: boolean;
@@ -97,6 +116,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleSidebar, isSidebarOpe
     const timerId = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timerId);
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   isLoggedIn: boolean;
   onLogout: () => void;
   setCurrentView: React.Dispatch<React.SetStateAction<ViewName>>;
@@ -126,11 +147,15 @@ export const Header: React.FC<HeaderProps> = ({
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 60000);
     return () => clearInterval(timer);
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
       if (profileDropdownRef.current && !profileDropdownRef.current.contains(event.target as Node)) {
         setProfileDropdownOpen(false);
@@ -138,18 +163,24 @@ export const Header: React.FC<HeaderProps> = ({
       if (notificationDropdownRef.current && !notificationDropdownRef.current.contains(event.target as Node)) {
         setIsNotificationPanelOpen(false);
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
       if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
         setShowUserMenu(false);
       }
       if (notificationsRef.current && !notificationsRef.current.contains(event.target as Node)) {
         setShowNotifications(false);
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const handleLogout = async () => {
     try {
@@ -284,6 +315,8 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
               )}
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang);
   };
@@ -378,12 +411,16 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </div>
             )}
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
           </div>
         )}
       </div>
     </header>
   );
+<<<<<<< HEAD
 <<<<<<< HEAD
 };
 
@@ -391,3 +428,6 @@ export default Header;
 =======
 };
 >>>>>>> bee2d85 (updated)
+=======
+};
+>>>>>>> 96a8f29 (First commit)

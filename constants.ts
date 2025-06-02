@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 import { Engineer, Supervisor, Team, UserRole, Translations, Language, ShiftType, Employee } from './types';
@@ -608,6 +609,9 @@ export const initialTranslations: Translations = {
   },
 };
 =======
+=======
+
+>>>>>>> 96a8f29 (First commit)
 import { Engineer, Supervisor, Team, UserRole, Language, ShiftType as AppShiftType, Employee, TranslationSet, PrayerName, Occasion, EquipmentLogbookItem, PermitToWorkItem, PermitStatus, SafetyObservationItem, SafetyObservationCategory, ShiftHandoverNoteItem, ShiftHandoverNoteCategory, KnowledgeBaseTipItem, UnitConversionDefinition, EmergencyContactItem, EmergencyProcedureItem, InternalAnnouncementItem, ToolboxTalkItem, ChemicalReferenceItem, PetroWikiTerm, ReportItem } from './types'; // Added ReportItem
 
 export const APP_NAME = "Petro-Tech Pro";
@@ -1590,7 +1594,11 @@ const ARABIC_TRANSLATIONS_OBJECT: TranslationSet = {
   panicButtonActivatedToast: "تم تفعيل زر الطوارئ! (تجريبي - سيتم إرسال تنبيهات للمعنيين).",
 
   // Daily Reports
+<<<<<<< HEAD
   viewName_dailyReports: "التقارير اليومية",
+=======
+  // viewName_dailyReports: "التقارير اليومية", // Duplicate key, first occurrence is at line 983
+>>>>>>> 96a8f29 (First commit)
   description_dailyReports: "سجل تقاريرك اليومية عن الوردية، عشان كل حاجة تبقى متسجلة ومفيش معلومة تروح.",
   dailyReportsTitle: "التقارير اليومية",
   dailyReportsAddReport: "إضافة تقرير جديد",
@@ -2402,7 +2410,11 @@ const ENGLISH_TRANSLATIONS_OBJECT: TranslationSet = {
   adminDashboardFirebaseInfo: "Here you can set up the connection with Firebase Database for centralized and secure data storage. (This feature is experimental and requires actual setup in the code).",
   adminFirebaseLinkButton: "Start Linking Process (Demo)",
   panicButtonActivatedToast: "Panic Button Activated! (Demo - Relevant personnel will be notified).",
+<<<<<<< HEAD
   viewName_dailyReports: "Daily Reports",
+=======
+  // viewName_dailyReports: "Daily Reports", // Duplicate key, first one is at line 1797
+>>>>>>> 96a8f29 (First commit)
   description_dailyReports: "Log your daily shift reports, so everything is recorded and no information is lost.",
   dailyReportsTitle: "Daily Reports",
   dailyReportsAddReport: "Add New Report",
@@ -2417,5 +2429,9 @@ const ENGLISH_TRANSLATIONS_OBJECT: TranslationSet = {
 export const initialTranslations: Record<Language, TranslationSet> = {
   [Language.AR]: ARABIC_TRANSLATIONS_OBJECT,
   [Language.EN]: ENGLISH_TRANSLATIONS_OBJECT,
+<<<<<<< HEAD
 };
 >>>>>>> bee2d85 (updated)
+=======
+};
+>>>>>>> 96a8f29 (First commit)

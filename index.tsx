@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -82,6 +83,8 @@ if (!rootElement) {
   // This check is a bit redundant if Firebase fails above and replaces innerHTML,
   // but good for general sanity.
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App'; // Correct relative path import
@@ -91,7 +94,10 @@ import { Language } from './types'; // Added import for Language enum
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   console.error("CRITICAL: Could not find root element to mount React app.");
   const body = document.body;
   if(body) {
@@ -111,6 +117,7 @@ if (!rootElement) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
@@ -122,6 +129,8 @@ root.render(
 // Note: analytics is initialized asynchronously and might be null initially.
 export { db, auth, rtdb, analytics };
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 // Determine initial language here
 const getInitialLanguage = (): Language => {
   try {
@@ -148,5 +157,9 @@ root.render(
   </React.StrictMode>
 );
 
+<<<<<<< HEAD
 export {}; // Keep it as a module
 >>>>>>> bee2d85 (updated)
+=======
+export {}; // Keep it as a module
+>>>>>>> 96a8f29 (First commit)

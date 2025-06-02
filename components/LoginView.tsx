@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useContext } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ThemeContext, ToastContext } from '../App';
@@ -15,14 +16,25 @@ const ArrowPathIcon: React.FC<{ className?: string }> = ({ className }) => ( // 
   </svg>
 );
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import React, { useState, useContext, useEffect } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { ViewName, UserRole, LoggedInUser, ActivityLogType, TranslationSet } from '../types';
+<<<<<<< HEAD
 import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
 import { useActivityLog } from '../hooks/useActivityLog'; 
 
 >>>>>>> bee2d85 (updated)
+=======
+import { ToastContext } from '../contexts/ToastContext'; 
+import { useActivityLog } from '../hooks/useActivityLog'; 
+import { auth } from '../firebase'; // Firebase Auth
+import { sendPasswordResetEmail } from 'firebase/auth';
+
+
+>>>>>>> 96a8f29 (First commit)
 const EnvelopeIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -33,6 +45,7 @@ const LockClosedIcon: React.FC<{ className?: string }> = ({ className }) => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
   </svg>
 );
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 interface LoginViewProps {
@@ -62,6 +75,8 @@ const LoginView: React.FC<LoginViewProps> = ({ auth, onNavigate, showErrorModal 
   const { theme } = useContext(ThemeContext);
   // const { addToast } = useContext(ToastContext); // addToast might still be used for non-critical info
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const FireIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
@@ -120,27 +135,45 @@ const AnimatedFingerprintIcon: React.FC<{ className?: string }> = ({ className }
 interface LoginViewProps {
   onNavigate: (view: ViewName) => void;
   showErrorModal: (title: string, message: string) => void;
+<<<<<<< HEAD
   onMockLogin: (user: LoggedInUser) => void;
 }
 
 const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMockLogin }) => {
+=======
+  onFirebaseLogin: (emailVal: string, passwordVal: string) => Promise<void>; // Updated prop
+  onPasswordReset: (emailVal: string) => Promise<void>; // New prop
+}
+
+const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onFirebaseLogin, onPasswordReset }) => {
+>>>>>>> 96a8f29 (First commit)
   const { t, language } = useLanguageContext();
   const { theme } = React.useContext(ThemeContext);
   const { addToast } = useContext(ToastContext);
   const { addActivityLogEntry } = useActivityLog(); 
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   const [isBiometricSupportedState, setIsBiometricSupportedState] = useState(false);
   const [isBiometricEnabledState, setIsBiometricEnabledState] = useState(false);
 
   useEffect(() => {
     const checkBiometricSupport = async () => {
+<<<<<<< HEAD
         if (navigator.credentials && typeof navigator.credentials.get === 'function' && PublicKeyCredential && PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable) {
+=======
+        if (navigator.credentials && typeof navigator.credentials.get === 'function' && typeof PublicKeyCredential !== 'undefined' && PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable) {
+>>>>>>> 96a8f29 (First commit)
             try {
                 const available = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
                 setIsBiometricSupportedState(available);
@@ -156,11 +189,15 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
     const bioEnabledSetting = localStorage.getItem('biometricLoginEnabled');
     setIsBiometricEnabledState(bioEnabledSetting === 'true');
   }, []);
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) {
+<<<<<<< HEAD
 <<<<<<< HEAD
       showErrorModal(t('loginTitle'), language === 'ar' ? 'يا ريس، دخل الإيميل والباسورد الأول!' : 'Boss, enter email and password first!');
       return;
@@ -215,10 +252,13 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
   const appLogoColor = theme === 'dark' ? 'text-blue-500' : 'text-blue-600';
   
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
       showErrorModal(t('loginTitle'), language === 'ar' ? 'يا ريس، دخل الإيميل والباسورد الأول عشان نعرفك! 🧐' : 'Boss, enter email and password first so we know who you are! 🧐');
       return;
     }
     setIsLoading(true);
+<<<<<<< HEAD
     setTimeout(() => {
       if (email.toLowerCase() === "test@example.com" && password === "password") {
         const mockUser: LoggedInUser = {
@@ -247,6 +287,14 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
     }
     addToast(t('loginPasswordResetSent'), 'success');
     addActivityLogEntry(ActivityLogType.PasswordResetRequested, 'activityLogEntryPasswordResetRequested', { userName: 'anonymous', email });
+=======
+    await onFirebaseLogin(email, password); // Use the passed Firebase login function
+    setIsLoading(false);
+  };
+
+  const handleForgotPassword = () => {
+    onPasswordReset(email);
+>>>>>>> 96a8f29 (First commit)
   };
 
   const handleBiometricLogin = () => {
@@ -261,6 +309,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
         return;
     }
     setIsLoading(true);
+<<<<<<< HEAD
     // Mock Biometric Login
     setTimeout(() => {
         const mockBioUser: LoggedInUser = {
@@ -277,6 +326,25 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
         onMockLogin(mockBioUser);
         addToast(t('loginBiometricSuccessToast'), 'success');
         addActivityLogEntry(ActivityLogType.BiometricLoginAttempt, 'activityLogEntryBiometricLoginAttempt', { userName: mockBioUser.name, status: 'success' });
+=======
+    // Actual biometric login logic will be handled by Firebase if implemented via WebAuthn
+    // For this mock, we'll simulate a successful biometric login.
+    // In a real app, this would call a function passed from App.tsx that triggers Firebase WebAuthn flow.
+    setTimeout(async () => {
+        // Simulate successful biometric auth by directly calling onFirebaseLogin with mock/retrieved credentials
+        // This is a placeholder. Real biometric would not use email/password.
+        // It would verify a credential and then perhaps sign in with a custom token or existing session.
+        // For now, let's assume biometric success leads to calling onFirebaseLogin with demo credentials.
+        // This part needs to be thought out for a real implementation.
+        // For demo purposes, let's use the entered email and a placeholder password.
+        if (email) {
+             await onFirebaseLogin(email, "biometric_placeholder_password"); // This is NOT secure. For demo only.
+        } else {
+            showErrorModal(t('loginTitle'), "Email required for biometric demo login.");
+        }
+        addToast(t('loginBiometricSuccessToast'), 'success');
+        addActivityLogEntry(ActivityLogType.BiometricLoginAttempt, 'activityLogEntryBiometricLoginAttempt', { userName: email || 'biometric_user', status: 'success_mock' });
+>>>>>>> 96a8f29 (First commit)
         setIsLoading(false);
     }, 1200);
   };
@@ -295,7 +363,10 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
   const linkColor = theme === 'dark' ? 'text-bright-yellow hover:text-yellow-300' : 'text-marine-blue hover:text-blue-700';
   const appLogoColor = theme === 'dark' ? 'text-bright-yellow' : 'text-marine-blue';
 
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   const inputPadding = language === 'ar' ? 'pr-10' : 'pl-10';
   const iconPosition = language === 'ar' ? 'right-3' : 'left-3';
 
@@ -304,20 +375,26 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
       <div className={`w-full max-w-md p-8 md:p-10 rounded-xl shadow-2xl ${cardBg}`}>
         <div className="text-center mb-8">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <ArrowPathIcon className={`h-12 w-12 mx-auto mb-4 ${appLogoColor}`} />
           <h1 className={`text-2xl md:text-3xl font-bold ${textColor}`}>{t('loginTitle')}</h1>
           <p className={`text-sm mt-2 ${secondaryTextColor}`}>
             {language === 'ar' ? 'مرحباً بك مجدداً! جاهز للشغل؟' : 'Welcome back! Ready for your shift?'}
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
           <FireIcon className={`h-12 w-12 mx-auto mb-2 ${appLogoColor} animate-pulse-slow`} />
           <h1 className={`text-2xl md:text-3xl font-bold ${textColor}`}>{t('loginTitle')}</h1>
           <p className={`text-sm mt-1 ${secondaryTextColor}`}>
             {t('ugdcWelcome')}
           </p>
+<<<<<<< HEAD
            <p className={`text-xs mt-1 ${theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'}`}>
             {language === 'ar' ? 'استخدم: test@example.com / password للدخول يا فنان 😉' : 'Use: test@example.com / password to enter, artist 😉'}
 >>>>>>> bee2d85 (updated)
           </p>
+=======
+>>>>>>> 96a8f29 (First commit)
         </div>
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
@@ -325,10 +402,14 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
             <div className="relative">
               <div className={`absolute inset-y-0 ${iconPosition} flex items-center pointer-events-none`}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <EnvelopeIcon className={`h-5 w-5 ${iconColor}`} />
 =======
                 <EnvelopeIcon className={`h-5 w-5 ${iconColor} transition-transform group-focus-within:scale-110`} />
 >>>>>>> bee2d85 (updated)
+=======
+                <EnvelopeIcon className={`h-5 w-5 ${iconColor} transition-transform group-focus-within:scale-110`} />
+>>>>>>> 96a8f29 (First commit)
               </div>
               <input
                 type="email"
@@ -337,12 +418,17 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
                 onChange={(e) => setEmail(e.target.value)}
                 required
 <<<<<<< HEAD
+<<<<<<< HEAD
                 className={`w-full p-3.5 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 ${inputPadding} ${inputBg} ${inputBorder} ${textColor} ${inputPlaceholderColor}`}
                 placeholder={language === 'ar' ? 'ايميلك يا بطل...' : 'Your email, champ...'}
 =======
                 className={`w-full p-3.5 border rounded-lg shadow-sm focus:ring-2 ${inputPadding} ${inputBg} ${inputBorder} ${textColor} ${inputPlaceholderColor} group`}
                 placeholder={language === 'ar' ? 'ايميلك يا بطل الكون...' : 'Your email, champ of the universe...'}
 >>>>>>> bee2d85 (updated)
+=======
+                className={`w-full p-3.5 border rounded-lg shadow-sm focus:ring-2 ${inputPadding} ${inputBg} ${inputBorder} ${textColor} ${inputPlaceholderColor} group`}
+                placeholder={language === 'ar' ? 'ايميلك يا بطل الكون...' : 'Your email, champ of the universe...'}
+>>>>>>> 96a8f29 (First commit)
               />
             </div>
           </div>
@@ -351,10 +437,14 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
             <div className="relative">
               <div className={`absolute inset-y-0 ${iconPosition} flex items-center pointer-events-none`}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <LockClosedIcon className={`h-5 w-5 ${iconColor}`} />
 =======
                 <LockClosedIcon className={`h-5 w-5 ${iconColor} transition-transform group-focus-within:scale-110`} />
 >>>>>>> bee2d85 (updated)
+=======
+                <LockClosedIcon className={`h-5 w-5 ${iconColor} transition-transform group-focus-within:scale-110`} />
+>>>>>>> 96a8f29 (First commit)
               </div>
               <input
                 type="password"
@@ -363,11 +453,14 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
                 onChange={(e) => setPassword(e.target.value)}
                 required
 <<<<<<< HEAD
+<<<<<<< HEAD
                 className={`w-full p-3.5 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 ${inputPadding} ${inputBg} ${inputBorder} ${textColor} ${inputPlaceholderColor}`}
                 placeholder={language === 'ar' ? 'كلمة المرور السرية...' : 'Your secret password...'}
               />
             </div>
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
                 className={`w-full p-3.5 border rounded-lg shadow-sm focus:ring-2 ${inputPadding} ${inputBg} ${inputBorder} ${textColor} ${inputPlaceholderColor} group`}
                 placeholder={language === 'ar' ? 'كلمة سر محدش يعرفها غيرك... 😉' : 'Your top-secret password... 😉'}
               />
@@ -382,12 +475,16 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
                 {t('loginForgotPasswordPrompt')}
               </button>
             </div>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
           </div>
           <button
             type="submit"
             disabled={isLoading}
             className={`w-full py-3 px-4 rounded-lg font-semibold text-base transition-colors duration-150 ease-in-out shadow-md hover:shadow-lg transform hover:scale-[1.02]
+<<<<<<< HEAD
 <<<<<<< HEAD
               ${isLoading 
                 ? `${buttonDisabledBg} text-gray-300 cursor-not-allowed` 
@@ -398,6 +495,8 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
             {isLoading ? (language === 'ar' ? 'لحظات يا ريس...' : 'Logging in...') : t('loginButton')}
           </button>
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
               ${isLoading
                 ? `${buttonDisabledBg} text-gray-300 cursor-not-allowed`
                 : `${buttonPrimaryBg}`
@@ -424,7 +523,10 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
               </button>
           )}
 
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
         </form>
         <div className="mt-8 text-center">
           <button
@@ -443,7 +545,11 @@ const LoginView: React.FC<LoginViewProps> = ({ onNavigate, showErrorModal, onMoc
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default LoginView;
 =======
 export default LoginView;
 >>>>>>> bee2d85 (updated)
+=======
+export default LoginView;
+>>>>>>> 96a8f29 (First commit)

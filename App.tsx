@@ -1,6 +1,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useCallback, ReactNode } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { useLanguageContext } from './hooks/useLanguage';
@@ -14,6 +15,8 @@ import ShipManagementView from './components/ShipManagementView';
 import SettingsView from './components/SettingsView';
 import FunStuffView from './components/FunStuffView';
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import React, { useState, useEffect, useCallback, ReactNode, Dispatch, SetStateAction, useRef } from 'react';
 import { useLanguageContext } from './hooks/useLanguage';
 import SplashScreen from './components/SplashScreen';
@@ -25,7 +28,10 @@ import DailyTasksView, { DailyTasksViewProps } from './components/DailyTasksView
 import ShipManagementView from './components/ShipManagementView';
 import SettingsView, { SettingsViewProps } from './components/SettingsView';
 import { FunStuffView } from './components/FunStuffView';
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 import LeaveRequestView from './components/LeaveRequestView';
 import ChatView from './components/ChatView';
 import KanbanView from './components/KanbanView';
@@ -34,6 +40,7 @@ import AccidentReportView from './components/AccidentReportView';
 import Footer from './components/Footer';
 import ProfileView from './components/ProfileView';
 import LoginView from './components/LoginView';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import SignupView from './components/SignupView';
 import ErrorModal from './components/ErrorModal'; // Import ErrorModal
@@ -69,6 +76,11 @@ import SignupView from './components/SignupView';
 import ErrorModal from './components/ErrorModal';
 // import ComingSoonView from './components/ComingSoonView'; // Replaced by TrainingCoursesView
 import TrainingCoursesView from './components/TrainingCoursesView'; // Added
+=======
+import SignupView from './components/SignupView'; 
+import ErrorModal from './components/ErrorModal';
+import TrainingCoursesView from './components/TrainingCoursesView'; 
+>>>>>>> 96a8f29 (First commit)
 import PersonalHubView from './components/PersonalHubView';
 import { AiMaintenanceGuideView } from './components/AiMaintenanceGuideView';
 import { AiShiftSchedulerView } from './components/AiShiftSchedulerView';
@@ -76,7 +88,10 @@ import SmartShiftEnhancerView from './components/SmartShiftEnhancerView';
 import SmartMaintenanceEnhancerView from './components/SmartMaintenanceEnhancerView';
 import ActivityLogView from './components/ActivityLogView';
 import AdvancedCalculatorView from './components/AdvancedCalculatorView';
+<<<<<<< HEAD
 // Import new service views
+=======
+>>>>>>> 96a8f29 (First commit)
 import EquipmentLogbookView from './components/EquipmentLogbookView';
 import PermitToWorkView from './components/PermitToWorkView';
 import SafetyObservationView from './components/SafetyObservationView';
@@ -89,22 +104,40 @@ import ToolboxTalksView from './components/ToolboxTalksView';
 import ChemicalReferenceView from './components/ChemicalReferenceView';
 import PetroGeniusView from './components/PetroGeniusView';
 import PetroWikiView from './components/PetroWikiView';
+<<<<<<< HEAD
 import AdminDashboardView from './components/AdminDashboardView'; // Added AdminDashboardView
 
+=======
+import AdminDashboardView from './components/AdminDashboardView'; 
+>>>>>>> 96a8f29 (First commit)
 
 import { UserRole, Engineer, Supervisor, Team, ShipCargoType, ShipStatus, Ship, Pump, Language, ViewName, Employee, LoggedInUser, ActivityLogType, TranslationSet, User, DailyShiftAssignment, ShiftType as AppShiftType } from './types'; // Updated types import
 import { ENGINEERS, SUPERVISORS, TEAMS, initialTranslations, COMPANY_SHORT_NAME_EN, COMPANY_SHORT_NAME_AR, APP_NAME, APP_NAME_AR, FAHLOWY_OCCASIONS } from './constants';
 import { Theme, ThemeContext } from './contexts/ThemeContext';
 import { useActivityLog } from './hooks/useActivityLog';
+<<<<<<< HEAD
 import { ToastContext, ToastMessage, ToastType } from './contexts/ToastContext'; // UPDATED IMPORT
 import { playFahlawySound } from './utils/sounds'; // UPDATED IMPORT
 
 // --- START OF MOCK DATA & HELPERS ---
+=======
+import { ToastContext, ToastMessage, ToastType } from './contexts/ToastContext'; 
+import { playFahlawySound } from './utils/sounds'; 
+
+import { auth, db, storage } from './firebase'; // Firebase integration
+import { onAuthStateChanged, User as FirebaseUser, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { ref, set, get, serverTimestamp, update, push, child } from 'firebase/database';
+import { ref as storageRef, uploadString, getDownloadURL, deleteObject } from 'firebase/storage';
+
+
+// --- START OF MOCK DATA & HELPERS (To be gradually replaced by Firebase) ---
+>>>>>>> 96a8f29 (First commit)
 const MOCK_SHIPS: Ship[] = [
   { id: 'ship1', name: 'Nefertiti Gas Carrier', status: ShipStatus.Import, cargoType: ShipCargoType.LPG, quantityRemaining: 15000, quantityPerHour: 500, eta: new Date(Date.now() + 3600000 * 2).toISOString(), pumps: [{id: 'p1', name: 'Main Cargo Pump A', status: 'Running'}, {id: 'p2', name: 'Auxiliary Pump B', status: 'Standby'}] },
   { id: 'ship2', name: 'Abu Saree\' LNG Tanker', status: ShipStatus.Docked, cargoType: ShipCargoType.LNG, quantityRemaining: 25000, quantityPerHour: 1000, pumps: [{id: 'p3', name: 'LNG Pump Alpha', status: 'Running'}, {id: 'p4', name: 'LNG Pump Beta', status: 'Running'}]},
   { id: 'ship3', name: 'Om Hashem Propane Vessel', status: ShipStatus.Export, cargoType: ShipCargoType.Propane, quantityRemaining: 8000, quantityPerHour: 300, eta: new Date(Date.now() + 3600000 * 5).toISOString(), pumps: [{id: 'p5', name: 'Propane Pump X', status: 'Standby'}]},
 ];
+<<<<<<< HEAD
 
 const MOCK_USER_TEMPLATE_BASE: Omit<User & { expertisePoints: number }, 'id' | 'role' | 'avatarUrl'> & { role: UserRole.Engineer } = {
   name: 'خبير بتروتك تجريبي',
@@ -119,6 +152,10 @@ const MOCK_USER_TEMPLATE_BASE: Omit<User & { expertisePoints: number }, 'id' | '
 // ToastContext and ToastMessage are now imported from './contexts/ToastContext'
 // playFahlawySound is now imported from './utils/sounds'
 >>>>>>> bee2d85 (updated)
+=======
+// --- END OF MOCK DATA ---
+
+>>>>>>> 96a8f29 (First commit)
 
 interface ErrorModalConfig {
   isOpen: boolean;
@@ -126,6 +163,7 @@ interface ErrorModalConfig {
   message: string;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const ToastNotificationContainer: React.FC<{ toasts: ToastMessage[]; onDismiss: (id: number) => void }> = ({ toasts, onDismiss }) => {
   const { language } = useLanguageContext();
@@ -170,6 +208,8 @@ const ToastNotification: React.FC<ToastMessage & { onDismiss: (id: number) => vo
     <div className={`toast-notification show ${bgColor} ${textColor} shadow-xl rounded-lg`}>
       {message}
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const CheckCircleIcon: React.FC<{ className?: string }> = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
 const InformationCircleIcon: React.FC<{ className?: string }> = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>;
 const ExclamationTriangleIconReact: React.FC<{ className?: string }> = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>;
@@ -215,11 +255,15 @@ const ToastNotificationContainer: React.FC<{ toasts: ToastMessage[]; onDismiss: 
             </div>
         );
     })}
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     </div>
   );
 };
 
+<<<<<<< HEAD
 const OfflineBanner: React.FC = () => {
 <<<<<<< HEAD
   const { language } = useLanguageContext();
@@ -264,6 +308,8 @@ const AppContent: React.FC = () => {
   const [authLoading, setAuthLoading] = useState(true);
   const [errorModalConfig, setErrorModalConfig] = useState<ErrorModalConfig | null>(null);
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const QURAN_RADIO_URL = "http://stream.radiojar.com/8s5u5tpdtwzuv";
 
 interface AppContentProps {
@@ -279,11 +325,16 @@ const AppContent: React.FC<AppContentProps> = ({
   isFocusMode, toggleFocusMode 
 }) => {
   const [showSplash, setShowSplash] = useState(true);
+<<<<<<< HEAD
   const [currentView, setCurrentView] = useState<ViewName>('dashboard');
+=======
+  const [currentView, setCurrentView] = useState<ViewName>('login'); // Default to login
+>>>>>>> 96a8f29 (First commit)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const { language, t } = useLanguageContext();
   const { theme } = React.useContext(ThemeContext);
+<<<<<<< HEAD
   const { addToast } = React.useContext(ToastContext); // Using imported ToastContext
   const { addActivityLogEntry } = useActivityLog();
 
@@ -297,6 +348,20 @@ const AppContent: React.FC<AppContentProps> = ({
 
 >>>>>>> bee2d85 (updated)
 
+=======
+  const { addToast } = React.useContext(ToastContext); 
+  const { addActivityLogEntry } = useActivityLog();
+
+  const [loggedInUser, setLoggedInUser] = useState<LoggedInUser | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [errorModalConfig, setErrorModalConfig] = useState<ErrorModalConfig | null>(null);
+  
+  const [ships] = useState<Ship[]>(MOCK_SHIPS); // Keep mock ships for now
+  const [engineersList] = useState<Engineer[]>(ENGINEERS); // Keep mock lists for now
+  const [supervisorsList] = useState<Supervisor[]>(SUPERVISORS);
+  const [teamsData] = useState<Team[]>(TEAMS);
+
+>>>>>>> 96a8f29 (First commit)
   const showErrorModal = (title: string, message: string) => {
     setErrorModalConfig({ isOpen: true, title, message });
   };
@@ -304,6 +369,7 @@ const AppContent: React.FC<AppContentProps> = ({
     setErrorModalConfig(null);
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   useEffect(() => {
@@ -467,10 +533,62 @@ const AppContent: React.FC<AppContentProps> = ({
           setLoggedInUser(fallbackUserOnError);
           setCurrentUserRole(UserRole.Employee);
           setCurrentView('dashboard');
+=======
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser: FirebaseUser | null) => {
+      if (firebaseUser) {
+        try {
+          const userRef = ref(db, `users/${firebaseUser.uid}`);
+          const snapshot = await get(userRef);
+          if (snapshot.exists()) {
+            const dbUser = snapshot.val();
+            setLoggedInUser({
+              id: firebaseUser.uid,
+              firebaseUid: firebaseUser.uid,
+              name: dbUser.name || firebaseUser.displayName || 'Fahlawy User',
+              email: dbUser.email || firebaseUser.email || '',
+              role: dbUser.role || UserRole.Employee, // Default role if not in DB
+              teamId: dbUser.teamId,
+              phone: dbUser.phone,
+              avatarUrl: dbUser.avatarUrl || firebaseUser.photoURL,
+              expertisePoints: dbUser.expertisePoints || 0,
+              createdAt: dbUser.createdAt // ensure createdAt is part of the type if used
+            } as LoggedInUser); // Cast as LoggedInUser
+            if(!showSplash){ // Avoid double welcome
+                const welcomeMsg = t('welcomeMessage' as keyof TranslationSet, language === Language.AR ? `يا صباح الفل يا ${dbUser.name || firebaseUser.displayName}!` : `Welcome back, ${dbUser.name || firebaseUser.displayName}!`);
+                addToast(welcomeMsg.replace('{name}', dbUser.name || firebaseUser.displayName || 'Fahlawy'), 'success');
+            }
+            setCurrentView('dashboard');
+          } else {
+            // User exists in Auth but not in DB (e.g., signup incomplete or error)
+            // Create a basic profile.
+            const defaultRole = UserRole.Employee;
+            const newUserProfileData: Omit<User, 'id'> = { // Use Omit<User, 'id'>
+                name: firebaseUser.displayName || firebaseUser.email?.split('@')[0] || 'New Fahlawy',
+                email: firebaseUser.email || '',
+                role: defaultRole,
+                expertisePoints: 0,
+                createdAt: serverTimestamp() // Firebase server timestamp
+            };
+            await set(ref(db, `users/${firebaseUser.uid}`), newUserProfileData);
+            setLoggedInUser({ 
+                id: firebaseUser.uid, 
+                firebaseUid: firebaseUser.uid,
+                ...newUserProfileData 
+            } as LoggedInUser); // Cast to LoggedInUser
+            setCurrentView('dashboard');
+            addToast(t('welcomeMessage' as keyof TranslationSet, `Welcome, ${newUserProfileData.name}! Setup your profile.`), 'info');
+          }
+        } catch (error: any) {
+          console.error("Error fetching/creating user data in DB:", error);
+          showErrorModal(t('profileDataLoadError'), error.message);
+          setLoggedInUser(null); // Fallback to logged out state
+>>>>>>> 96a8f29 (First commit)
         }
       } else {
         setLoggedInUser(null);
         setCurrentView('login');
+<<<<<<< HEAD
         setCurrentUserRole(UserRole.Employee); 
       }
       setAuthLoading(false);
@@ -553,6 +671,79 @@ const AppContent: React.FC<AppContentProps> = ({
       return finalUser;
     });
   }, [setLoggedInUser, addActivityLogEntry]);
+=======
+      }
+      setAuthLoading(false);
+      setShowSplash(false); // Hide splash after auth check
+    });
+    return () => unsubscribe();
+  }, [addToast, t, language]); // Removed showSplash from dependencies
+
+  useEffect(() => {
+    // Ensure splash hides if auth is very fast or if it gets stuck
+    const splashTimeout = setTimeout(() => {
+        if(showSplash && !authLoading) setShowSplash(false);
+    }, 2500); // Increased timeout slightly
+    return () => clearTimeout(splashTimeout);
+  }, [showSplash, authLoading]);
+
+
+  const updateLoggedInUser = useCallback(async (updatedFields: Partial<LoggedInUser>) => {
+    if (!loggedInUser || !loggedInUser.firebaseUid) return;
+
+    const userRef = ref(db, `users/${loggedInUser.firebaseUid}`);
+    
+    let oldAvatarUrl: string | undefined = undefined;
+
+    if (updatedFields.avatarUrl && updatedFields.avatarUrl.startsWith('data:image')) {
+      // New avatar to upload
+      const currentAvatarPath = loggedInUser.avatarUrl && loggedInUser.avatarUrl.includes('firebasestorage.googleapis.com') 
+        ? loggedInUser.avatarUrl.split('/').pop()?.split('?')[0] // extract path from URL
+        : null;
+
+      if (currentAvatarPath && currentAvatarPath.startsWith(`avatars/${loggedInUser.firebaseUid}`)) {
+          oldAvatarUrl = loggedInUser.avatarUrl; // Store old URL to delete after new upload
+      }
+      
+      const newAvatarRef = storageRef(storage, `avatars/${loggedInUser.firebaseUid}/${Date.now()}`);
+      try {
+        const uploadResult = await uploadString(newAvatarRef, updatedFields.avatarUrl, 'data_url');
+        updatedFields.avatarUrl = await getDownloadURL(uploadResult.ref);
+        
+        if (oldAvatarUrl && oldAvatarUrl !== updatedFields.avatarUrl) {
+            try {
+                const oldAvatarStorageRef = storageRef(storage, oldAvatarUrl);
+                await deleteObject(oldAvatarStorageRef);
+            } catch (deleteError) {
+                console.warn("Failed to delete old avatar:", deleteError);
+            }
+        }
+
+      } catch (error: any) {
+        console.error("Avatar upload failed:", error);
+        addToast("Failed to upload new avatar.", "alert");
+        delete updatedFields.avatarUrl; 
+      }
+    }
+    
+    const updatesForDb = { ...updatedFields };
+    delete updatesForDb.id; 
+    delete updatesForDb.firebaseUid;
+
+
+    try {
+      await update(userRef, updatesForDb);
+      // Cast the result of the spread operation to LoggedInUser
+      setLoggedInUser(prevUser => prevUser ? ({ ...prevUser, ...updatedFields } as LoggedInUser) : null);
+      addActivityLogEntry(ActivityLogType.ProfileUpdated, 'activityLogEntryProfileUpdated', { userName: updatedFields.name || loggedInUser.name });
+      addToast(t('profileUpdateSuccess'), 'success');
+    } catch (error: any) {
+      console.error("Error updating user profile in DB:", error);
+      showErrorModal(t('errorModalDefaultTitle'), error.message);
+    }
+  }, [loggedInUser, addToast, t, addActivityLogEntry]);
+
+>>>>>>> 96a8f29 (First commit)
 
   const handleNavigation = (view: ViewName) => {
     if (!loggedInUser && view !== 'login' && view !== 'signup') {
@@ -565,11 +756,15 @@ const AppContent: React.FC<AppContentProps> = ({
       }
     }
     setIsSidebarOpen(false);
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   };
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const renderView = () => {
     if (authLoading) {
@@ -643,21 +838,108 @@ const AppContent: React.FC<AppContentProps> = ({
   const renderView = (): ReactNode => {
     if (!loggedInUser && currentView !== 'login' && currentView !== 'signup') {
         return <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockLogin={(user) => handleMockLogin({name: user.name, email: user.email || ''})} />;
+=======
+  const handleAppLogout = async () => {
+    if (loggedInUser) {
+      addActivityLogEntry(ActivityLogType.LoggedOut, 'activityLogEntryLoggedOut', { userName: loggedInUser.name });
+    }
+    try {
+      await signOut(auth);
+      addToast(t('logoutSuccess'), 'success');
+    } catch (error: any) {
+      console.error("Logout failed:", error);
+      showErrorModal(t('logoutFailedError'), error.message);
+    }
+  };
+
+  const handleFirebaseLogin = async (emailVal: string, passwordVal: string) => {
+    try {
+      await signInWithEmailAndPassword(auth, emailVal, passwordVal);
+    } catch (error: any) {
+      console.error("Login failed:", error);
+      let errorMessage = t('loginFailedError');
+      if (error.code === 'auth/network-request-failed') {
+        errorMessage = t('loginFailedNetworkError');
+      }
+      showErrorModal(t('loginTitle'), errorMessage);
+    }
+  };
+
+  const handleFirebaseSignup = async (newUserData: Omit<User, 'id' | 'avatarUrl'> & {password: string}) => {
+    const { email, password, name, role, teamId, phone, expertisePoints } = newUserData;
+    if (!email || !password) {
+        showErrorModal(t('signupTitle'), "Email and password are required.");
+        return;
+    }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const firebaseUser = userCredential.user;
+      const userProfileData = {
+        name: name || email.split('@')[0],
+        email: email,
+        role: role || UserRole.Employee,
+        teamId: teamId,
+        phone: phone || '',
+        avatarUrl: '', // Initially empty
+        expertisePoints: expertisePoints || 0,
+        createdAt: serverTimestamp(),
+        lastLoginAt: serverTimestamp()
+      };
+      await set(ref(db, `users/${firebaseUser.uid}`), userProfileData);
+      addToast(t('signupTitle') + " " + t('statusSuccessMessage'), 'success');
+    } catch (error: any) {
+      console.error("Signup failed:", error);
+      showErrorModal(t('signupFailedError'), error.message);
+    }
+  };
+  
+  const handlePasswordReset = async (emailVal: string) => {
+    if (!emailVal) {
+        addToast(language === 'ar' ? 'دخل ايميلك الأول يا فنان عشان نبعتلك عليه.' : 'Enter your email first, artist, so we can send it there.', 'alert');
+        return;
+    }
+    try {
+        await sendPasswordResetEmail(auth, emailVal);
+        addToast(t('loginPasswordResetSent'), 'success');
+        addActivityLogEntry(ActivityLogType.PasswordResetRequested, 'activityLogEntryPasswordResetRequested', { userName: 'anonymous', email: emailVal });
+    } catch (error: any) {
+        console.error("Password reset failed:", error);
+        showErrorModal(t('errorModalDefaultTitle'), error.message);
+    }
+  };
+
+
+  const renderView = (): ReactNode => {
+    if (authLoading) { 
+      return <SplashScreen />;
+    }
+    if (!loggedInUser && currentView !== 'login' && currentView !== 'signup') {
+        return <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseLogin={handleFirebaseLogin} onPasswordReset={handlePasswordReset} />;
+>>>>>>> 96a8f29 (First commit)
     }
 
     switch (currentView) {
       case 'dashboard': return <Dashboard onNavigate={handleNavigation} loggedInUser={loggedInUser} />;
       case 'shifts': return <ShiftScheduleView teams={teamsData} supervisors={supervisorsList} />;
+<<<<<<< HEAD
       case 'tasks': return loggedInUser ? <DailyTasksView loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockLogin={(user) => handleMockLogin({name: user.name, email: user.email || ''})} />;
       case 'ships': return <ShipManagementView ships={ships} />;
       case 'settings': return <SettingsView engineers={engineersList} supervisors={supervisorsList} teams={teamsData} currentUserRole={loggedInUser?.role || UserRole.Employee} setCurrentUserRole={(role) => updateLoggedInUser({ role })} loggedInUser={loggedInUser} />;
       case 'fun': return <FunStuffView />;
       case 'leaveRequest': return <LeaveRequestView loggedInUser={loggedInUser} />;
 >>>>>>> bee2d85 (updated)
+=======
+      case 'tasks': return loggedInUser ? <DailyTasksView loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser as Dispatch<SetStateAction<LoggedInUser | null>>} /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseLogin={handleFirebaseLogin} onPasswordReset={handlePasswordReset} />;
+      case 'ships': return <ShipManagementView ships={ships} />;
+      case 'settings': return <SettingsView engineers={engineersList} supervisors={supervisorsList} teams={teamsData} currentUserRole={loggedInUser?.role || UserRole.Employee} setCurrentUserRole={(role) => updateLoggedInUser({ role: role as UserRole.Employee | UserRole.Supervisor | UserRole.Engineer })} loggedInUser={loggedInUser} />;
+      case 'fun': return <FunStuffView />;
+      case 'leaveRequest': return <LeaveRequestView loggedInUser={loggedInUser} />;
+>>>>>>> 96a8f29 (First commit)
       case 'chat': return <ChatView />;
       case 'kanban': return <KanbanView />;
       case 'preventiveMaintenance': return <PreventiveMaintenanceView />;
       case 'accidentReport': return <AccidentReportView />;
+<<<<<<< HEAD
 <<<<<<< HEAD
       case 'profile': return <ProfileView loggedInUser={loggedInUser} updateLoggedInUser={updateLoggedInUser} teams={teamsData} />;
       case 'login': return <LoginView auth={appAuth as Auth} onNavigate={handleNavigation} showErrorModal={showErrorModal} />; 
@@ -714,15 +996,24 @@ const AppContent: React.FC<AppContentProps> = ({
       )}
 =======
       case 'profile': return loggedInUser ? <ProfileView loggedInUser={loggedInUser} updateLoggedInUser={updateLoggedInUser} teams={teamsData} /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockLogin={(user) => handleMockLogin({name: user.name, email: user.email || ''})} />;
+=======
+      case 'profile': return loggedInUser ? <ProfileView loggedInUser={loggedInUser} updateLoggedInUser={updateLoggedInUser} teams={teamsData} /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseLogin={handleFirebaseLogin} onPasswordReset={handlePasswordReset} />;
+>>>>>>> 96a8f29 (First commit)
       case 'personalHub': return <PersonalHubView loggedInUser={loggedInUser} />;
       case 'aiMaintenanceGuide': return <AiMaintenanceGuideView />;
       case 'aiShiftScheduler': return <AiShiftSchedulerView />;
       case 'smartShiftEnhancer': return <SmartShiftEnhancerView />;
       case 'smartMaintenanceEnhancer': return <SmartMaintenanceEnhancerView />;
       case 'activityLog': return <ActivityLogView />;
+<<<<<<< HEAD
       case 'advancedCalculator': return loggedInUser ? <AdvancedCalculatorView loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockLogin={(user) => handleMockLogin({name: user.name, email: user.email || ''})} />;
       case 'login': return <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockLogin={(user) => handleMockLogin({name: user.name, email: user.email || ''})} />;
       case 'signup': return <SignupView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockSignup={handleMockSignup} />;
+=======
+      case 'advancedCalculator': return loggedInUser ? <AdvancedCalculatorView loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser as Dispatch<SetStateAction<LoggedInUser | null>>} /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseLogin={handleFirebaseLogin} onPasswordReset={handlePasswordReset} />;
+      case 'login': return <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseLogin={handleFirebaseLogin} onPasswordReset={handlePasswordReset} />;
+      case 'signup': return <SignupView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseSignup={handleFirebaseSignup} />;
+>>>>>>> 96a8f29 (First commit)
       
       case 'equipmentLogbook': return <EquipmentLogbookView />;
       case 'permitToWork': return <PermitToWorkView />;
@@ -734,17 +1025,29 @@ const AppContent: React.FC<AppContentProps> = ({
       case 'internalAnnouncements': return <InternalAnnouncementsView />;
       case 'toolboxTalks': return <ToolboxTalksView />;
       case 'chemicalReference': return <ChemicalReferenceView />;
+<<<<<<< HEAD
       case 'petroGenius': return loggedInUser ? <PetroGeniusView /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockLogin={(user) => handleMockLogin({name: user.name, email: user.email || ''})} />;
       case 'petroWiki': return loggedInUser ? <PetroWikiView /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onMockLogin={(user) => handleMockLogin({name: user.name, email: user.email || ''})} />;
       case 'trainingCourses': return <TrainingCoursesView />;
       case 'adminDashboard': return <AdminDashboardView onNavigate={handleNavigation} />;
 
 
+=======
+      case 'petroGenius': return loggedInUser ? <PetroGeniusView /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseLogin={handleFirebaseLogin} onPasswordReset={handlePasswordReset} />;
+      case 'petroWiki': return loggedInUser ? <PetroWikiView /> : <LoginView onNavigate={handleNavigation} showErrorModal={showErrorModal} onFirebaseLogin={handleFirebaseLogin} onPasswordReset={handlePasswordReset} />;
+      case 'trainingCourses': return <TrainingCoursesView />;
+      case 'adminDashboard': return <AdminDashboardView onNavigate={handleNavigation} />;
+
+>>>>>>> 96a8f29 (First commit)
       default: return <Dashboard onNavigate={handleNavigation} loggedInUser={loggedInUser} />;
     }
   };
 
+<<<<<<< HEAD
   if (showSplash) {
+=======
+  if (showSplash || authLoading) {
+>>>>>>> 96a8f29 (First commit)
     return <SplashScreen />;
   }
 
@@ -772,11 +1075,15 @@ const AppContent: React.FC<AppContentProps> = ({
         {loggedInUser && <Footer />}
       </div>
       {errorModalConfig && <ErrorModal {...errorModalConfig} onClose={closeErrorModal} />}
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     </div>
   );
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 const App: React.FC = () => {
@@ -845,6 +1152,8 @@ const App: React.FC = () => {
         </ThemeContext.Provider>
     );
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const App: React.FC = () => {
   const { language, t, setLanguage } = useLanguageContext();
   const [userSelectedTheme, setUserSelectedTheme] = useState<Theme>(() => {
@@ -853,7 +1162,10 @@ const App: React.FC = () => {
   });
 
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+<<<<<<< HEAD
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+=======
+>>>>>>> 96a8f29 (First commit)
 
   const [isRadioPlaying, setIsRadioPlaying] = useState(false);
   const [isRadioLoading, setIsRadioLoading] = useState(false);
@@ -867,11 +1179,27 @@ const App: React.FC = () => {
       return newTheme;
     });
   };
+<<<<<<< HEAD
+=======
+  
+  const addToastCallback = useCallback((message: string, type: ToastType = 'info') => {
+    const newToast = { id: Date.now(), message, type };
+    setToasts(prevToasts => [newToast, ...prevToasts.slice(0, 4)]); 
+    playFahlawySound(`toast${type.charAt(0).toUpperCase() + type.slice(1)}` as any); 
+    setTimeout(() => {
+      setToasts(prevToasts => prevToasts.filter(t => t.id !== newToast.id));
+    }, 4000);
+  }, []);
+>>>>>>> 96a8f29 (First commit)
 
   const toggleFocusMode = () => {
     setIsFocusMode(prevFocusMode => {
         const newFocusMode = !prevFocusMode;
+<<<<<<< HEAD
         addToast(
+=======
+        addToastCallback( // Use addToastCallback here
+>>>>>>> 96a8f29 (First commit)
             language === 'ar' 
             ? `وضع التركيز ${newFocusMode ? 'مفعل' : 'معطل'}` 
             : `Focus Mode ${newFocusMode ? 'Activated' : 'Deactivated'}`,
@@ -894,6 +1222,7 @@ const App: React.FC = () => {
     }
   }, [userSelectedTheme]);
 
+<<<<<<< HEAD
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -913,6 +1242,8 @@ const App: React.FC = () => {
       setToasts(prevToasts => prevToasts.filter(t => t.id !== newToast.id));
     }, 4000);
   }, []);
+=======
+>>>>>>> 96a8f29 (First commit)
 
   const dismissToast = useCallback((id: number) => {
     setToasts(prevToasts => prevToasts.filter(toast => toast.id !== id));
@@ -927,11 +1258,19 @@ const App: React.FC = () => {
         .then(() => {
           setIsRadioPlaying(true);
           setIsRadioLoading(false);
+<<<<<<< HEAD
           addToast(t('quranRadioPlaying'), 'info');
         })
         .catch(error => {
           console.error("Error playing radio:", error);
           addToast(t('quranRadioError'), 'alert');
+=======
+          addToastCallback(t('quranRadioPlaying'), 'info');
+        })
+        .catch(error => {
+          console.error("Error playing radio:", error);
+          addToastCallback(t('quranRadioError'), 'alert');
+>>>>>>> 96a8f29 (First commit)
           setIsRadioLoading(false);
           setIsRadioPlaying(false);
         });
@@ -942,7 +1281,11 @@ const App: React.FC = () => {
     if (audioRefRadio.current) {
       audioRefRadio.current.pause();
       setIsRadioPlaying(false);
+<<<<<<< HEAD
       addToast(t('quranRadioPaused'), 'info');
+=======
+      addToastCallback(t('quranRadioPaused'), 'info');
+>>>>>>> 96a8f29 (First commit)
     }
   };
   
@@ -956,7 +1299,11 @@ const App: React.FC = () => {
 
   return (
     <ThemeContext.Provider value={{ theme: userSelectedTheme, toggleTheme }}>
+<<<<<<< HEAD
       <ToastContext.Provider value={{ addToast }}>
+=======
+      <ToastContext.Provider value={{ addToast: addToastCallback }}>
+>>>>>>> 96a8f29 (First commit)
         <div className={`app-container ${userSelectedTheme} ${language === 'ar' ? 'font-cairo' : 'font-poppins'}`}>
           <audio ref={audioRefRadio} loop={false} />
           <AppContent 
@@ -967,12 +1314,21 @@ const App: React.FC = () => {
             toggleFocusMode={toggleFocusMode}
           />
           <ToastNotificationContainer toasts={toasts} onDismiss={dismissToast} />
+<<<<<<< HEAD
           {!isOnline && <OfflineBanner />}
+=======
+>>>>>>> 96a8f29 (First commit)
         </div>
       </ToastContext.Provider>
     </ThemeContext.Provider>
   );
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
 };
 
 export default App;
+=======
+};
+
+export default App;
+>>>>>>> 96a8f29 (First commit)

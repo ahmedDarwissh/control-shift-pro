@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ViewName, Language } from '../types'; 
@@ -157,6 +158,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavigate, currentView, isOpen, togg
         })}
       </nav>
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
@@ -312,13 +315,20 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onNavigate, currentView }) =>
           {t('sidebarFooter')}
         </p>
       </div>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     </aside>
   );
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default Sidebar;
 =======
 export { Sidebar as default };
 >>>>>>> bee2d85 (updated)
+=======
+export { Sidebar as default };
+>>>>>>> 96a8f29 (First commit)

@@ -2,10 +2,14 @@
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ThemeContext } from '../App';
 =======
 import { ThemeContext } from '../contexts/ThemeContext'; // Updated import
 >>>>>>> bee2d85 (updated)
+=======
+import { ThemeContext } from '../contexts/ThemeContext'; // Updated import
+>>>>>>> 96a8f29 (First commit)
 
 const LoadingSpinnerIcon: React.FC<{ className?: string }> = ({ className }) => (
     <svg className={`animate-spin ${className}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -41,7 +45,11 @@ const SplashScreen: React.FC = () => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default SplashScreen;
 =======
 export default SplashScreen;
 >>>>>>> bee2d85 (updated)
+=======
+export default SplashScreen;
+>>>>>>> 96a8f29 (First commit)

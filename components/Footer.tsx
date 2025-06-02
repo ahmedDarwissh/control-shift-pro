@@ -2,10 +2,14 @@
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ThemeContext } from '../App';
 =======
 import { ThemeContext } from '../contexts/ThemeContext'; 
 >>>>>>> bee2d85 (updated)
+=======
+import { ThemeContext } from '../contexts/ThemeContext'; 
+>>>>>>> 96a8f29 (First commit)
 
 const Footer: React.FC = () => {
   const { t, language } = useLanguageContext();
@@ -14,10 +18,14 @@ const Footer: React.FC = () => {
   return (
     <footer className={`py-4 px-5 text-center text-xs border-t
 <<<<<<< HEAD
+<<<<<<< HEAD
       ${theme === 'dark' ? 'bg-gray-800 text-gray-500 border-gray-700' : 'bg-gray-100 text-gray-500 border-gray-200'}
 =======
       ${theme === 'dark' ? 'bg-dark-card text-gray-500 border-gray-700' : 'bg-gray-100 text-gray-500 border-gray-200'}
 >>>>>>> bee2d85 (updated)
+=======
+      ${theme === 'dark' ? 'bg-dark-card text-gray-500 border-gray-700' : 'bg-gray-100 text-gray-500 border-gray-200'}
+>>>>>>> 96a8f29 (First commit)
       ${language === 'ar' ? 'font-cairo' : 'font-poppins'}`}
     >
       <p>{t('globalFooter')}</p>

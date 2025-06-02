@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, FormEvent, useEffect, useContext } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { DailyTask } from '../types';
@@ -7,6 +8,8 @@ import { ThemeContext, LoggedInUser, ToastContext } from '../App';
 import { Firestore, collection, query, where, orderBy, onSnapshot, addDoc, serverTimestamp, doc, updateDoc, deleteDoc, Timestamp } from "firebase/firestore";
 import { TrashIcon } from '@heroicons/react/24/outline';
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import React, { useState, FormEvent, useEffect, useContext, Dispatch, SetStateAction } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { DailyTask, LoggedInUser, ActivityLogType, TranslationSet } from '../types';
@@ -14,12 +17,16 @@ import { ThemeContext } from '../contexts/ThemeContext';
 import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
 import { useActivityLog } from '../hooks/useActivityLog';
 import { TrashIcon, PlusCircleIcon, CameraIcon, MicrophoneIcon, StarIcon as StarIconSolid, FaceFrownIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/solid'; // Using solid for filled star
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
 interface DailyTaskItemProps {
   task: DailyTask;
   onToggleComplete: (id: string) => void;
   onDelete: (id: string) => void;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 
@@ -58,6 +65,8 @@ const DailyTaskItem: React.FC<DailyTaskItemProps> = ({ task, onToggleComplete, o
             onClick={() => onDelete(task.id)} 
             className={`p-1.5 rounded-md ${theme === 'dark' ? 'text-red-400 hover:bg-red-700/20 hover:text-red-300' : 'text-red-500 hover:bg-red-100 hover:text-red-600'} opacity-50 group-hover:opacity-100 transition-all`} 
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   onAttach: (id: string, type: 'photo' | 'audio') => void;
   onRate: (id: string, rating: 'star' | 'tired' | 'help') => void;
 }
@@ -115,13 +124,17 @@ const DailyTaskItem: React.FC<DailyTaskItemProps> = ({ task, onToggleComplete, o
         <button
             onClick={() => onDelete(task.id)}
             className={`p-1.5 rounded-md ${theme === 'dark' ? 'text-red-400 hover:bg-red-700/20 hover:text-red-300' : 'text-red-500 hover:bg-red-100 hover:text-red-600'} opacity-50 group-hover:opacity-100 focus:opacity-100 transition-all`}
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
             title={language === 'ar' ? 'حذف المهمة' : 'Delete Task'}
             aria-label={language === 'ar' ? `حذف مهمة: ${task.description}` : `Delete task: ${task.description}`}
         >
           <TrashIcon className="h-4 w-4" />
         </button>
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
     </div>
   );
@@ -240,6 +253,8 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ db, loggedInUser }) => 
         addToast(specificErrorMessage, 'alert');
       }
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
     </li>
   );
 };
@@ -318,11 +333,15 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
         );
         return { ...prevUser, expertisePoints: updatedPoints };
       });
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     }
   };
 
   const handleDeleteTask = async (id: string) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     if (!loggedInUser?.firebaseUid) return;
     if (window.confirm(language === 'ar' ? 'هل أنت متأكد أنك تريد حذف هذه المهمة؟ مفيش رجوع في الكلام ده!' : 'Are you sure you want to delete this task? No take-backsies!')) {
@@ -351,6 +370,8 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
     ${theme === 'dark' ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-blue-600 text-white hover:bg-blue-700'}`;
 
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
     const taskToDelete = tasks.find(task => task.id === id);
     if (window.confirm(language === 'ar' ? 'هل أنت متأكد أنك تريد حذف هذه المهمة؟ مفيش رجوع في الكلام ده!' : 'Are you sure you want to delete this task? No take-backsies!')) {
         setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
@@ -403,7 +424,10 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
   const today = new Date();
   const formattedDate = today.toLocaleDateString(language, { year: 'numeric', month: 'long', day: 'numeric' });
   const formattedDay = today.toLocaleDateString(language, { weekday: 'long' });
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
   return (
     <div className={`p-2 ${language === 'ar' ? 'font-cairo text-right' : 'font-poppins text-left'}`}>
@@ -421,6 +445,7 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
             aria-label={t('taskDescription')}
           />
 <<<<<<< HEAD
+<<<<<<< HEAD
           <button type="submit" className={submitButtonClasses}>
             {t('addTask')}
 =======
@@ -428,6 +453,11 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
             <PlusCircleIcon className="h-5 w-5" />
             {isLoading ? (language === 'ar' ? 'جاري الإضافة...' : 'Adding...') : t('addTask')}
 >>>>>>> bee2d85 (updated)
+=======
+          <button type="submit" className={submitButtonClasses} disabled={isLoading}>
+            <PlusCircleIcon className="h-5 w-5" />
+            {isLoading ? (language === 'ar' ? 'جاري الإضافة...' : 'Adding...') : t('addTask')}
+>>>>>>> 96a8f29 (First commit)
           </button>
         </div>
         <p className={`text-xs mt-3 text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
@@ -435,6 +465,7 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
         </p>
       </form>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div className={`p-5 md:p-6 rounded-xl shadow-xl ${cardBg} border min-h-[200px]`}>
         {isLoading && <p className={`text-center py-8 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>{t('loadingMessage')}</p>}
@@ -451,6 +482,8 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
           </div>
         )}
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
       <div className={`lined-paper-container rounded-xl shadow-xl ${cardBg} border overflow-hidden`}>
         <div className={`p-4 border-b ${theme === 'dark' ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-gray-50'} flex justify-between items-center`}>
           <div>
@@ -474,7 +507,10 @@ const DailyTasksView: React.FC<DailyTasksViewProps> = ({ loggedInUser, setLogged
             </ul>
             )}
         </div>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
       </div>
     </div>
   );

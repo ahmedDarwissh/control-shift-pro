@@ -10,6 +10,7 @@ export enum UserRole {
   Supervisor = 'Supervisor',
   Engineer = 'Engineer',
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 export interface User {
@@ -20,6 +21,8 @@ export interface User {
   email?: string; // Firebase email
   phone?: string; // Store in Firestore
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   ProductionOperator = 'ProductionOperator',
   UnitHead = 'UnitHead',
   ShiftSupervisor = 'ShiftSupervisor',
@@ -32,9 +35,15 @@ export interface User {
   teamId?: string;
   email?: string;
   phone?: string;
+<<<<<<< HEAD
   expertisePoints: number; // Added to resolve constants.ts errors
   avatarUrl?: string;     // Added to resolve constants.ts errors
 >>>>>>> bee2d85 (updated)
+=======
+  expertisePoints: number; 
+  avatarUrl?: string;     
+  createdAt?: any; // Added for serverTimestamp compatibility
+>>>>>>> 96a8f29 (First commit)
 }
 
 export interface Engineer extends User {
@@ -52,7 +61,10 @@ export interface Employee extends User {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 export type LoggedInUser = (Employee | Supervisor | Engineer) & {
   firebaseUid?: string;
   // expertisePoints and avatarUrl are now part of the base User type,
@@ -60,7 +72,10 @@ export type LoggedInUser = (Employee | Supervisor | Engineer) & {
   // For now, relying on their presence in User.
 };
 
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 export interface Team {
   id: string;
   name: string;
@@ -70,12 +85,17 @@ export interface Team {
 
 export enum ShiftType {
 <<<<<<< HEAD
+<<<<<<< HEAD
   Morning = 'Morning', // 7:30 AM to 7:30 PM
   Evening = 'Evening', // 7:30 PM to 7:30 AM
 =======
   Morning = 'Morning',
   Evening = 'Evening',
 >>>>>>> bee2d85 (updated)
+=======
+  Morning = 'Morning',
+  Evening = 'Evening',
+>>>>>>> 96a8f29 (First commit)
   Off = 'Off',
 }
 
@@ -89,16 +109,22 @@ export interface Shift {
 
 export interface DailyTask {
 <<<<<<< HEAD
+<<<<<<< HEAD
   id:string; // Firestore document ID
   userId: string;
   description: string;
   timestamp: Date; // Or Firebase Timestamp for server-side consistency
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   id:string;
   userId: string;
   description: string;
   timestamp: Date;
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   completed: boolean;
   notes?: string;
 }
@@ -127,17 +153,23 @@ export interface Ship {
   status: ShipStatus;
   cargoType: ShipCargoType;
 <<<<<<< HEAD
+<<<<<<< HEAD
   quantityRemaining: number; // tons or m^3
   quantityPerHour: number; // rate
   eta?: string; // Estimated Time of Arrival/Departure
   pumps?: Pump[];
   // Add other relevant fields: ارتفاع المركب، سرعة الريح، etc.
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   quantityRemaining: number;
   quantityPerHour: number;
   eta?: string;
   pumps?: Pump[];
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 }
 
 export enum LeaveRequestStatus {
@@ -148,6 +180,7 @@ export enum LeaveRequestStatus {
 
 export interface LeaveRequest {
 <<<<<<< HEAD
+<<<<<<< HEAD
   id?: string; // Firestore document ID
   userId: string;
   leaveType: string;
@@ -157,6 +190,8 @@ export interface LeaveRequest {
   status: LeaveRequestStatus;
   createdAt: Date; // Or Firebase Timestamp
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   id?: string;
   userId: string;
   leaveType: string;
@@ -430,11 +465,15 @@ export interface ReportItem {
   submittedBy: string; // User name or ID
   timestamp: Date;
   attachments?: { name: string; url: string; type: 'image' | 'document' }[];
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 }
 
 
 export interface TranslationSet {
+<<<<<<< HEAD
 <<<<<<< HEAD
   [key: string]: string; // Keep it flexible
   appName: string;
@@ -549,13 +588,18 @@ export interface TranslationSet {
   sidebarFooter: string; 
   globalFooter: string; 
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   appName: string; companyName: string; companyShortName: string; dashboard: string; shifts: string; tasks: string; ships: string; settings: string; notifications: string; language: string; english: string; arabic: string; welcomeMessage: string; currentShift: string; morningShift: string; eveningShift: string; teamOnDuty: string; supervisor: string; members: string; addTask: string; taskDescription: string; saveTask: string; noTasks: string; shipName: string; shipStatus: string; cargoType: string; quantityRemaining: string; quantityPerHour: string; eta: string; pumps: string; noShips: string; userRole: string; selectRole: string; employee: string; supervisorRole: string; engineer: string; engineersList: string; supervisorsList: string; appTheme: string; lightMode: string; darkMode: string; darkModeDescription: string; comedyLevel: string; normal: string; hilarious: string; shiftSchedule: string; team: string; offDuty: string; dailyLog: string; submitEntry: string; entryPlaceholder: string; viewTeamDetails: string; hideTeamDetails: string; pumpName: string; pumpStatus: string; running: string; standby: string; maintenance: string; offline: string; activeShift: string; upcomingShift: string; loadingMessage: string; splashIntro: string; prayerTimes: string; prayerTimesDamietta: string; fajr: string; dhuhr: string; asr: string; maghrib: string; isha: string; salaryNotification: string; salaryNotificationToggle: string; salaryNotificationEnabledMessage: string; quickActions: string; requestLeave: string; funStuff: string; funStuffTitle: string; quranRadio: string; quranRadioPlayerTitle: string; quranRadioNowPlaying: string; quranRadioPlay: string; quranRadioPause: string; quranRadioLoading: string; quranRadioError: string; quranRadioPlaying: string; quranRadioPaused: string; puzzleGame: string; puzzleGameTitle: string; puzzleGamePlay: string; puzzleGameQuestion: string; puzzleGameOptA: string; puzzleGameOptB: string; puzzleGameOptC: string; puzzleGameSubmit: string; puzzleGameCorrect: string; puzzleGameWrong: string; jokesToday: string; chatbotFahlawy: string;
   chatbotPlaceholder: string; chatbotSend: string; chatbotDefaultResponse1: string; chatbotDefaultResponse2: string; chatbotDefaultResponse3: string; import: string; export: string; docked: string; anchored: string;
   dailyTaskPrompt: string;
   shipManagementFooter: string;
   settingsFooter: string;
   sidebarFooter: string; globalFooter: string; footerCompanyName: string;
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   dashboardGreeting: string;
   dailyCoffeeStat: string;
   shiftFocusMessage: string;
@@ -567,6 +611,7 @@ export interface TranslationSet {
   settingsThemePrompt: string;
   settingsComedyPrompt: string;
   settingsPrayerPrompt: string;
+<<<<<<< HEAD
 <<<<<<< HEAD
   settingsPrayerReminderButton: string;
   settingsPrayerReminderSet: string;
@@ -679,6 +724,8 @@ export interface TranslationSet {
   profileNotifyPushTasksLabel: string;
   profileNotifySmsAlertsLabel: string;
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   settingsPrayerReminderButton: string; settingsPrayerReminderSet: string; settingsWhatsAppTelegram: string; settingsLinkWhatsApp: string; settingsLinkTelegram: string; settingsLinkSoon: string;
   viewName_dashboard: string; viewName_shifts: string; viewName_tasks: string; viewName_ships: string; viewName_fun: string; viewName_settings: string; viewName_leaveRequest: string; viewName_chat: string; viewName_kanban: string; viewName_profile: string; viewName_preventiveMaintenance: string; viewName_accidentReport: string; viewName_login: string; viewName_signup: string; viewName_personalHub: string;
   viewName_aiMaintenanceGuide: string; viewName_aiShiftScheduler: string; viewName_smartShiftEnhancer: string; viewName_smartMaintenanceEnhancer: string; viewName_activityLog: string; viewName_advancedCalculator: string; viewName_trainingCourses: string;
@@ -709,11 +756,15 @@ export interface TranslationSet {
   profileFooterActive: string;
   profileEditInfoTitle: string; profileChangePasswordTitle: string; profileNotificationSettingsTitle: string; profileCurrentPasswordLabel: string; profileNewPasswordLabel: string; profileConfirmNewPasswordLabel: string; profileCurrentPasswordPlaceholder: string; profileNewPasswordPlaceholder: string; profileConfirmNewPasswordPlaceholder: string; profileSaveChangesButton: string; profileUpdatePasswordButton: string; profileSaveNotificationPrefsButton: string; profileCancelButton: string;
   profileNotifyEmailShiftsLabel: string; profileNotifyPushTasksLabel: string; profileNotifySmsAlertsLabel: string;
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   profileUpdateSuccess: string;
   profilePasswordChangeSuccess: string;
   profileNotificationSettingsSuccess: string;
   profileFooterEdit: string;
+<<<<<<< HEAD
 <<<<<<< HEAD
   linkWithWhatsAppTitle: string;
   linkWithTelegramTitle: string;
@@ -795,6 +846,8 @@ export type ViewName =
   'kanban' | 'preventiveMaintenance' | 'accidentReport' | 
   'profile' | 'login' | 'signup';
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   linkWithWhatsAppTitle: string; linkWithTelegramTitle: string; linkQrCodeAlt: string; linkInstructionsWhatsApp: string; linkInstructionsTelegram: string; linkConfirmButton: string; linkCancelButton: string;
   linkSuccessWhatsAppToast: string;
   linkSuccessTelegramToast: string;
@@ -1475,4 +1528,7 @@ export type ViewName =
   dailyReportSubmittedToast: string;
   dailyReportSelectShiftPlaceholder: string;
 }
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)

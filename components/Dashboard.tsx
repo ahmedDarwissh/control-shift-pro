@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Team, Supervisor, ShiftType, Language, ViewName } from '../types';
@@ -111,6 +112,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
       </Card>
 
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Team, Supervisor, ShiftType, Language, ViewName, TranslationSet, LoggedInUser } from '../types';
@@ -421,13 +424,20 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavigate, loggedInUser }) => {
       <p className={`mt-8 text-xs text-center ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
         {t('dashboardGreeting')}
       </p>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
     </div>
   );
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default Dashboard;
 =======
 export default Dashboard;
 >>>>>>> bee2d85 (updated)
+=======
+export default Dashboard;
+>>>>>>> 96a8f29 (First commit)

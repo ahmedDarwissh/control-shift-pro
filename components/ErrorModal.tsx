@@ -2,10 +2,14 @@
 import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ThemeContext } from '../App';
 =======
 import { ThemeContext } from '../contexts/ThemeContext'; 
 >>>>>>> bee2d85 (updated)
+=======
+import { ThemeContext } from '../contexts/ThemeContext'; 
+>>>>>>> 96a8f29 (First commit)
 
 // Heroicon for error indication
 const ExclamationTriangleIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -28,6 +32,7 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, title, message, onClose
   if (!isOpen) return null;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const modalBg = theme === 'dark' ? 'bg-gray-800' : 'bg-white';
   const titleColor = theme === 'dark' ? 'text-red-400' : 'text-red-600';
 =======
@@ -35,6 +40,11 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, title, message, onClose
   const titleColor = theme === 'dark' ? 'text-bright-yellow' : 'text-red-600'; // Bright Yellow for dark, Red for light
   const iconColor = theme === 'dark' ? 'text-bright-yellow' : 'text-red-500';
 >>>>>>> bee2d85 (updated)
+=======
+  const modalBg = theme === 'dark' ? 'bg-dark-card' : 'bg-white';
+  const titleColor = theme === 'dark' ? 'text-bright-yellow' : 'text-red-600'; // Bright Yellow for dark, Red for light
+  const iconColor = theme === 'dark' ? 'text-bright-yellow' : 'text-red-500';
+>>>>>>> 96a8f29 (First commit)
   const textColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-700';
   const buttonBg = theme === 'dark' ? 'bg-gray-600 hover:bg-gray-500' : 'bg-gray-200 hover:bg-gray-300';
   const buttonText = theme === 'dark' ? 'text-gray-200' : 'text-gray-700';
@@ -42,14 +52,19 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, title, message, onClose
   return (
     <div 
 <<<<<<< HEAD
+<<<<<<< HEAD
       className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-[100] p-4 transition-opacity duration-300 ease-in-out"
 =======
       className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[100] p-4 backdrop-blur-sm transition-opacity duration-300 ease-in-out animate-fadeInUp"
 >>>>>>> bee2d85 (updated)
+=======
+      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[100] p-4 backdrop-blur-sm transition-opacity duration-300 ease-in-out animate-fadeInUp"
+>>>>>>> 96a8f29 (First commit)
       role="alertdialog"
       aria-modal="true"
       aria-labelledby="error-modal-title"
       aria-describedby="error-modal-message"
+<<<<<<< HEAD
 <<<<<<< HEAD
       onClick={onClose} // Close on overlay click
     >
@@ -60,6 +75,8 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, title, message, onClose
         <div className="flex flex-col items-center text-center">
           <ExclamationTriangleIcon className={`h-12 w-12 mb-4 ${titleColor}`} />
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
       onClick={onClose} 
     >
       <div 
@@ -68,7 +85,10 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, title, message, onClose
       >
         <div className="flex flex-col items-center text-center">
           <ExclamationTriangleIcon className={`h-12 w-12 mb-4 ${iconColor}`} />
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
           <h2 id="error-modal-title" className={`text-xl font-semibold mb-2 ${titleColor}`}>
             {title || t('errorModalDefaultTitle')}
           </h2>
@@ -89,7 +109,11 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ isOpen, title, message, onClose
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default ErrorModal;
 =======
 export default ErrorModal;
 >>>>>>> bee2d85 (updated)
+=======
+export default ErrorModal;
+>>>>>>> 96a8f29 (First commit)

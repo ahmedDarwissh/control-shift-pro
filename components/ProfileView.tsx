@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import React, { useContext, useState, useEffect } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage'; // Updated path
@@ -14,16 +15,33 @@ import { UserRole, Team, LoggedInUser, TranslationSet } from '../types';
 import { TrophyIcon, ShieldCheckIcon, StarIcon, SparklesIcon, HeartIcon, AcademicCapIcon, PencilIcon, CameraIcon, UserCircleIcon as UserPlaceholderIcon } from '@heroicons/react/24/outline';
 
 >>>>>>> bee2d85 (updated)
+=======
+import React, { useContext, useState, useEffect, ChangeEvent } from 'react';
+import { useLanguageContext } from '../hooks/useLanguage'; 
+import { ThemeContext } from '../contexts/ThemeContext'; 
+import { ToastContext } from '../contexts/ToastContext'; 
+import { UserRole, Team, LoggedInUser, TranslationSet } from '../types'; 
+import { TrophyIcon, ShieldCheckIcon, StarIcon, SparklesIcon, HeartIcon, AcademicCapIcon, PencilIcon, CameraIcon, UserCircleIcon as UserPlaceholderIcon } from '@heroicons/react/24/outline';
+import { auth, db, storage } from '../firebase'; // Firebase
+import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from 'firebase/auth';
+import { ref as dbRef, update } from 'firebase/database';
+import { ref as storageRef, uploadString, getDownloadURL, deleteObject } from 'firebase/storage';
+
+>>>>>>> 96a8f29 (First commit)
 
 type ProfileSection = 'view' | 'editInfo' | 'changePassword' | 'notificationSettings';
 
 interface ProfileViewProps {
   loggedInUser: LoggedInUser;
 <<<<<<< HEAD
+<<<<<<< HEAD
   updateLoggedInUser: (updatedFields: Partial<Pick<LoggedInUser, 'name' | 'email' | 'phone'>>) => void;
 =======
   updateLoggedInUser: (updatedFields: Partial<Pick<LoggedInUser, 'name' | 'email' | 'phone' | 'avatarUrl'>>) => void;
 >>>>>>> bee2d85 (updated)
+=======
+  updateLoggedInUser: (updatedFields: Partial<LoggedInUser>) => Promise<void>; // Make it async
+>>>>>>> 96a8f29 (First commit)
   teams: Team[]; 
 }
 
@@ -41,6 +59,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
   const [activeSection, setActiveSection] = useState<ProfileSection>('view');
 
   const [editName, setEditName] = useState(loggedInUser.name);
+<<<<<<< HEAD
   const [editEmail, setEditEmail] = useState(loggedInUser.email || '');
   const [editPhone, setEditPhone] = useState(loggedInUser.phone || '');
 <<<<<<< HEAD
@@ -55,6 +74,10 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
     smsAlerts: true,
   });
 =======
+=======
+  const [editEmail, setEditEmail] = useState(loggedInUser.email || ''); // Email is not editable with Firebase standard auth easily
+  const [editPhone, setEditPhone] = useState(loggedInUser.phone || '');
+>>>>>>> 96a8f29 (First commit)
   const [previewAvatar, setPreviewAvatar] = useState<string | null>(loggedInUser.avatarUrl || null);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -67,7 +90,10 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
     { id: 'b5', nameKey: 'occasionOctoberVictory' as keyof TranslationSet, name: language === 'ar' ? 'قلب الفريق' : 'Team Heart', icon: HeartIcon, color: 'text-red-400' },
     { id: 'b6', nameKey: 'occasionProphetBirthday' as keyof TranslationSet,name: language === 'ar' ? 'خبير المعرفة' : 'Knowledge Expert', icon: AcademicCapIcon, color: 'text-indigo-400' },
   ];
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   
   useEffect(() => {
     if (loggedInUser) {
@@ -75,13 +101,18 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
       setEditEmail(loggedInUser.email || '');
       setEditPhone(loggedInUser.phone || '');
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       setPreviewAvatar(loggedInUser.avatarUrl || null);
 >>>>>>> bee2d85 (updated)
+=======
+      setPreviewAvatar(loggedInUser.avatarUrl || null);
+>>>>>>> 96a8f29 (First commit)
     }
   }, [loggedInUser]);
 
 
+<<<<<<< HEAD
   const handleSaveUserInfo = (e: React.FormEvent) => {
     e.preventDefault();
     updateLoggedInUser({
@@ -98,6 +129,22 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
   };
 <<<<<<< HEAD
 =======
+=======
+  const handleSaveUserInfo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const updates: Partial<LoggedInUser> = {
+        name: editName,
+        phone: editPhone,
+    };
+    if (previewAvatar && previewAvatar !== loggedInUser.avatarUrl) {
+        updates.avatarUrl = previewAvatar; // This will be handled by updateLoggedInUser for upload
+    }
+    await updateLoggedInUser(updates);
+    // Email updates are more complex with Firebase and typically require verification, skipping for now.
+    // addToast(t('profileUpdateSuccess'), 'success'); // This is now handled within updateLoggedInUser
+    setActiveSection('view');
+  };
+>>>>>>> 96a8f29 (First commit)
   
   const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -105,8 +152,12 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result as string;
+<<<<<<< HEAD
         setPreviewAvatar(base64String); // Show preview
         // No immediate save, will be saved with other info or if a dedicated "save avatar" button exists
+=======
+        setPreviewAvatar(base64String); 
+>>>>>>> 96a8f29 (First commit)
       };
       reader.readAsDataURL(file);
     }
@@ -122,14 +173,20 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
     pushTasks: false,
     smsAlerts: true,
   });
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
 
   const handleSavePassword = (e: React.FormEvent) => {
+=======
+
+  const handleSavePassword = async (e: React.FormEvent) => {
+>>>>>>> 96a8f29 (First commit)
     e.preventDefault();
     if (newPassword !== confirmNewPassword) {
       addToast(language === 'ar' ? 'كلمة المرور الجديدة وتأكيدها مش زي بعض يا ريس!' : 'New password and confirmation do not match, boss!', 'alert');
       return;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     // In a real app, you would call an API to change the password here.
     // For this mock, we'll just show success.
@@ -141,15 +198,44 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
     setNewPassword('');
     setConfirmNewPassword('');
     setActiveSection('view');
+=======
+    if (!auth.currentUser) {
+        addToast("User not authenticated.", "alert");
+        return;
+    }
+    if (!currentPassword) {
+        addToast(language === 'ar' ? 'لازم تدخل كلمة المرور الحالية الأول.' : 'You must enter your current password first.', 'alert');
+        return;
+    }
+
+    try {
+        const credential = EmailAuthProvider.credential(auth.currentUser.email!, currentPassword);
+        await reauthenticateWithCredential(auth.currentUser, credential);
+        await updatePassword(auth.currentUser, newPassword);
+        addToast(t('profilePasswordChangeSuccess'), 'success');
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
+        setActiveSection('view');
+    } catch (error: any) {
+        console.error("Password change failed:", error);
+        addToast(language === 'ar' ? 'فشلت عملية تغيير كلمة المرور. اتأكد من كلمة المرور الحالية.' : 'Password change failed. Check your current password.', 'alert');
+    }
+>>>>>>> 96a8f29 (First commit)
   };
 
   const handleSaveNotifications = (e: React.FormEvent) => {
     e.preventDefault();
 <<<<<<< HEAD
+<<<<<<< HEAD
     // In a real app, save notificationPrefs to Firestore or backend.
 =======
     // Mock save notification preferences
 >>>>>>> bee2d85 (updated)
+=======
+    // In a real app, save notificationPrefs to Firebase (e.g., users/{uid}/notificationPreferences)
+    console.log("Saving notification preferences (mock):", notificationPrefs);
+>>>>>>> 96a8f29 (First commit)
     addToast(t('profileNotificationSettingsSuccess'), 'success');
     setActiveSection('view');
   };
@@ -160,9 +246,13 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
       setEditEmail(loggedInUser.email || '');
       setEditPhone(loggedInUser.phone || '');
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       setPreviewAvatar(loggedInUser.avatarUrl || null); // Reset preview
 >>>>>>> bee2d85 (updated)
+=======
+      setPreviewAvatar(loggedInUser.avatarUrl || null); 
+>>>>>>> 96a8f29 (First commit)
     }
   };
 
@@ -193,8 +283,13 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
   const darkInputClasses = "bg-gray-700 border-gray-600 text-gray-100 focus:ring-bright-yellow focus:border-bright-yellow placeholder-gray-400";
   const themedInputClasses = theme === 'dark' ? darkInputClasses : lightInputClasses;
 
+<<<<<<< HEAD
   const FormInput: React.FC<{ id: string; labelKey: keyof ReturnType<typeof useLanguageContext>['translations']; type?: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; placeholderKey?: keyof ReturnType<typeof useLanguageContext>['translations'] }> = 
   ({ id, labelKey, type = "text", value, onChange, placeholderKey }) => (
+=======
+  const FormInput: React.FC<{ id: string; labelKey: keyof ReturnType<typeof useLanguageContext>['translations']; type?: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; placeholderKey?: keyof ReturnType<typeof useLanguageContext>['translations']; disabled?: boolean; }> = 
+  ({ id, labelKey, type = "text", value, onChange, placeholderKey, disabled = false }) => (
+>>>>>>> 96a8f29 (First commit)
     <div>
       <label htmlFor={id} className={`block text-sm font-medium mb-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{t(labelKey)}</label>
       <input
@@ -203,7 +298,12 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
         value={value}
         onChange={onChange}
         placeholder={placeholderKey ? t(placeholderKey) : ''}
+<<<<<<< HEAD
         className={`${inputBaseClasses} ${themedInputClasses}`}
+=======
+        className={`${inputBaseClasses} ${themedInputClasses} ${disabled ? 'opacity-70 cursor-not-allowed' : ''}`}
+        disabled={disabled}
+>>>>>>> 96a8f29 (First commit)
       />
     </div>
   );
@@ -221,10 +321,14 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
   );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const primaryButtonClasses = `w-full mt-4 py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${theme === 'dark' ? 'bg-bright-yellow text-marine-blue hover:bg-yellow-300' : 'bg-bright-yellow text-marine-blue hover:bg-yellow-400'}`;
 =======
   const primaryButtonClasses = `w-full mt-4 py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${theme === 'dark' ? 'bg-bright-yellow text-marine-blue hover:bg-yellow-300' : 'bg-marine-blue text-white hover:bg-blue-700'}`;
 >>>>>>> bee2d85 (updated)
+=======
+  const primaryButtonClasses = `w-full mt-4 py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${theme === 'dark' ? 'bg-bright-yellow text-marine-blue hover:bg-yellow-300' : 'bg-marine-blue text-white hover:bg-blue-700'}`;
+>>>>>>> 96a8f29 (First commit)
   const secondaryButtonClasses = `py-2 px-4 rounded-lg text-xs font-medium transition-colors ${theme === 'dark' ? 'bg-blue-700 hover:bg-blue-600 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`;
   const cancelButtonClasses = `py-2 px-4 rounded-lg text-xs font-medium transition-colors ${theme === 'dark' ? 'bg-gray-600 hover:bg-gray-500 text-gray-200' : 'bg-gray-200 hover:bg-gray-300 text-gray-700'}`;
 
@@ -265,6 +369,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
         {activeSection === 'view' && (
           <>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div className="flex flex-col items-center mb-6">
               <div className={`w-24 h-24 rounded-full flex items-center justify-center text-5xl mb-3 
                 ${theme === 'dark' ? 'bg-gray-700 text-bright-yellow' : 'bg-slate-200 text-marine-blue'}`}>
@@ -293,6 +398,15 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
                   className="hidden"
                 />
 >>>>>>> bee2d85 (updated)
+=======
+            <div className="flex flex-col items-center mb-6 relative">
+              {previewAvatar || loggedInUser.avatarUrl ? (
+                <img src={previewAvatar || loggedInUser.avatarUrl} alt="User Avatar" className="w-24 h-24 rounded-full object-cover mb-3 shadow-md" />
+              ) : (
+                <UserPlaceholderIcon className={`w-24 h-24 rounded-full mb-3 text-gray-400 dark:text-gray-500 ${theme === 'dark' ? 'bg-gray-700' : 'bg-slate-200'} p-2`} />
+              )}
+              {/* Avatar change button is now part of editInfo section */}
+>>>>>>> 96a8f29 (First commit)
               <h2 className={`text-xl font-semibold ${theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>{loggedInUser.name}</h2>
               <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>{getRoleDisplayName(loggedInUser.role)}</p>
             </div>
@@ -302,9 +416,12 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
               <InfoRow labelKey="profileEmailLabel" value={loggedInUser.email || (language === 'ar' ? 'لا يوجد' : 'N/A')} />
               <InfoRow labelKey="profilePhoneLabel" value={loggedInUser.phone || (language === 'ar' ? 'لا يوجد' : 'N/A')} />
 <<<<<<< HEAD
+<<<<<<< HEAD
               <InfoRow labelKey="profileLastLoginLabel" value={language === 'ar' ? 'منذ لحظات قليلة' : 'A few moments ago'} />
             </dl>
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
               <InfoRow labelKey="profileExpertiseScoreLabel" value={`${loggedInUser.expertisePoints} ${t('expertisePoints')}`} />
               <InfoRow labelKey="profileLastLoginLabel" value={language === 'ar' ? 'منذ لحظات قليلة' : 'A few moments ago'} />
             </dl>
@@ -324,7 +441,10 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
                  <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>{language === 'ar' ? 'لسه مفيش شارات، شد حيلك يا بطل!' : 'No badges yet, keep up the great work!'}</p>
               )}
             </div>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
             <div className={`mt-6 pt-4 border-t grid grid-cols-1 sm:grid-cols-3 gap-3 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
               <button 
@@ -352,7 +472,10 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
         {activeSection === 'editInfo' && (
           <form onSubmit={handleSaveUserInfo} className="space-y-4 text-left">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
             <div className="flex flex-col items-center mb-4 relative">
                 {previewAvatar ? (
                   <img src={previewAvatar} alt="Avatar Preview" className="w-20 h-20 rounded-full object-cover mb-2 shadow-sm" />
@@ -375,9 +498,14 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
                   className="hidden"
                 />
             </div>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
             <FormInput id="editName" labelKey="profileNameLabel" value={editName} onChange={e => setEditName(e.target.value)} />
             <FormInput id="editEmail" labelKey="profileEmailLabel" type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} />
+=======
+            <FormInput id="editName" labelKey="profileNameLabel" value={editName} onChange={e => setEditName(e.target.value)} />
+            <FormInput id="editEmail" labelKey="profileEmailLabel" type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} disabled={true} />
+>>>>>>> 96a8f29 (First commit)
             <FormInput id="editPhone" labelKey="profilePhoneLabel" type="tel" value={editPhone} onChange={e => setEditPhone(e.target.value)} />
             <button type="submit" className={primaryButtonClasses}>
               {t('profileSaveChangesButton')}
@@ -430,4 +558,8 @@ const ProfileView: React.FC<ProfileViewProps> = ({ loggedInUser, updateLoggedInU
   );
 };
 
+<<<<<<< HEAD
 export default ProfileView;
+=======
+export default ProfileView;
+>>>>>>> 96a8f29 (First commit)

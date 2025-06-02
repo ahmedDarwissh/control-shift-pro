@@ -2,6 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ThemeContext, ToastContext } from '../App';
 import { ViewName } from '../types'; 
 import { Auth, User, createUserWithEmailAndPassword, updateProfile, deleteUser } from "firebase/auth";
@@ -17,6 +18,13 @@ import { ViewName, UserRole, LoggedInUser } from '../types';
 
 const ArrowPathIcon: React.FC<{ className?: string }> = ({ className }) => ( 
 >>>>>>> bee2d85 (updated)
+=======
+import { ThemeContext } from '../contexts/ThemeContext'; 
+import { ToastContext } from '../contexts/ToastContext'; 
+import { ViewName, UserRole, User } from '../types'; // Changed AppUser to User
+
+const ArrowPathIcon: React.FC<{ className?: string }> = ({ className }) => ( 
+>>>>>>> 96a8f29 (First commit)
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
   </svg>
@@ -36,6 +44,7 @@ const LockClosedIcon: React.FC<{ className?: string }> = ({ className }) => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
   </svg>
 );
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 // Firestore Reachability Check Function
@@ -65,6 +74,8 @@ const SignupView: React.FC<SignupViewProps> = ({ auth, db, onNavigate, showError
   const { theme } = useContext(ThemeContext);
   const { addToast } = useContext(ToastContext); // Keep for success messages or non-critical info
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 const FireIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
@@ -75,6 +86,7 @@ const FireIcon: React.FC<{ className?: string }> = ({ className }) => (
 interface SignupViewProps {
   onNavigate: (view: ViewName) => void;
   showErrorModal: (title: string, message: string) => void;
+<<<<<<< HEAD
   onMockSignup: (user: Omit<LoggedInUser, 'id' | 'firebaseUid' | 'avatarUrl'>) => void; 
 }
 
@@ -83,6 +95,15 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
   const { theme } = React.useContext(ThemeContext);
   const { addToast } = useContext(ToastContext);
 >>>>>>> bee2d85 (updated)
+=======
+  onFirebaseSignup: (userData: Omit<User, 'id' | 'avatarUrl'> & { password: string }) => Promise<void>; 
+}
+
+const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onFirebaseSignup }) => {
+  const { t, language } = useLanguageContext();
+  const { theme } = React.useContext(ThemeContext);
+  const { addToast } = useContext(ToastContext);
+>>>>>>> 96a8f29 (First commit)
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -90,14 +111,20 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.Employee);
 
 >>>>>>> bee2d85 (updated)
+=======
+  const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.Employee);
+
+>>>>>>> 96a8f29 (First commit)
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !email || !password || !confirmPassword) {
+<<<<<<< HEAD
 <<<<<<< HEAD
       showErrorModal(t('signupTitle'), language === 'ar' ? 'يا ريس، كمل بياناتك كلها الأول!' : 'Boss, complete all your details first!');
       return;
@@ -196,6 +223,8 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
   const linkColor = theme === 'dark' ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700';
   const appLogoColor = theme === 'dark' ? 'text-blue-500' : 'text-blue-600';
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
       showErrorModal(t('signupTitle'), language === 'ar' ? 'يا ريس، كمل بياناتك كلها الأول عشان تنضم للشلة! 😎' : 'Boss, complete all your details first to join the gang! 😎');
       return;
     }
@@ -205,6 +234,7 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
     }
     setIsLoading(true);
     
+<<<<<<< HEAD
     setTimeout(() => {
       if (password.length < 6) {
         showErrorModal(t('signupTitle'), language === 'ar' ? 'كلمة المرور لازم تكون 6 حروف على الأقل عشان تبقى خبير صح. 💪' : 'Password must be at least 6 characters to be a true Expert. 💪');
@@ -243,6 +273,20 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
       onMockSignup(finalMockUser); 
       setIsLoading(false);
     }, 1500);
+=======
+    const userData = {
+        name: fullName,
+        email,
+        password,
+        role: selectedRole,
+        teamId: selectedRole === UserRole.Employee || selectedRole === UserRole.Supervisor ? 'default_team_on_signup' : undefined,
+        phone: '',
+        expertisePoints: 0, 
+      };
+
+    await onFirebaseSignup(userData); 
+    setIsLoading(false);
+>>>>>>> 96a8f29 (First commit)
   };
 
   const pageBg = theme === 'dark' ? 'bg-dark-bg' : 'bg-light-gray';
@@ -257,34 +301,47 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
   const buttonDisabledBg = theme === 'dark' ? 'bg-gray-600' : 'bg-gray-400';
   const linkColor = theme === 'dark' ? 'text-bright-yellow hover:text-yellow-300' : 'text-marine-blue hover:text-blue-700';
   const appLogoColor = theme === 'dark' ? 'text-bright-yellow' : 'text-marine-blue';
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
 
   const inputPadding = language === 'ar' ? 'pr-10' : 'pl-10';
   const iconPosition = language === 'ar' ? 'right-3' : 'left-3';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   return (
     <div className={`min-h-screen flex flex-col items-center justify-center p-4 ${pageBg} ${textColor} ${language === 'ar' ? 'font-cairo' : 'font-poppins'}`}>
       <div className={`w-full max-w-md p-8 md:p-10 rounded-xl shadow-2xl ${cardBg}`}>
         <div className="text-center mb-8">
+<<<<<<< HEAD
 <<<<<<< HEAD
           <ArrowPathIcon className={`h-12 w-12 mx-auto mb-4 ${appLogoColor}`} />
           <h1 className={`text-2xl md:text-3xl font-bold ${textColor}`}>{t('signupTitle')}</h1>
           <p className={`text-sm mt-2 ${secondaryTextColor}`}>
             {language === 'ar' ? 'مرحباً بك في فريقنا! جاهز للانضمام؟' : 'Welcome to the team! Ready to join?'}
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
           <FireIcon className={`h-12 w-12 mx-auto mb-2 ${appLogoColor} animate-pulse-slow`} />
           <h1 className={`text-2xl md:text-3xl font-bold ${textColor}`}>{t('signupTitle')}</h1>
           <p className={`text-sm mt-1 ${secondaryTextColor}`}>
             {t('ugdcWelcome')}
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
           </p>
         </div>
         <form onSubmit={handleSignup} className="space-y-5">
           <div>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <label htmlFor="fullName" className={`block text-sm font-medium mb-1.5 ${secondaryTextColor}`}>{language === 'ar' ? 'الاسم بالكامل' : 'Full Name'}</label>
             <div className="relative">
@@ -335,6 +392,8 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
                 placeholder={language === 'ar' ? 'كلمة مرور قوية...' : 'A strong password...'}
               />
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
             <label htmlFor="fullName" className={`block text-sm font-medium mb-1.5 ${secondaryTextColor}`}>{t('profileNameLabel')}</label>
             <div className="relative">
                 <div className={`absolute inset-y-0 ${iconPosition} flex items-center pointer-events-none`}>
@@ -379,12 +438,16 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
                 <input type="password" id="signupPassword" value={password} onChange={(e) => setPassword(e.target.value)} required
                     className={`w-full p-3.5 border rounded-lg shadow-sm focus:ring-2 ${inputPadding} ${inputBg} ${inputBorder} ${textColor} ${inputPlaceholderColor} group`}
                     placeholder={language === 'ar' ? 'كلمة سر محدش يعرفها غيرك... 😉' : 'Your top-secret password... 😉'} />
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
             </div>
           </div>
           <div>
             <label htmlFor="confirmPassword" className={`block text-sm font-medium mb-1.5 ${secondaryTextColor}`}>{t('confirmPasswordLabel')}</label>
             <div className="relative">
+<<<<<<< HEAD
 <<<<<<< HEAD
                 <div className={`absolute inset-y-0 ${iconPosition} flex items-center pointer-events-none`}>
                     <LockClosedIcon className={`h-5 w-5 ${iconColor}`} />
@@ -399,19 +462,25 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
                     placeholder={language === 'ar' ? 'اكتبها تاني للتأكيد...' : 'Confirm it here...'}
                 />
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
                  <div className={`absolute inset-y-0 ${iconPosition} flex items-center pointer-events-none`}>
                     <LockClosedIcon className={`h-5 w-5 ${iconColor} transition-transform group-focus-within:scale-110`} />
                 </div>
                 <input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required
                     className={`w-full p-3.5 border rounded-lg shadow-sm focus:ring-2 ${inputPadding} ${inputBg} ${inputBorder} ${textColor} ${inputPlaceholderColor} group`}
                     placeholder={language === 'ar' ? 'اكتبها تاني للتأكيد يا فنان...' : 'Type it again for confirmation, artist...'} />
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
             </div>
           </div>
           <button
             type="submit"
             disabled={isLoading}
             className={`w-full py-3 px-4 rounded-lg font-semibold text-base transition-colors duration-150 ease-in-out shadow-md hover:shadow-lg transform hover:scale-[1.02]
+<<<<<<< HEAD
 <<<<<<< HEAD
               ${isLoading 
                 ? `${buttonDisabledBg} text-gray-300 cursor-not-allowed` 
@@ -421,6 +490,8 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
           >
             {isLoading ? (language === 'ar' ? 'جاري إنشاء الحساب...' : 'Creating Account...') : t('signupButton')}
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
               ${isLoading
                 ? `${buttonDisabledBg} text-gray-300 cursor-not-allowed`
                 : `${buttonPrimaryBg}`
@@ -433,7 +504,10 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
                 {language === 'ar' ? 'جاري إنشاء حسابك الفهلواني... 🚀' : 'Creating your Fahlawy account... 🚀'}
               </span>
             ) : t('signupButton')}
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
           </button>
         </form>
         <div className="mt-8 text-center">
@@ -453,7 +527,11 @@ const SignupView: React.FC<SignupViewProps> = ({ onNavigate, showErrorModal, onM
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default SignupView;
 =======
 export default SignupView;
 >>>>>>> bee2d85 (updated)
+=======
+export default SignupView;
+>>>>>>> 96a8f29 (First commit)

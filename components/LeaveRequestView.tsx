@@ -1,5 +1,6 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useContext, useState } from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ThemeContext, ToastContext, LoggedInUser } from '../App';
@@ -18,6 +19,8 @@ interface LeaveRequestViewProps {
 
 const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ db, loggedInUser }) => {
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 import React, { useContext, useState }from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { ThemeContext } from '../contexts/ThemeContext'; 
@@ -31,7 +34,10 @@ interface LeaveRequestViewProps {
 }
 
 const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => {
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   const { t, language } = useLanguageContext();
   const { theme } = React.useContext(ThemeContext);
   const { addToast } = useContext(ToastContext);
@@ -43,11 +49,17 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // Mock remaining leave days
   const mockRemainingLeaveDays = 12; 
 
 >>>>>>> bee2d85 (updated)
+=======
+  // Mock remaining leave days
+  const mockRemainingLeaveDays = 12; 
+
+>>>>>>> 96a8f29 (First commit)
   const handleSubmitRequest = async () => {
     if (!loggedInUser) {
       addToast(language === 'ar' ? 'يجب تسجيل الدخول أولاً لتقديم طلب إجازة.' : 'You must be logged in to submit a leave request.', 'alert');
@@ -59,6 +71,7 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => 
     }
     
     setIsSubmitting(true);
+<<<<<<< HEAD
 <<<<<<< HEAD
     try {
       const newLeaveRequest = {
@@ -84,6 +97,8 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => 
       setIsSubmitting(false);
     }
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
     setTimeout(() => {
         console.log("Mock Leave Request Submitted:", {
             userId: loggedInUser.firebaseUid || loggedInUser.id,
@@ -98,7 +113,10 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => 
       setLeaveType(''); setStartDate(''); setEndDate(''); setReason('');
       setIsSubmitting(false);
     }, 1000);
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   };
 
   const inputBaseClasses = "w-full p-3 border rounded-lg shadow-sm focus:ring-2 text-sm";
@@ -127,13 +145,19 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => 
             <PaperAirplaneIcon className={`h-16 w-16 ${theme === 'dark' ? 'text-blue-500' : 'text-blue-600'}`} />
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
 
         <div className={`mb-6 p-3 rounded-md text-sm text-center ${theme === 'dark' ? 'bg-gray-700 text-gray-200' : 'bg-blue-50 text-blue-700'}`}>
             <CalendarDaysIcon className="h-5 w-5 inline-block mr-1.5 rtl:ml-1.5"/>
             {language === 'ar' ? `رصيد الإجازات المتبقي (تجريبي): ${mockRemainingLeaveDays} أيام` : `Remaining Leave Days (Demo): ${mockRemainingLeaveDays} days`}
         </div>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
         
         <form onSubmit={(e) => { e.preventDefault(); handleSubmitRequest(); }} className="space-y-5 text-left">
           <div>
@@ -145,10 +169,15 @@ const LeaveRequestView: React.FC<LeaveRequestViewProps> = ({ loggedInUser }) => 
               <option value="sick">{language === 'ar' ? 'مرضية' : 'Sick'}</option>
               <option value="emergency">{language === 'ar' ? 'عارضة' : 'Emergency'}</option>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
               <option value="unpaid">{language === 'ar' ? 'بدون مرتب' : 'Unpaid'}</option>
               <option value="other">{language === 'ar' ? 'أخرى (وضح في السبب)' : 'Other (Specify in reason)'}</option>
 >>>>>>> bee2d85 (updated)
+=======
+              <option value="unpaid">{language === 'ar' ? 'بدون مرتب' : 'Unpaid'}</option>
+              <option value="other">{language === 'ar' ? 'أخرى (وضح في السبب)' : 'Other (Specify in reason)'}</option>
+>>>>>>> 96a8f29 (First commit)
             </select>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

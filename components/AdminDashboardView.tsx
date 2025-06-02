@@ -5,9 +5,15 @@ import { useLanguageContext } from '../hooks/useLanguage';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { useActivityLog } from '../hooks/useActivityLog';
 import { ViewName, UserRole, TranslationSet, ActivityLogEntry, PermitStatus, ShiftType } from '../types';
+<<<<<<< HEAD
 import { ENGINEERS, SUPERVISORS, EMPLOYEES_TEAM1, EMPLOYEES_TEAM2, EMPLOYEES_TEAM3, EMPLOYEES_TEAM4, MOCK_KNOWLEDGE_BASE_TIPS, MOCK_INTERNAL_ANNOUNCEMENTS, MOCK_EQUIPMENT_LOGBOOK_ENTRIES, MOCK_PERMITS_TO_WORK, MOCK_SAFETY_OBSERVATIONS, CURRENT_SHIFT_ASSIGNMENTS, TEAMS } from '../constants'; // Added TEAMS
 import { ToastContext } from '../contexts/ToastContext'; // Added ToastContext
 import { UsersIcon, BriefcaseIcon, ClockIcon, DocumentTextIcon, UserGroupIcon, EyeIcon, CogIcon as Cog6ToothIcon, ListBulletIcon, ShieldCheckIcon, PencilIcon, LightBulbIcon, MegaphoneIcon, ArchiveBoxIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'; // Consolidated icon imports
+=======
+import { ENGINEERS, SUPERVISORS, EMPLOYEES_TEAM1, EMPLOYEES_TEAM2, EMPLOYEES_TEAM3, EMPLOYEES_TEAM4, MOCK_KNOWLEDGE_BASE_TIPS, MOCK_INTERNAL_ANNOUNCEMENTS, MOCK_EQUIPMENT_LOGBOOK_ENTRIES, MOCK_PERMITS_TO_WORK, MOCK_SAFETY_OBSERVATIONS, CURRENT_SHIFT_ASSIGNMENTS, TEAMS } from '../constants'; 
+import { ToastContext } from '../contexts/ToastContext'; 
+import { UsersIcon, BriefcaseIcon, ClockIcon, DocumentTextIcon, UserGroupIcon, EyeIcon, CogIcon as Cog6ToothIcon, ListBulletIcon, ShieldCheckIcon, PencilIcon, LightBulbIcon, MegaphoneIcon, ArchiveBoxIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline'; 
+>>>>>>> 96a8f29 (First commit)
 
 interface AdminDashboardViewProps {
     onNavigate: (view: ViewName) => void;
@@ -17,7 +23,11 @@ const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNavigate }) =
   const { t, language } = useLanguageContext();
   const { theme } = useContext(ThemeContext);
   const { activityLogEntries } = useActivityLog();
+<<<<<<< HEAD
   const { addToast } = useContext(ToastContext); // Get addToast from context
+=======
+  const { addToast } = useContext(ToastContext); 
+>>>>>>> 96a8f29 (First commit)
 
   const totalUsers = ENGINEERS.length + SUPERVISORS.length + EMPLOYEES_TEAM1.length + EMPLOYEES_TEAM2.length + EMPLOYEES_TEAM3.length + EMPLOYEES_TEAM4.length;
   const totalEmployees = EMPLOYEES_TEAM1.length + EMPLOYEES_TEAM2.length + EMPLOYEES_TEAM3.length + EMPLOYEES_TEAM4.length;
@@ -149,7 +159,11 @@ const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNavigate }) =
       </section>
 
       {/* Recent Activity */}
+<<<<<<< HEAD
       <section>
+=======
+      <section className="mb-8">
+>>>>>>> 96a8f29 (First commit)
         <h2 className={`text-xl font-semibold mb-4 ${textColor}`}>{t('adminDashboardRecentActivity')}</h2>
         <div className={`p-4 rounded-xl shadow-lg ${cardBg} border`}>
           {activityLogEntries.length === 0 ? (
@@ -166,6 +180,12 @@ const AdminDashboardView: React.FC<AdminDashboardViewProps> = ({ onNavigate }) =
           )}
         </div>
       </section>
+<<<<<<< HEAD
+=======
+      
+      {/* Removed Firebase Setup Section as Firebase is now being integrated */}
+
+>>>>>>> 96a8f29 (First commit)
     </div>
   );
 };

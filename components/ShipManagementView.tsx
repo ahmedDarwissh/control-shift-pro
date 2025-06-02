@@ -3,12 +3,18 @@ import React from 'react';
 import { useLanguageContext } from '../hooks/useLanguage';
 import { Ship, ShipStatus, ShipCargoType, Pump, Language } from '../types';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ThemeContext } from '../App'; 
 =======
 import { ThemeContext } from '../contexts/ThemeContext'; 
 import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
 import { PlusCircleIcon } from '@heroicons/react/24/outline';
 >>>>>>> bee2d85 (updated)
+=======
+import { ThemeContext } from '../contexts/ThemeContext'; 
+import { ToastContext } from '../contexts/ToastContext'; // UPDATED IMPORT
+import { PlusCircleIcon } from '@heroicons/react/24/outline';
+>>>>>>> 96a8f29 (First commit)
 
 // Heroicon for Ship (using TruckIcon as a placeholder, ideally a better ship icon)
 const ShipIconHero: React.FC<{ className?: string }> = ({ className }) => (
@@ -128,12 +134,15 @@ const ShipManagementView: React.FC<ShipManagementViewProps> = ({ ships }) => {
   const { t, language } = useLanguageContext();
   const { theme } = React.useContext(ThemeContext);
 <<<<<<< HEAD
+<<<<<<< HEAD
   const pageTitleColor = theme === 'dark' ? 'text-orange-400' : 'text-orange-500';
 
   return (
     <div className={`p-2 ${language === 'ar' ? 'font-cairo text-right' : 'font-poppins text-left'}`}>
       <h1 className={`text-2xl md:text-3xl font-bold mb-6 md:mb-8 ${pageTitleColor}`}>{t('ships')}</h1>
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   const { addToast } = React.useContext(ToastContext);
   const pageTitleColor = theme === 'dark' ? 'text-orange-400' : 'text-orange-500';
 
@@ -155,7 +164,10 @@ const ShipManagementView: React.FC<ShipManagementViewProps> = ({ ships }) => {
             {t('shipLogNewCargoButton')}
         </button>
       </div>
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
       {ships.length === 0 ? (
         <div className={`text-center py-12 px-4 rounded-xl shadow-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
           <WaveIcon className={`h-16 w-16 mx-auto mb-4 ${theme === 'dark' ? 'text-blue-500' : 'text-blue-600'}`} />
@@ -179,7 +191,11 @@ const ShipManagementView: React.FC<ShipManagementViewProps> = ({ ships }) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default ShipManagementView;
 =======
 export default ShipManagementView;
 >>>>>>> bee2d85 (updated)
+=======
+export default ShipManagementView;
+>>>>>>> 96a8f29 (First commit)

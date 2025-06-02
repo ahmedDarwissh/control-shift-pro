@@ -2,13 +2,19 @@
   "name": "Control Shift Pro",
   "description": "An application for managing shifts, daily tasks, and operations at UGDCO, Damietta site, with a touch of Egyptian humor. It aims to organize work, increase productivity, and improve the work environment in the maritime and petroleum sector.",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "requestFramePermissions": [],
 =======
+=======
+>>>>>>> 96a8f29 (First commit)
   "requestFramePermissions": [
     "camera",
     "microphone",
     "geolocation"
   ],
+<<<<<<< HEAD
 >>>>>>> bee2d85 (updated)
+=======
+>>>>>>> 96a8f29 (First commit)
   "prompt": ""
 }
